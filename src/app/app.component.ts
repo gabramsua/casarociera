@@ -10,6 +10,9 @@ import { AuthService } from './services/auth.service';
 export class AppComponent {
   title = 'casarociera';
   
+
+  public auth_service: AuthService = new AuthService;
+  
   constructor(private auth: AuthService, private router: Router) {
     if (this.auth.isLoggedIn() && this.router.url === '/') {
       this.router.navigate(['/home']);

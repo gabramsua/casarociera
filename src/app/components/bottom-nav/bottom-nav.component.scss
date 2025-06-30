@@ -1,0 +1,30 @@
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  justify-content: space-around;
+  display: flex;
+  z-index: 1000;
+
+  a {
+    flex-direction: row;
+    color: white;
+
+    .mat-icon {
+      font-size: 24px;
+    }
+
+    span {
+      font-size: 12px;
+    }
+  }
+
+  .active-link {
+    color: yellow; // o cualquier color para indicar activo
+  }
+}
+
+.mat-mdc-button>.mat-icon {
+  width: 1.5rem !important;
+  height: 1.5rem !important;
+}
