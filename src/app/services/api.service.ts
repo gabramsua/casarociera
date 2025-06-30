@@ -20,6 +20,6 @@ export class ApiService {
   constructor(private http: HttpClient) {}
 
   getAll(collection: string){
-    return this.http.get<any>(encodeURI(this.baseUrl + collection+'s'), { headers: this.headers });
+    return this.http.get<any>(encodeURI(this.baseUrl + collection), { headers: this.headers });
   }
 }

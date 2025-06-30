@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { Usuario } from 'src/app/models/models';
+import { UsuarioLanding } from 'src/app/models/models';
 import { ApiService } from 'src/app/services/api.service';
 import { AuthService } from 'src/app/services/auth.service';
 import Constants from 'src/constants';
@@ -11,14 +11,14 @@ import Constants from 'src/constants';
   styleUrls: ['./landing-selector-usuario.component.scss']
 })
 export class LandingSelectorUsuarioComponent {
-  usuarios: Usuario[] = [];
+  usuarios: UsuarioLanding[] = [];
   usuarioSeleccionadoId: number | null = null;
 
 
   constructor(private auth: AuthService, private router: Router, private api: ApiService) {}
 
   ngOnInit(): void {
-    this.api.getAll(Constants.COLLECTION.USUARIO).subscribe((usuarios) => {
+    this.api.getAll(Constants.END_POINTS.GET_ALL_PARTICIPANTES_ACTIVOS).subscribe((usuarios) => {
       this.usuarios = usuarios;
     });
   }
@@ -26,7 +26,7 @@ export class LandingSelectorUsuarioComponent {
   entrar() {
     const usuario = this.usuarios.find(u => u.id === this.usuarioSeleccionadoId);
     if (usuario) {
-      this.auth.setUsuario(usuario.nombre); // o puedes guardar el id también
+      this.auth.setUsuario(usuario.usuario.nombre); // o puedes guardar el id también
       this.router.navigate(['/home']);
     }
   }

@@ -15,13 +15,15 @@ CREATE TABLE Usuario (
 CREATE TABLE Year (
     id INT PRIMARY KEY AUTO_INCREMENT,
     year INT NOT NULL,
-    nombre VARCHAR(100)
+    nombre VARCHAR(100),
+    isActive tinyint not null
 );
 
 CREATE TABLE ParticipanteRomeria (
     id INT PRIMARY KEY AUTO_INCREMENT,
     idUsuario INT NOT NULL,
     idYear INT NOT NULL,
+    isLogged tinyint not null,
     FOREIGN KEY (idUsuario) REFERENCES Usuario(id),
     FOREIGN KEY (idYear) REFERENCES Year(id)
 );

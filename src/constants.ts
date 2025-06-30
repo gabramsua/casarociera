@@ -13,7 +13,7 @@ const Constants = {
         PROPUESTA_ASIGNACION: 'propuestaasignacion',
     },
     END_POINTS: {
-        GET_ALL: 's',
+        GET_ALL_PARTICIPANTES_ACTIVOS: 'participantesActivos',
     },
 };
 
