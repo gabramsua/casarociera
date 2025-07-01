@@ -28,7 +28,8 @@ import { MatCardModule } from '@angular/material/card';
 
 registerLocaleData(localeEs, 'es'); // Registrar el locale 'es'
 
-@NgModule({ declarations: [
+@NgModule({ 
+    declarations: [
         AppComponent,
         LandingSelectorUsuarioComponent,
         HomeComponent,
@@ -40,7 +41,9 @@ registerLocaleData(localeEs, 'es'); // Registrar el locale 'es'
         SpinnerComponent,
         GastosHorizontalListComponent
     ],
-    bootstrap: [AppComponent], imports: [BrowserModule,
+    bootstrap: [AppComponent], 
+    imports: [
+        BrowserModule,
         AppRoutingModule,
         BrowserAnimationsModule,
         FormsModule,
@@ -51,9 +54,10 @@ registerLocaleData(localeEs, 'es'); // Registrar el locale 'es'
         MatIconModule,
         MatButtonModule,
         RouterModule,
-        MatCardModule], providers: [
-        { provide: LOCALE_ID, useValue: 'es' } // Usar 'es' por defecto para los pipes
-        ,
+        MatCardModule], 
+    providers: [
+        { provide: LOCALE_ID, useValue: 'es' },
         provideHttpClient(withInterceptorsFromDi())
-    ] })
+    ]
+})
 export class AppModule { }
