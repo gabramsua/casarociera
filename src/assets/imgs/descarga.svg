@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 360">
+  <path d="M 234 355 L 234 356 L 233 357 L 233 358 L 232 359 L 237 359 L 237 358 L 236 357 L 236 356 L 235 355 Z
+           M 219 355 L 219 356 L 218 357 L 218 359 L 220 359 L 220 358 L 221 357 L 221 355 L 220 356 Z
+           M 211 355 L 211 358 L 212 359 L 214 359 L 214 357 L 213 356 L 213 355 Z
+           ... (continúa el trazado) ..." fill="none" stroke="goldenrod" stroke-width="2"></path>
+</svg>

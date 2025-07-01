@@ -1,0 +1,62 @@
+<h3 class="text-center mb-4">Últimos Gastos</h3>
+
+<!-- <div class="horizontal-list-container">
+  <mat-card class="list-item" *ngFor="let gasto of gastos; let i = index">
+    <mat-card-header>
+      <mat-card-title>{{ gasto.concepto }}</mat-card-title>
+      <mat-card-subtitle>
+        Importe: {{ gasto.importe | currency:'EUR':'symbol':'1.2-2':'es' }}
+        Fecha: {{ gasto.fecha | date:'dd/MM/yyyy' }}
+      </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p>
+        **Categoría:** {{ gasto.categoria.nombre }}
+      </p>
+      <p *ngIf="gasto.urlTicket">
+        <a [href]="gasto.urlTicket" target="_blank">Ver Ticket</a>
+      </p>
+    </mat-card-content>
+    <mat-card-footer>
+      </mat-card-footer>
+  </mat-card>
+
+  <mat-card *ngIf="gastos.length === 0" class="list-item no-items-card">
+    <mat-card-content>
+      No hay últimos gastos registrados.
+    </mat-card-content>
+  </mat-card>
+</div> -->
+
+<div class="horizontal-list-container">
+  @for (gasto of gastos; track gasto.id) {
+    <mat-card class="list-item">
+      <mat-card-header>
+        <mat-card-title>{{ gasto.concepto }}</mat-card-title>
+        <mat-card-subtitle>
+          Importe: {{ gasto.importe | currency:'EUR':'symbol':'1.2-2':'es' }}
+          Fecha: {{ gasto.fecha | date:'dd/MM/yyyy' }}
+        </mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <p>
+          <strong>Categoría:</strong> {{ gasto.categoria.nombre }}
+        </p>
+        <p>
+          <strong>Participante:</strong> {{ gasto.participanteromeria.usuario.nombre }}
+        </p>
+        @if (gasto.urlTicket) {
+          <p>
+            <a [href]="gasto.urlTicket" target="_blank" rel="noopener noreferrer">Ver Ticket</a>
+          </p>
+        }
+      </mat-card-content>
+    </mat-card>
+  } @empty {
+    <mat-card class="list-item no-items-card">
+      <mat-card-content>
+        No hay últimos gastos registrados.
+      </mat-card-content>
+    </mat-card>
+  }
+</div>
