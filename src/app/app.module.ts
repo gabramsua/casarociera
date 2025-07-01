@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { registerLocaleData } from '@angular/common';
 import localeEs from '@angular/common/locales/es';
 
@@ -24,45 +24,36 @@ import { BalancePageComponent } from './pages/balance-page/balance-page.componen
 import { AdminPageComponent } from './pages/admin-page/admin-page.component';
 import { SpinnerComponent } from './shared/components/spinner/spinner.component';
 import { GastosHorizontalListComponent } from './components/gastos-horizontal-list/gastos-horizontal-list.component';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatCardModule } from '@angular/material/card';
 
 registerLocaleData(localeEs, 'es'); // Registrar el locale 'es'
 
-@NgModule({
-  declarations: [
-    AppComponent,
-    LandingSelectorUsuarioComponent,
-    HomeComponent,
-    BottomNavComponent,
-    TurnosPageComponent,
-    HabitacionesPageComponent,
-    BalancePageComponent,
-    AdminPageComponent,
-    SpinnerComponent,
-    GastosHorizontalListComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    HttpClientModule,
-    FormsModule,
-    MatFormFieldModule,
-    MatSelectModule,
-    MatButtonModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatButtonModule,
-    RouterModule,
-    MatCardModule,
-
-    FlexLayoutModule
-    
-  ],
-  providers: [
-    { provide: LOCALE_ID, useValue: 'es' } // Usar 'es' por defecto para los pipes
-  ],
-  bootstrap: [AppComponent]
-})
+@NgModule({ declarations: [
+        AppComponent,
+        LandingSelectorUsuarioComponent,
+        HomeComponent,
+        BottomNavComponent,
+        TurnosPageComponent,
+        HabitacionesPageComponent,
+        BalancePageComponent,
+        AdminPageComponent,
+        SpinnerComponent,
+        GastosHorizontalListComponent
+    ],
+    bootstrap: [AppComponent], imports: [BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        FormsModule,
+        MatFormFieldModule,
+        MatSelectModule,
+        MatButtonModule,
+        MatToolbarModule,
+        MatIconModule,
+        MatButtonModule,
+        RouterModule,
+        MatCardModule], providers: [
+        { provide: LOCALE_ID, useValue: 'es' } // Usar 'es' por defecto para los pipes
+        ,
+        provideHttpClient(withInterceptorsFromDi())
+    ] })
 export class AppModule { }
