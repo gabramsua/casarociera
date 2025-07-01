@@ -18,3 +18,40 @@ export interface Year {
     nombre: string;
     active: boolean
 }
+
+export interface Balance {
+    id: number;
+    concepto: string;
+    fecha: Date,
+    importe: number,
+    isIngreso: boolean,
+    urlTicket: string,
+    categoria: Categoria;
+    participanteromeria : ParticipanteRomeria;
+}
+export interface ParticipanteRomeria {
+    id: number;
+    usuario: Usuario;
+    year: Year;
+    logged: boolean
+}
+export interface Categoria {
+    id: number;
+    nombre: string;
+}
+
+////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
+///                          CUSTOM POJOS                           ////
+////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
+export interface UltimosGastos {    
+    id: number;
+    concepto: string;
+    fecha: Date,
+    importe: number,
+    isIngreso: boolean,
+    urlTicket: string,
+    categoria: Categoria;
+    participanteromeria : ParticipanteRomeria;
+}

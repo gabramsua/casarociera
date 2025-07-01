@@ -14,6 +14,7 @@ const Constants = {
     },
     END_POINTS: {
         GET_ALL_PARTICIPANTES_ACTIVOS: 'participantesActivos',
+        ULTIMOS_10_GASTOS: 'ultimosGastos',
     },
 };
 
