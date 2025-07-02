@@ -90,7 +90,7 @@
 
 .list-item {
   flex-shrink: 0;
-  width: 280px; /* Un ancho fijo que permite ver un par de tarjetas a la vez */
+  width: 200px; /* Un ancho fijo que permite ver un par de tarjetas a la vez */
   border-radius: 12px; /* Bordes más suaves para la tarjeta */
   transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transiciones para interactividad */
   cursor: pointer; /* Indica que puede ser interactivo */
@@ -112,6 +112,20 @@
     font-weight: 600; // Más negrita
     color: #3f51b5; // Color primario de Material Design
     margin-bottom: 4px; // Espacio entre título y subtítulo
+    width: 100%;
+
+    .importe {
+      font-size: 1.2rem; // Un poco más grande para destacar el importe
+      font-weight: 700; // Más negrita
+      color: #d32f2f; // Un rojo bonito para el importe
+    }
+
+    .concepto {    
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      max-width: 170px;
+    }
   }
 
   mat-card-subtitle {

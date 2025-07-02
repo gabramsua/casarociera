@@ -6,6 +6,12 @@
   display: flex;
   z-index: 1000;
 
+
+  /* --- Add these lines for rounded corners --- */
+  border-top-left-radius: 15px; /* Adjust the value for more or less roundness */
+  border-top-right-radius: 15px; /* Adjust the value for more or less roundness */
+  /* You might also want to add a background color if it's not already there */
+
   a {
     flex-direction: row;
     color: white;
