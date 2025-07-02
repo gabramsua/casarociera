@@ -25,6 +25,8 @@ import { AdminPageComponent } from './pages/admin-page/admin-page.component';
 import { SpinnerComponent } from './shared/components/spinner/spinner.component';
 import { GastosHorizontalListComponent } from './components/gastos-horizontal-list/gastos-horizontal-list.component';
 import { MatCardModule } from '@angular/material/card';
+import { MatDialogModule } from '@angular/material/dialog';
+import { ImageDialogComponent } from './shared/components/image-dialog/image-dialog.component';
 
 registerLocaleData(localeEs, 'es'); // Registrar el locale 'es'
 
@@ -39,7 +41,8 @@ registerLocaleData(localeEs, 'es'); // Registrar el locale 'es'
         BalancePageComponent,
         AdminPageComponent,
         SpinnerComponent,
-        GastosHorizontalListComponent
+        GastosHorizontalListComponent,
+        ImageDialogComponent
     ],
     bootstrap: [AppComponent], 
     imports: [
@@ -54,7 +57,9 @@ registerLocaleData(localeEs, 'es'); // Registrar el locale 'es'
         MatIconModule,
         MatButtonModule,
         RouterModule,
-        MatCardModule], 
+        MatCardModule,
+        MatDialogModule,
+    ], 
     providers: [
         { provide: LOCALE_ID, useValue: 'es' },
         provideHttpClient(withInterceptorsFromDi())

@@ -1,3 +1,5 @@
+import Swal from "sweetalert2";
+
 export default class Utils {
     static formatDate(date: Date): string {
         const options: Intl.DateTimeFormatOptions = {
@@ -14,4 +16,20 @@ export default class Utils {
     static formatCurrency(amount: number): string {
         return new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'EUR' }).format(amount);
     }
+
+  static sweetAlert(){
+    Swal.fire(
+      '¡Guardado!',
+      'Actualizando registros',
+      'success'
+    )
+  }
+  static errorAlert(error: string){
+    Swal.fire(
+      'Algo ha salido mal',
+      'ERROR: '+error,
+      'error'
+    )
+  }
+    
 }

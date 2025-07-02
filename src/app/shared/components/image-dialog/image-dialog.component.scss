@@ -1,0 +1,12 @@
+/* Puedes ajustar el tamaño máximo de la imagen si quieres */
+img {
+  // Asegura que la imagen no exceda el ancho del diálogo
+  max-width: 100%; 
+  height: auto; // Mantiene la proporción
+  display: block; // Elimina espacio extra que algunos navegadores añaden debajo de las imágenes
+}
+
+/* Puedes darle un ancho máximo al diálogo si quieres */
+:host {
+  max-width: 90vw; // El diálogo no será más ancho que el 90% del viewport
+}

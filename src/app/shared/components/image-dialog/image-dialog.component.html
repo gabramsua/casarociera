@@ -1,0 +1,17 @@
+<h2 mat-dialog-title>{{data.concepto}} </h2>
+
+<div mat-dialog-content>
+  @if (data.imageUrl) {
+    <img [src]="data.imageUrl" [alt]="data.altText || 'Imagen'" style="max-width: 100%; height: auto; display: block;">
+  } @else {
+    <p>No se pudo cargar la imagen.</p>
+  <!-- } @defer {
+    <p>Cargando...</p>
+  } @placeholder {
+    <p>Imagen no disponible.</p> -->
+  }
+</div>
+<div mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cerrar</button>
+  <!-- <button mat-button mat-dialog-close cdkFocusInitial>Ok</button> -->
+</div>

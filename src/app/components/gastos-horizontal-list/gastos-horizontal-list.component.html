@@ -18,7 +18,9 @@
         </p>
         @if (gasto.urlTicket) {
           <p>
-            <a [href]="gasto.urlTicket" target="_blank" rel="noopener noreferrer">Ver Ticket</a>
+            <a (click)="openImageViewer(gasto.urlTicket, 'Ticket de ' + gasto.concepto)" style="cursor: pointer;">
+              Ver Ticket
+            </a>
           </p>
         }
       </mat-card-content>
