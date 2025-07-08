@@ -1,9 +1,10 @@
 <div class="d-flex w-100 justify-content-between p-4">
-    <div class="d-flex flex-column align-items-center justify-content-center">
+    <div class="d-flex flex-column">
         <h1 class="mt-2">Casa Rociera DOÑANA 13</h1>
+        <h3>{{activeEvento.nombre}} de {{activeEvento.year}}</h3>
         <!-- <p class="text-center">Aquí encontrarás todo lo que necesitas para disfrutar de la cultura rociera.</p> -->
     </div>
-
+    
     <button mat-icon-button (click)="logout()" aria-label="Cerrar sesión">
         <mat-icon>logout</mat-icon>
     </button>

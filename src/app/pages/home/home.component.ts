@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { Year } from 'src/app/models/models';
 import { ApiService } from 'src/app/services/api.service';
 import { AuthService } from 'src/app/services/auth.service';
+import Constants from 'src/constants';
 
 @Component({
   selector: 'app-home',
@@ -9,9 +11,16 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
+  activeEvento!: Year;
   
   constructor(private auth: AuthService, private router: Router, private api: ApiService) {}
 
+  ngOnInit(): void {
+    this.api.getAll(Constants.END_POINTS.ACTIVE_EVENTO).subscribe((data) => {
+      this.activeEvento = data;
+    });
+  }
+  
   logout() {
     this.auth.logout();
     this.router.navigate(['/']);
