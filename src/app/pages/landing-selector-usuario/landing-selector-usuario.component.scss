@@ -1,0 +1,41 @@
+.landing-body {
+    height: -webkit-fill-available;
+    background-color: #343F4E !important;
+
+    &-spinner {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        background-color: #343F4E !important;
+    }
+}
+
+:host{
+    background-color: #343F4E !important;
+    color: #FFFFFF;
+    height: 100vh;
+}
+
+.mi-elemento-animado {
+  /* Estado inicial (invisible y abajo) */
+  opacity: 0; /* Empieza completamente transparente */
+  transform: translateY(50px); /* Empieza 50px por debajo de su posición final */
+  
+  /* Definición de la transición: qué propiedades, duración, y función de temporización */
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out; /* Transición suave para opacidad y movimiento */
+
+  /* Estilos base del elemento para que sea visible y tenga forma */
+  padding: 20px;
+  background-color: #4CAF50; 
+  color: white;
+  margin: 20px;
+  border-radius: 8px;
+  text-align: center;
+  // box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra sutil para un mejor efecto */
+}
+
+.mi-elemento-animado.mostrar {
+  /* Estado final (visible y en su posición normal) */
+  opacity: 1; /* Se vuelve completamente visible */
+  transform: translateY(0); /* Se mueve a su posición original */
+}
