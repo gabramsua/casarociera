@@ -10,11 +10,13 @@
     </mat-select>
   </mat-form-field>
   
-  <div class="d-flex justify-content-end pr-4">
-  <button mat-raised-button (click)="entrar()" [disabled]="!usuarioSeleccionadoId">
-    Entrar
-  </button>
-</div>
+  @if(usuarioSeleccionadoId){
+    <div class="d-flex justify-content-end pr-4">
+      <button mat-raised-button (click)="entrar()">
+        Entrar
+      </button>
+    </div>
+  }
   
   <div class="landing-body-spinner mi-elemento-animado mostrar">
     <app-spinner></app-spinner>

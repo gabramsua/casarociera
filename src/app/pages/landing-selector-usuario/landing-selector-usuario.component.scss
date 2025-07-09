@@ -1,18 +1,20 @@
+@import 'src/variables.scss';
+
 .landing-body {
-    height: -webkit-fill-available;
-    background-color: #343F4E !important;
+    height: 100vh;
+    background-color: $azul-cadiz !important;
 
     &-spinner {
         position: fixed;
         bottom: 0;
         width: 100%;
-        background-color: #343F4E !important;
+        background-color: $azul-cadiz !important;
     }
 }
 
 :host{
-    background-color: #343F4E !important;
-    color: #FFFFFF;
+    background-color: $azul-cadiz !important;
+    color: $blanco;
     height: 100vh;
 }
 
@@ -22,16 +24,9 @@
   transform: translateY(50px); /* Empieza 50px por debajo de su posición final */
   
   /* Definición de la transición: qué propiedades, duración, y función de temporización */
-  transition: opacity 0.5s ease-out, transform 0.5s ease-out; /* Transición suave para opacidad y movimiento */
+  transition: opacity 2.5s ease-out, transform 2.5s ease-out; /* Transición suave para opacidad y movimiento */
 
-  /* Estilos base del elemento para que sea visible y tenga forma */
   padding: 20px;
-  background-color: #4CAF50; 
-  color: white;
-  margin: 20px;
-  border-radius: 8px;
-  text-align: center;
-  // box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra sutil para un mejor efecto */
 }
 
 .mi-elemento-animado.mostrar {

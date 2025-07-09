@@ -1,0 +1,58 @@
+// Transparencias con HEX percentage opacity: https://stackoverflow.com/questions/7015302/css-hexadecimal-rgba
+$fuente_titles: "Julius Sans One";
+$body_color: #E5F2F9;
+// $body_color: #FE5656;//rgb(98,176,222,0.16);
+$rojo_tsf: #A42826;// #BF2422
+$verde-: #4EA852;
+$verde-letra: #239a80;
+$azul-cadiz: #343F4E;
+
+
+$amarillo-star: #ffd400;
+$gris-borde: #bcc8d4;
+$ghostwhite: #E5F2F9;
+$rojo-pasion: #FF3333;
+$blue-transparent: #FBFBFB;
+$gris-medio-oscuro: #909090;
+$gris-medio-medio: #cecece;
+$gris-medio-claro: #efefef;
+$verde: green;
+$verde-basic: #004900; // #005c00
+$verde-especial:#4ea919; // #009f0f; //
+
+$blanco: #FFF;
+$negro: #000;
+$azul:#0b2a63;
+$verde-agua: #138496;
+$verde-agua-50-transparente: #1384967F;
+$gris-muy-oscuro: #2f2f2f;
+
+// MENÚ ACTIVE OPTIONS
+$verde-menta: #2ECC71;
+$turquesaclaro: #1ABC9C;
+$lavanda: #A29BFE;
+
+// HORIZONTAL LISTS
+$scrollbar-background: #f0f0f0;
+$scrollbar-thumb: #bdbdbd;
+$scrollbar-thumb-hover: #888;
+
+// CARD STYLES
+$card-background: #ffffff; // Color de fondo de las tarjetas
+$card-border: #e0e0e0; // Color del borde de las tarjetas
+$card-shadow: rgba(0, 0, 0, 0.1);
+$mat-card-title: #3f51b5; // Color primario de Material Design
+$mat-card-subtitle: #757575; // Un gris suave
+$mat-card-link: #1976d2; // Un azul bonito para los enlaces
+$mat-card-link-hover: #115293; // Un azul más oscuro al pasar el rat
+$no-items-card: #f5f5f5; // Un fondo ligeramente diferente para el mensaje de "No hay elementos"
+
+$rojo-importe-balance: #d32f2f; // Un rojo bonito para el importe
+$verde-importe-balance: #388E3C; // Un verde bonito para el importe
+
+$default-border-radius: 16px;
+
+@font-face {
+	font-family: "julius";
+	src: local("julius"), url('./assets/fonts/JuliusSansOne.ttf') format("truetype");
+}

@@ -15,7 +15,7 @@ interface VotoResumen {
 @Component({
   selector: 'app-propuestas-horizontal-list',
   templateUrl: './propuestas-horizontal-list.component.html',
-  styleUrl: '../gastos-horizontal-list/gastos-horizontal-list.component.scss'
+  styleUrl: './propuestas-horizontal-list.component.scss'
 })
 export class PropuestasHorizontalListComponent {
   votopropuestas: VotoPropuestasEventoActivo[] = [];
