@@ -24,6 +24,8 @@ import { BalancePageComponent } from './pages/balance-page/balance-page.componen
 import { AdminPageComponent } from './pages/admin-page/admin-page.component';
 import { SpinnerComponent } from './shared/components/spinner/spinner.component';
 import { GastosHorizontalListComponent } from './components/gastos-horizontal-list/gastos-horizontal-list.component';
+import { ComidasHorizontalListComponent } from './components/comidas-horizontal-list/comidas-horizontal-list.component';
+import { PropuestasHorizontalListComponent } from './components/propuestas-horizontal-list/propuestas-horizontal-list.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ImageDialogComponent } from './shared/components/image-dialog/image-dialog.component';
@@ -42,6 +44,8 @@ registerLocaleData(localeEs, 'es'); // Registrar el locale 'es'
         AdminPageComponent,
         SpinnerComponent,
         GastosHorizontalListComponent,
+        ComidasHorizontalListComponent,
+        PropuestasHorizontalListComponent,
         ImageDialogComponent
     ],
     bootstrap: [AppComponent], 

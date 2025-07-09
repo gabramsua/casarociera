@@ -15,7 +15,8 @@ const Constants = {
     END_POINTS: {
         GET_ALL_PARTICIPANTES_ACTIVOS: 'participantesActivos',
         ULTIMOS_10_GASTOS: 'ultimosGastos',
-        ACTIVE_EVENTO: 'activeEvento',
+        ACTIVE_EVENTO: 'eventoActivo',
+        COMIDAS_EVENTO_ACTIVO: 'comidasEventoActivo',
     },
 };
 

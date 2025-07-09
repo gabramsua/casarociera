@@ -55,3 +55,11 @@ export interface UltimosGastos {
     categoria: Categoria;
     participanteromeria : ParticipanteRomeria;
 }
+
+export interface ComidasEventoActivo {
+    id: number;
+    horario: string;
+    nombre: string;
+    platoPrincipal: string;
+    year: Year;
+}
