@@ -11,7 +11,12 @@ import Constants from 'src/constants';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
-  activeEvento!: Year;
+  activeEvento: Year= {
+    id: 0,
+    year: 0,
+    nombre: '',
+    active: false
+  };
   
   constructor(private auth: AuthService, private router: Router, private api: ApiService) {}
 

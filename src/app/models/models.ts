@@ -63,3 +63,16 @@ export interface ComidasEventoActivo {
     platoPrincipal: string;
     year: Year;
 }
+
+export interface PropuestasEventoActivo {
+    id: number;
+    fecha: Date;
+    participanteromeria: ParticipanteRomeria;
+}
+
+export interface VotoPropuestasEventoActivo {
+    id: number;
+    isAFavor: boolean;
+    participanteromeria: ParticipanteRomeria;
+    propuesta: PropuestasEventoActivo;
+}

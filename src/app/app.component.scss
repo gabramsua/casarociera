@@ -1,0 +1,16 @@
+.content-wrapper {
+  padding-bottom: 65px; /* espacio para el bottom nav + margen */
+  margin-bottom: 5px;    /* margen extra sobre el nav */
+  min-height: 100vh;     /* para que ocupe toda la pantalla */
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+app-bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 55px;
+  z-index: 1000;
+}

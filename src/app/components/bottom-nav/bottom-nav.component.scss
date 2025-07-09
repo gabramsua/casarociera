@@ -1,15 +1,7 @@
 .bottom-nav {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  justify-content: space-around;
-  display: flex;
-  z-index: 1000;
-
-
-  /* --- Add these lines for rounded corners --- */
-  border-top-left-radius: 15px; /* Adjust the value for more or less roundness */
-  border-top-right-radius: 15px; /* Adjust the value for more or less roundness */
+  height: 57px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
   /* You might also want to add a background color if it's not already there */
 
   a {

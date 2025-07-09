@@ -8,9 +8,6 @@ import { AuthService } from './services/auth.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'casarociera';
-  
-
   public auth_service: AuthService = new AuthService;
   
   constructor(private auth: AuthService, private router: Router) {

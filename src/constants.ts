@@ -17,6 +17,8 @@ const Constants = {
         ULTIMOS_10_GASTOS: 'ultimosGastos',
         ACTIVE_EVENTO: 'eventoActivo',
         COMIDAS_EVENTO_ACTIVO: 'comidasEventoActivo',
+        PROPUESTAS_EVENTO_ACTIVO: 'propuestasEventoActivo',
+        VOTOS_PROPUESTAS_EVENTO_ACTIVO: 'votopropuestasEventoActivo',
     },
 };
 

@@ -1,38 +1,30 @@
-<h2 class="ml-4 mb-0">Próximas Comidas</h2>
+<h2 class="ml-4 mb-0">Propuestas de Habitaciones</h2>
 
 <div class="horizontal-list-container">
-  @for (comida of comidas; track comida.id) {
+  @for (resumen of resumenes; track resumen.propuestaId) {
     <mat-card class="list-item">
       <mat-card-header>
         <mat-card-title class="d-flex flex-column align-items-start">
-          <span class="importe">{{ comida.nombre }}</span>
-          <span class="concepto">{{ comida.platoPrincipal }}</span>
+          <span class="importe">{{ resumen.autor }}</span>
+          <span>{{ resumen.fecha | date: 'dd/MM/yyyy' }}</span>
+          
         </mat-card-title>
         <mat-card-subtitle>
-          @if(comida.horario) {
-            Horario: {{ comida.horario | date:'hh:mm' }}
-          <!-- } @else {
-            Horario: No disponible. -->
-          }
+         <p>Votos a favor: {{ resumen.aFavor }}</p>
+         <p>Votos en contra: {{ resumen.enContra }}</p>
+
         </mat-card-subtitle>
       </mat-card-header>
       <mat-card-content>
-        <p>
-          <!-- <strong>Categoría:</strong> {{ gasto.categoria.nombre }} -->
-        </p>
-        <!-- @if (gasto.urlTicket) {
-          <p>
-            <a (click)="openImageViewer(gasto.urlTicket, 'Ticket de ' + gasto.concepto)" style="cursor: pointer;">
-              Ver Ticket
-            </a>
-          </p>
-        } -->
+        <!-- <p>
+          <strong>Categoría:</strong> Categoria contenido
+        </p> -->
       </mat-card-content>
     </mat-card>
   } @empty {
     <mat-card class="list-item no-items-card">
       <mat-card-content>
-        No hay últimos gastos registrados.
+        No hay propuestas aún.
       </mat-card-content>
     </mat-card>
   }
