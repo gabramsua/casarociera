@@ -45,6 +45,12 @@ export interface Habitacion {
     capacidad: number;
 }
 
+export interface Propuesta {
+    id: number;
+    fecha: Date;
+    participanteromeria: ParticipanteRomeria;
+}
+
 ////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////
 ///                          CUSTOM POJOS                           ////

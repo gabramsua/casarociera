@@ -18,6 +18,10 @@ import { MatCardModule } from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
+import { MatInputModule } from '@angular/material/input';
+import { MatPaginatorIntl, MatPaginatorModule } from '@angular/material/paginator';
+
 
 import { LandingSelectorUsuarioComponent } from './pages/landing-selector-usuario/landing-selector-usuario.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -34,6 +38,7 @@ import { ImageDialogComponent } from './shared/components/image-dialog/image-dia
 import { PropuestasListComponent } from './pages/habitaciones-page/propuestas-list/propuestas-list.component';
 import { PropuestasCreateComponent } from './pages/habitaciones-page/propuestas-create/propuestas-create.component';
 import { HabitacionesListComponent } from './pages/habitaciones-page/habitaciones-list/habitaciones-list.component';
+import { getSpanishPaginatorIntl } from './shared/spanish-paginator';
 
 registerLocaleData(localeEs, 'es'); // Registrar el locale 'es'
 
@@ -74,9 +79,14 @@ registerLocaleData(localeEs, 'es'); // Registrar el locale 'es'
         MatDialogModule,
         MatTabsModule,
         MatTableModule,
+        MatSortModule, 
+        MatPaginatorModule,
+        MatInputModule,
+
     ], 
     providers: [
         { provide: LOCALE_ID, useValue: 'es' },
+        { provide: MatPaginatorIntl, useValue: getSpanishPaginatorIntl() },
         provideHttpClient(withInterceptorsFromDi())
     ]
 })
