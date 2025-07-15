@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Usuario } from '../models/models';
 
 @Injectable({
   providedIn: 'root'
@@ -6,8 +7,8 @@ import { Injectable } from '@angular/core';
 export class AuthService {
   private readonly key = 'usuario';
 
-  setUsuario(nombre: string) {
-    localStorage.setItem(this.key, nombre);
+  setUsuario(usuario: Usuario): void {
+    localStorage.setItem(this.key, JSON.stringify(usuario));
   }
 
   getUsuario(): string | null {

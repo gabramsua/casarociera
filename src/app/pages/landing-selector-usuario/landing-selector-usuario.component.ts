@@ -26,7 +26,7 @@ export class LandingSelectorUsuarioComponent {
   entrar() {
     const usuario = this.usuarios.find(u => u.id === this.usuarioSeleccionadoId);
     if (usuario) {
-      this.auth.setUsuario(usuario.usuario.nombre); // o puedes guardar el id también
+      this.auth.setUsuario(usuario.usuario);
       this.router.navigate(['/home']);
     }
   }

@@ -23,7 +23,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatPaginatorIntl, MatPaginatorModule } from '@angular/material/paginator';
 import { MatListModule } from '@angular/material/list';
-import {MatChipsModule} from '@angular/material/chips';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 
 import { LandingSelectorUsuarioComponent } from './pages/landing-selector-usuario/landing-selector-usuario.component';
@@ -92,7 +93,9 @@ registerLocaleData(localeEs, 'es'); // Registrar el locale 'es'
         MatExpansionModule,
         MatListModule,
         MatChipsModule,
-
+        MatAutocompleteModule,
+        
+        
     ], 
     providers: [
         { provide: LOCALE_ID, useValue: 'es' },

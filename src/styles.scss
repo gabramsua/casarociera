@@ -135,3 +135,6 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .button-verde{
   background-color: $verde-menta !important;
 }
+.fill-available {
+    width: -webkit-fill-available;
+}
