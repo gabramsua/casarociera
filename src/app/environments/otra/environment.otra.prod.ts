@@ -1,6 +1,6 @@
 export const environment = {
-  production: false,
-  apiUrl: 'http://localhost:8080/',
+  production: true,
+  apiUrl: 'https://localhost.com:8080/',
   firebaseConfig: {
     apiKey: "AIzaSyC2k-l1d2QL76wTCMayqX5iGmtp8_iMopg",
     authDomain: "casarociera.firebaseapp.com",

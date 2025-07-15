@@ -36,6 +36,39 @@
             "scripts": []
           },
           "configurations": {
+
+            "ajoli": {
+              "fileReplacements": [
+                {
+                  "replace": "src/app/environments/ajoli/environment.ajoli.ts",
+                  "with": "src/app/environments/ajoli/environment.ajoli.ts"
+                }
+              ],
+              "outputPath": "dist/ajoli",
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true
+            },
+            "otra": {
+              "fileReplacements": [
+                {
+                  "replace": "src/app/environments/otra/environment.otra.ts",
+                  "with": "src/app/environments/otra/environment.otra.ts"
+                }
+              ],
+              "outputPath": "dist/otra",
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true
+            },
             "production": {
               "budgets": [
                 {
