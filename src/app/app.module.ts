@@ -39,6 +39,8 @@ import { PropuestasListComponent } from './pages/habitaciones-page/propuestas-li
 import { PropuestasCreateComponent } from './pages/habitaciones-page/propuestas-create/propuestas-create.component';
 import { HabitacionesListComponent } from './pages/habitaciones-page/habitaciones-list/habitaciones-list.component';
 import { getSpanishPaginatorIntl } from './shared/spanish-paginator';
+import { BackButtonComponent } from './shared/components/back-button/back-button.component';
+import { PropuestaDetailComponent } from './pages/habitaciones-page/propuesta-detail/propuesta-detail.component';
 
 registerLocaleData(localeEs, 'es'); // Registrar el locale 'es'
 
@@ -60,7 +62,9 @@ registerLocaleData(localeEs, 'es'); // Registrar el locale 'es'
         HabitacionesPageComponent,
         PropuestasListComponent,
         PropuestasCreateComponent,
-        HabitacionesListComponent
+        HabitacionesListComponent,
+        BackButtonComponent,
+        PropuestaDetailComponent,
     ],
     bootstrap: [AppComponent], 
     imports: [

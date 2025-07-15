@@ -6,6 +6,7 @@ import { TurnosPageComponent } from './pages/turnos-page/turnos-page.component';
 import { HabitacionesPageComponent } from './pages/habitaciones-page/habitaciones-page.component';
 import { BalancePageComponent } from './pages/balance-page/balance-page.component';
 import { AdminPageComponent } from './pages/admin-page/admin-page.component';
+import { PropuestaDetailComponent } from './pages/habitaciones-page/propuesta-detail/propuesta-detail.component';
 
 const routes: Routes = [
   {
@@ -23,6 +24,10 @@ const routes: Routes = [
   {
     path: 'habitaciones',
     component: HabitacionesPageComponent
+  },
+  {
+    path: 'habitaciones/propuesta/detail/:id',
+    component: PropuestaDetailComponent
   },
   {
     path: 'balance',

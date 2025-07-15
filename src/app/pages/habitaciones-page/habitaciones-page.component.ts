@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-habitaciones-page',
@@ -7,4 +8,14 @@ import { Component } from '@angular/core';
 })
 export class HabitacionesPageComponent {
 
+  selectedTabIndex = 0;
+
+  constructor(private route: ActivatedRoute) {}
+
+  ngOnInit(): void {
+    const tabFromParams = this.route.snapshot.queryParamMap.get('tab');
+    if (tabFromParams) {
+      this.selectedTabIndex = parseInt(tabFromParams, 10);
+    }
+  }
 }

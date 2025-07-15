@@ -2,7 +2,6 @@ import { Component, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { Propuesta, VotoPropuestasEventoActivo } from 'src/app/models/models';
 import { ApiService } from 'src/app/services/api.service';
 import Constants from 'src/constants';
 
@@ -21,8 +20,9 @@ interface PropuestaAgregada {
 })
 export class PropuestasListComponent {
 
-  displayedColumns: string[] = ['id', 'aFavor', 'enContra', 'autor' ];
-  dataSource: MatTableDataSource<PropuestaAgregada>= new MatTableDataSource<PropuestaAgregada>([]);;
+  displayedColumns: string[] = ['id', 'aFavor', 'enContra', 'autor', 'acciones' ];
+  dataSource: MatTableDataSource<PropuestaAgregada>= new MatTableDataSource<PropuestaAgregada>([]);
+  selectedTabIndex = 2;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -89,6 +89,6 @@ export class PropuestasListComponent {
       });
     });
 
-    return result;
+    return result.sort((a, b) => b.aFavor - a.aFavor);
   }
 }
