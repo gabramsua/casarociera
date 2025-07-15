@@ -20,7 +20,10 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatInputModule } from '@angular/material/input';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { MatPaginatorIntl, MatPaginatorModule } from '@angular/material/paginator';
+import { MatListModule } from '@angular/material/list';
+import {MatChipsModule} from '@angular/material/chips';
 
 
 import { LandingSelectorUsuarioComponent } from './pages/landing-selector-usuario/landing-selector-usuario.component';
@@ -86,6 +89,9 @@ registerLocaleData(localeEs, 'es'); // Registrar el locale 'es'
         MatSortModule, 
         MatPaginatorModule,
         MatInputModule,
+        MatExpansionModule,
+        MatListModule,
+        MatChipsModule,
 
     ], 
     providers: [

@@ -1,2 +1,62 @@
 <back-button [route]="'/habitaciones'"></back-button>
-<p>propuesta-detail works!</p>
+
+<div class="votos">
+    <div class="votos-aFavor">
+        <mat-accordion>
+            <mat-expansion-panel (opened)="panelOpenState.set(true)" (closed)="panelOpenState.set(false)">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>Votos a Favor </mat-panel-title>
+                    <mat-panel-description>
+                        {{ votosAFavor.length }} votos
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+                
+                <p>@for (nombre of votosAFavor; track nombre) { {{ nombre }}<span *ngIf="!$last">, </span> }</p>
+            </mat-expansion-panel>
+        </mat-accordion>
+    </div>
+    <div class="votos-enContra">
+        <mat-accordion>
+            <mat-expansion-panel (opened)="panelOpenState.set(true)" (closed)="panelOpenState.set(false)">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>Votos en Contra </mat-panel-title>
+                    <mat-panel-description>
+                        {{ votosEnContra.length }} votos
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+
+                <p>@for (nombre of votosEnContra; track nombre) { {{ nombre }}<span *ngIf="!$last">, </span> }</p>
+            </mat-expansion-panel>
+        </mat-accordion>
+    </div>
+</div>
+
+
+<div class="propuestas">
+    <div class="asignaciones-grid">
+        @for (asignacion of asignaciones; track asignacion.habitacion) {
+            <mat-card class="habitacion-card">
+            <mat-card-header>
+                <mat-card-title>
+                    <span class="habitacion-card-nombre">
+                        {{ asignacion.habitacion.nombre || 'Sin habitación' }} 
+                    </span>
+                    <span class="habitacion-card-capacidad">
+                        (Capacidad: {{ asignacion.habitacion.capacidad }} pax)
+                    </span>
+                </mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <div class="personas-list">
+                @for (persona of asignacion.personas; track persona) {
+                    <mat-chip color="primary" selected>
+                    {{ persona }}
+                    </mat-chip>
+                }
+                </div>
+            </mat-card-content>
+            </mat-card>
+        }
+        </div>
+
+</div>

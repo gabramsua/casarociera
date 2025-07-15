@@ -22,4 +22,11 @@ export class ApiService {
   getAll(collection: string){
     return this.http.get<any>(encodeURI(this.baseUrl + collection), { headers: this.headers });
   }
+  getDetallePropuesta(id: number) {
+    return this.http.get<any>(`${this.baseUrl}propuesta/detalle-completo/${id}`, {
+      headers: this.headers
+    });
+  }
+  
+
 }
