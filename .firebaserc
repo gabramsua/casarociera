@@ -1,0 +1,19 @@
+{
+  "projects": {
+    "default": "casarociera"
+  },
+  "targets": {
+    "casarociera": {
+      "hosting": {
+        "ajoli": [
+          "ajoli1d"
+        ],
+        "otra": [
+          "casarociera"
+        ]
+      }
+    }
+  },
+  "etags": {},
+  "dataconnectEmulatorConfig": {}
+}

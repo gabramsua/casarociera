@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { registerLocaleData } from '@angular/common';
 import localeEs from '@angular/common/locales/es';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -45,6 +46,7 @@ import { HabitacionesListComponent } from './pages/habitaciones-page/habitacione
 import { getSpanishPaginatorIntl } from './shared/spanish-paginator';
 import { BackButtonComponent } from './shared/components/back-button/back-button.component';
 import { PropuestaDetailComponent } from './pages/habitaciones-page/propuesta-detail/propuesta-detail.component';
+import { environment } from './environments/environment';
 
 registerLocaleData(localeEs, 'es'); // Registrar el locale 'es'
 
@@ -100,7 +102,8 @@ registerLocaleData(localeEs, 'es'); // Registrar el locale 'es'
     providers: [
         { provide: LOCALE_ID, useValue: 'es' },
         { provide: MatPaginatorIntl, useValue: getSpanishPaginatorIntl() },
-        provideHttpClient(withInterceptorsFromDi())
+        provideHttpClient(withInterceptorsFromDi()),
+        provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
     ]
 })
 export class AppModule { }
