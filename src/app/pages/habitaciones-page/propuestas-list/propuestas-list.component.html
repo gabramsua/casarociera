@@ -36,7 +36,7 @@
     <ng-container matColumnDef="acciones">
       <th mat-header-cell *matHeaderCellDef> Acciones </th>
       <td mat-cell *matCellDef="let row">
-        <mat-icon [routerLink]="['propuesta/detail/'+ row.id]" [queryParams]="{ tab: selectedTabIndex }">visibility</mat-icon>
+        <mat-icon [routerLink]="['propuesta/detail/'+ row.id]" [queryParams]="{ autor: row.autor, tab: selectedTabIndex }">visibility</mat-icon>
         <!-- <i class="fa-solid fa-lock ml-2" matTooltip="Bloqueado"></i> -->
         <!-- <i class="acciones-tabla fa-solid fa-pencil" [routerLink]="['detail/'+ row.idcliente]"></i> -->
         <!-- <i class="acciones-tabla fa-solid fa-trash-can"></i>  -->
