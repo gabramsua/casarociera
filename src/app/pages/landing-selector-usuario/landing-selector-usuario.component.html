@@ -1,14 +1,28 @@
 <div class="landing-body">
   <h2 class="pt-4 pl-4">Selecciona tu nombre</h2>
 
-  <mat-form-field appearance="fill" style="width: 100%; padding-left: 2rem; padding-right: 2rem;">
-    <mat-label>Usuario</mat-label>
-    <mat-select [(value)]="usuarioSeleccionadoId">
-      <mat-option *ngFor="let usuario of usuarios" [value]="usuario.id">
-        {{ usuario.usuario.nombre }}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
+
+    <form [formGroup]="entityForm" class="d-flex justify-content-around flex-column custom-form">
+        <div class="form-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col mt-4">                            
+                        <mat-form-field class="example-full-width fill-available">
+                            <mat-label>Tu nombre</mat-label>
+                            <input type="text" aria-label="usuarios-filtro" matInput [formControl]="myControl" formControlName="usuario" [matAutocomplete]="auto1">
+                                <mat-autocomplete autoActiveFirstOption #auto1="matAutocomplete" (optionSelected)='selectUsuario($event.option.value)'>
+                                    <mat-option *ngFor="let user of filteredOptions | async" [value]="user.viewValue">
+                                        {{ user.viewValue }}
+                                    </mat-option>
+                                </mat-autocomplete>
+                        </mat-form-field>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
   
   @if(usuarioSeleccionadoId){
     <div class="d-flex p-4 fill-available">

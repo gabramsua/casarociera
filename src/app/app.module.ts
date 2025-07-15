@@ -8,7 +8,7 @@ import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http'
 import { registerLocaleData } from '@angular/common';
 import localeEs from '@angular/common/locales/es';
 
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
@@ -94,8 +94,8 @@ registerLocaleData(localeEs, 'es'); // Registrar el locale 'es'
         MatListModule,
         MatChipsModule,
         MatAutocompleteModule,
-        
-        
+        ReactiveFormsModule,
+
     ], 
     providers: [
         { provide: LOCALE_ID, useValue: 'es' },

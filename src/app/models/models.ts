@@ -50,7 +50,10 @@ export interface Propuesta {
     fecha: Date;
     participanteromeria: ParticipanteRomeria;
 }
-
+export interface TipoSelect {
+    value: string | number;
+    viewValue: string;
+}
 ////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////
 ///                          CUSTOM POJOS                           ////
