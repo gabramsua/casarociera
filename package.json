@@ -11,7 +11,7 @@
     "build:otra": "ng build --configuration=otra",
     "deploy:ajoli": "npm run build:ajoli && firebase deploy --only hosting:ajoli",
     "deploy:otra": "npm run build:otra && firebase deploy --only hosting:otra",
-    "deploy:all-clients": "npm run deploy:ajoli && npm run deploy:otra"
+    "deploy:all": "npm run deploy:ajoli && npm run deploy:otra"
   },
   "private": true,
   "dependencies": {
