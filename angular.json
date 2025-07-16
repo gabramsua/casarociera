@@ -40,7 +40,7 @@
             "ajoli": {
               "fileReplacements": [
                 {
-                  "replace": "src/app/environments/ajoli/environment.ajoli.ts",
+                  "replace": "src/app/environments/environment.ts",
                   "with": "src/app/environments/ajoli/environment.ajoli.ts"
                 }
               ],
@@ -56,7 +56,7 @@
             "otra": {
               "fileReplacements": [
                 {
-                  "replace": "src/app/environments/otra/environment.otra.ts",
+                  "replace": "src/app/environments/environment.ts",
                   "with": "src/app/environments/otra/environment.otra.ts"
                 }
               ],

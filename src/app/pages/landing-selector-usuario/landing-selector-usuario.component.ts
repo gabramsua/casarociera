@@ -29,7 +29,7 @@ export class LandingSelectorUsuarioComponent {
       usuario: new FormControl('', []),
     });
 
-    this.api.getAll(Constants.END_POINTS.GET_ALL_PARTICIPANTES_ACTIVOS).subscribe((usuarios) => {
+    this.api.getAllByCasa(Constants.END_POINTS.GET_ALL_PARTICIPANTES_ACTIVOS).subscribe((usuarios) => {
       this.usuarios = usuarios;
       usuarios.forEach((user: UsuarioLanding) => {
           this.usuariosList.push({
