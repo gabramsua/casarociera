@@ -1,6 +1,6 @@
 import { Component, signal } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Habitacion, Usuario } from 'src/app/models/models';
+import { ActivatedRoute } from '@angular/router';
+import { DetalleCompletoPropuestaAsignacion, Habitacion, Usuario } from 'src/app/models/models';
 import { ApiService } from 'src/app/services/api.service';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -22,7 +22,7 @@ export class PropuestaDetailComponent {
   votosEnContra: string[] = [];
   asignaciones: Asignacion [] = [];
 
-  usuarioNombre: Usuario | null = this.authService.getUsuario();
+  currentUser: Usuario | null = this.authService.getUsuario();
   usuarioVoto: 'favor' | 'contra' | null = null;
 
   readonly panelOpenState = signal(false);
@@ -35,14 +35,14 @@ export class PropuestaDetailComponent {
     this.tabIndex = tab ? parseInt(tab, 10) : 0;
   
     this.propuestaId = this.route.snapshot.paramMap.get('id') ? parseInt(this.route.snapshot.paramMap.get('id')!, 10) : 0;
-    this.api.getDetallePropuesta(this.propuestaId).subscribe(data => {
+    this.api.getDetallePropuesta(this.propuestaId).subscribe((data: DetalleCompletoPropuestaAsignacion) => {
       this.votosAFavor = data.votosAFavor;
       this.votosEnContra = data.votosEnContra;
-      this.asignaciones = data.asignaciones;
+      this.asignaciones = data.asignaciones.sort((a, b) => a.habitacion.id - b.habitacion.id);
       
-      if (this.votosAFavor.includes(this.usuarioNombre?.nombre || '')) {
+      if (this.votosAFavor.includes(this.currentUser?.nombre || '')) {
         this.usuarioVoto = 'favor';
-      } else if (this.votosEnContra.includes(this.usuarioNombre?.nombre || '')) {
+      } else if (this.votosEnContra.includes(this.currentUser?.nombre || '')) {
         this.usuarioVoto = 'contra';
       } else {
         this.usuarioVoto = null;
@@ -59,7 +59,7 @@ export class PropuestaDetailComponent {
     this.usuarioVoto = aFavor ? 'favor' : 'contra';
 
     // Aquí harías la llamada al backend para registrar el voto
-    // this.api.votarPropuesta(this.propuestaId, this.usuarioNombre, aFavor).subscribe(() => {
+    // this.api.votarPropuesta(this.propuestaId, this.currentUser, aFavor).subscribe(() => {
     //   // podrías recargar los votos o actualizar localmente el estado si lo prefieres
     // });
   }

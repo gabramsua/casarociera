@@ -22,17 +22,17 @@
       <!-- A Favor Column -->
       <ng-container matColumnDef="aFavor">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> A Favor </th>
-        <td mat-cell *matCellDef="let row"> {{row.votosAFavor}} <!--<mat-icon>thumb_up</mat-icon>--></td>
+        <td mat-cell *matCellDef="let row"> {{row.votosAFavor.length }} <!--<mat-icon>thumb_up</mat-icon>--></td>
       </ng-container>
       <!-- En Contra Column -->
       <ng-container matColumnDef="enContra">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> En Contra </th>
-        <td mat-cell *matCellDef="let row"> {{row.votosEnContra}}<!--<mat-icon>thumb_down</mat-icon>--></td>
+        <td mat-cell *matCellDef="let row"> {{row.votosEnContra.length }}<!--<mat-icon>thumb_down</mat-icon>--></td>
       </ng-container>
       <!-- Autor Column -->
       <ng-container matColumnDef="autor">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Autor</th>
-        <td mat-cell *matCellDef="let row"> {{row.nombreUsuario}} </td>
+        <td mat-cell *matCellDef="let row"> {{row.autor}} </td>
       </ng-container>
 
       <!-- Action Column -->
@@ -43,6 +43,11 @@
           <button mat-icon-button [routerLink]="['propuesta/detail/'+ row.id]" [queryParams]="{ autor: row.autor, tab: selectedTabIndex }">
             <mat-icon>visibility</mat-icon>
           </button>
+          @if(userHaVotado(row)) {
+            <button mat-icon-button >
+              <mat-icon>how_to_vote</mat-icon>
+            </button>
+          }
           
           <!-- <i class="fa-solid fa-lock ml-2" matTooltip="Bloqueado"></i> -->
           <!-- <i class="acciones-tabla fa-solid fa-pencil" [routerLink]="['detail/'+ row.idcliente]"></i> -->

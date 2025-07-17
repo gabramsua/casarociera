@@ -43,6 +43,7 @@ export interface Habitacion {
     id: number;
     nombre: string;
     capacidad: number;
+    casa: Casa
 }
 
 export interface Propuesta {
@@ -53,6 +54,11 @@ export interface Propuesta {
 export interface TipoSelect {
     value: string | number;
     viewValue: string;
+}
+export interface Casa {
+    id: number;
+    nombre: string;
+    modTurnosComidas: boolean;
 }
 ////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////
@@ -83,23 +89,22 @@ export interface ComidasEventoActivo {
     year: Year;
 }
 
-export interface PropuestasEventoActivo {
-    id: number;
-    fecha: Date;
-    participanteromeria: ParticipanteRomeria;
-}
-
-export interface VotoPropuestasEventoActivo {
-    id: number;
-    isAFavor: boolean;
-    participanteromeria: ParticipanteRomeria;
-    propuesta: PropuestasEventoActivo;
-}
 
 export interface VotoResumen {
   id: number;
   nombreUsuario: string;
   fecha: string;
-  votosAFavor: number;
-  votosEnContra: number;
+  votosAFavor: string[];
+  votosEnContra: string[];
+}
+
+export interface DetalleCompletoPropuestaAsignacion {
+    asignaciones: Asignacion[];
+    votosAFavor: string[]; 
+    votosEnContra: string[];
+}
+
+export interface Asignacion {
+    habitacion: Habitacion;
+    personas: string[];
 }

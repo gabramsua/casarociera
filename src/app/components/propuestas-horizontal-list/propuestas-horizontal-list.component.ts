@@ -17,7 +17,7 @@ export class PropuestasHorizontalListComponent {
 
   ngOnInit(): void {
     this.api.getAllByCasa(Constants.END_POINTS.VOTOS_PROPUESTAS_EVENTO_ACTIVO).subscribe((propuestas: VotoResumen[]) => {
-      this.resumenes = propuestas.sort((a, b) => b.votosAFavor - a.votosAFavor);
+      this.resumenes = propuestas.sort((a, b) => b.votosAFavor.length - a.votosAFavor.length);
     });
   }
 }
