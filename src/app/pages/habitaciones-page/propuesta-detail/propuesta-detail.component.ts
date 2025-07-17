@@ -1,7 +1,8 @@
 import { Component, signal } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Habitacion } from 'src/app/models/models';
+import { Habitacion, Usuario } from 'src/app/models/models';
 import { ApiService } from 'src/app/services/api.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 interface Asignacion {
   habitacion: Habitacion, 
@@ -21,13 +22,12 @@ export class PropuestaDetailComponent {
   votosEnContra: string[] = [];
   asignaciones: Asignacion [] = [];
 
-  
-  usuarioNombre = localStorage.getItem('usuario') || '';
+  usuarioNombre: Usuario | null = this.authService.getUsuario();
   usuarioVoto: 'favor' | 'contra' | null = null;
 
   readonly panelOpenState = signal(false);
 
-  constructor(private route: ActivatedRoute, private api: ApiService) {}
+  constructor(private route: ActivatedRoute, private api: ApiService, private authService: AuthService) {}
 
   ngOnInit(): void {
     this.autor = this.route.snapshot.queryParamMap.get('autor') || '';
@@ -39,11 +39,10 @@ export class PropuestaDetailComponent {
       this.votosAFavor = data.votosAFavor;
       this.votosEnContra = data.votosEnContra;
       this.asignaciones = data.asignaciones;
-
       
-      if (this.votosAFavor.includes(this.usuarioNombre)) {
+      if (this.votosAFavor.includes(this.usuarioNombre?.nombre || '')) {
         this.usuarioVoto = 'favor';
-      } else if (this.votosEnContra.includes(this.usuarioNombre)) {
+      } else if (this.votosEnContra.includes(this.usuarioNombre?.nombre || '')) {
         this.usuarioVoto = 'contra';
       } else {
         this.usuarioVoto = null;

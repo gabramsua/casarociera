@@ -11,7 +11,7 @@ import Constants from 'src/constants';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
-  activeEvento!: ActiveEvento;
+  activeEvento: ActiveEvento | undefined;
   
   constructor(private auth: AuthService, private router: Router, private api: ApiService) {}
 

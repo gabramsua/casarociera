@@ -95,3 +95,11 @@ export interface VotoPropuestasEventoActivo {
     participanteromeria: ParticipanteRomeria;
     propuesta: PropuestasEventoActivo;
 }
+
+export interface VotoResumen {
+  id: number;
+  nombreUsuario: string;
+  fecha: string;
+  votosAFavor: number;
+  votosEnContra: number;
+}
