@@ -19,7 +19,7 @@ export class GastosHorizontalListComponent {
   constructor( private router: Router, private api: ApiService, private dialog: MatDialog) {}
 
   ngOnInit(): void {
-    this.api.getAll(Constants.END_POINTS.ULTIMOS_10_GASTOS).subscribe((gastos) => {
+    this.api.getAllByCasa(Constants.END_POINTS.ULTIMOS_10_GASTOS).subscribe((gastos) => {
       this.gastos = gastos;
     });
   }

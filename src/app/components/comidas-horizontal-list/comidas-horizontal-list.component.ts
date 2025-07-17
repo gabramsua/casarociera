@@ -17,7 +17,7 @@ export class ComidasHorizontalListComponent {
   constructor( private router: Router, private api: ApiService, private dialog: MatDialog) {}
 
   ngOnInit(): void {
-    this.api.getAll(Constants.END_POINTS.COMIDAS_EVENTO_ACTIVO).subscribe((comidas) => {
+    this.api.getAllByCasa(Constants.END_POINTS.COMIDAS_EVENTO_ACTIVO).subscribe((comidas) => {
       this.comidas = comidas;
     });
   }

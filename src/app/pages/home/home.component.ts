@@ -21,7 +21,7 @@ export class HomeComponent {
   constructor(private auth: AuthService, private router: Router, private api: ApiService) {}
 
   ngOnInit(): void {
-    this.api.getAll(Constants.END_POINTS.ACTIVE_EVENTO).subscribe((data) => {
+    this.api.getAllByCasa(Constants.END_POINTS.ACTIVE_EVENTO).subscribe((data) => {
       this.activeEvento = data;
     });
   }

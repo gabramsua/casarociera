@@ -26,7 +26,7 @@ export class PropuestasHorizontalListComponent {
   constructor( private router: Router, private api: ApiService) {}
 
   ngOnInit(): void {
-    this.api.getAll(Constants.END_POINTS.VOTOS_PROPUESTAS_EVENTO_ACTIVO).subscribe((propuestas) => {
+    this.api.getAllByCasa(Constants.END_POINTS.VOTOS_PROPUESTAS_EVENTO_ACTIVO).subscribe((propuestas) => {
       this.votopropuestas = propuestas;
       this.propuesta = this.votopropuestas[0].propuesta;      
       this.resumenes = this.getResumenPorPropuesta(this.votopropuestas);
