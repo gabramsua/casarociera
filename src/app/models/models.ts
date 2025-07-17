@@ -59,6 +59,11 @@ export interface TipoSelect {
 ///                          CUSTOM POJOS                           ////
 ////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////
+export interface ActiveEvento {
+    year: Year;
+    nombreCasa: string;
+}
+
 export interface UltimosGastos {    
     id: number;
     concepto: string;

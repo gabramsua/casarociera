@@ -31,7 +31,7 @@ export class HabitacionesListComponent {
   // El dialog para cuando el admin pueda editar las habitaciones
 
   ngOnInit(): void {
-    this.api.getAll(Constants.COLLECTION.HABITACION+'s').subscribe((habitaciones) => {
+    this.api.getAllByCasa(Constants.COLLECTION.HABITACION+'s').subscribe((habitaciones) => {
       this.dataSource = habitaciones;
     });
   }

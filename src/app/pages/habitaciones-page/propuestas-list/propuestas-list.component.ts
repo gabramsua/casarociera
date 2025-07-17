@@ -31,7 +31,7 @@ export class PropuestasListComponent {
 
   
   ngOnInit(): void {
-    this.api.getAll(Constants.END_POINTS.VOTOS_PROPUESTAS_EVENTO_ACTIVO).subscribe((propuestas) => {
+    this.api.getAllByCasa(Constants.END_POINTS.VOTOS_PROPUESTAS_EVENTO_ACTIVO).subscribe((propuestas) => {
       this.dataSource = new MatTableDataSource(propuestas);
       const aggregatedData = this.aggregateProposalVotes(propuestas);
       this.dataSource.data = aggregatedData;

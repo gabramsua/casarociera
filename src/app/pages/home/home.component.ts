@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { Year } from 'src/app/models/models';
+import { ActiveEvento } from 'src/app/models/models';
 import { ApiService } from 'src/app/services/api.service';
 import { AuthService } from 'src/app/services/auth.service';
 import Constants from 'src/constants';
@@ -11,12 +11,7 @@ import Constants from 'src/constants';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
-  activeEvento: Year= {
-    id: 0,
-    year: 0,
-    nombre: '',
-    active: false
-  };
+  activeEvento!: ActiveEvento;
   
   constructor(private auth: AuthService, private router: Router, private api: ApiService) {}
 
