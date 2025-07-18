@@ -5,7 +5,10 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Usuario, VotoResumen } from 'src/app/models/models';
 import { ApiService } from 'src/app/services/api.service';
 import { AuthService } from 'src/app/services/auth.service';
+import { CommonService } from 'src/app/services/common.service';
+import Utils from 'src/app/shared/Utils';
 import Constants from 'src/constants';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-propuestas-list',
@@ -21,10 +24,15 @@ export class PropuestasListComponent {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   
-  constructor( private api: ApiService, private authService: AuthService) {}
+  constructor( private api: ApiService, private loaderService: CommonService, private authService: AuthService) {}
 
   
   ngOnInit(): void {
+    this.getAll()
+  }
+  getAll() {
+    this.loaderService.showLoader();
+    
     this.api.getAllByCasa(Constants.END_POINTS.VOTOS_PROPUESTAS_EVENTO_ACTIVO).subscribe((propuestas: VotoResumen[]) => {
       this.dataSource = new MatTableDataSource(propuestas);
 
@@ -36,6 +44,8 @@ export class PropuestasListComponent {
       if (this.sort) {
         this.dataSource.sort = this.sort;
       }
+
+      this.loaderService.hideLoader();
     });
   }
 
@@ -50,7 +60,7 @@ export class PropuestasListComponent {
   numBotones(row: any): number {
     let count = 1; // Siempre tiene el botón de "visibility"
     if (!this.userHaVotado(row)) count++;
-    if (this.userIsOwner(row)) count++;
+    if (this.userIsOwnerOrAdmin(row)) count++;
     return count;
   }
   getMaxNumBotones(): number {
@@ -67,12 +77,34 @@ export class PropuestasListComponent {
         : false;
 
   }
-  userIsOwner(row: any): boolean {
+  userIsOwnerOrAdmin(row: any): boolean {
+    if(this.currentUser?.isAdmin) return true;
+
     return  this.currentUser && this.currentUser.nombre
         ? row.autor === this.currentUser.nombre
         : false;
   }
 
+delete(row: any){
+    Swal.fire({
+      title: '¿Estás seguro? No habrá vuelta atrás',
+      showCancelButton: true,
+      confirmButtonText: 'Borrar',
+      cancelButtonText: 'Cancelar',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.loaderService.showLoader();
 
+        this.api.delete(Constants.COLLECTION.PROPUESTA, row.id)
+          .subscribe(()=>{
+            Utils.sweetAlert();
+            this.getAll();
+            this.loaderService.hideLoader()
+          })
+      } else if (result.isDenied) {
+        Swal.fire('Los cambios NO se han guardado', '', 'info')
+      }
+    })
+  }
   
 }

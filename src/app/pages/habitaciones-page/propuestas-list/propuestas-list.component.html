@@ -46,13 +46,13 @@
             </button>
             
             @if(!userHaVotado(row)) {
-              <button mat-icon-button >
+              <button mat-icon-button class="non-clickable">
                 <mat-icon class="red-icon">how_to_vote</mat-icon>
               </button>
             }
              
-            @if(userIsOwner(row)) {
-              <button mat-icon-button >
+            @if(userIsOwnerOrAdmin(row)) {
+              <button mat-icon-button (click)="delete(row)">
                 <mat-icon>delete</mat-icon>
               </button>
             }
