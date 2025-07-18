@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import Constants from 'src/constants';
@@ -14,6 +14,7 @@ import { ImageDialogComponent, ImageViewerDialogData } from 'src/app/shared/comp
 })
 export class GastosHorizontalListComponent {
   gastos: UltimosGastos[] = [];
+  dataReady = signal(false);
 
 
   constructor( private router: Router, private api: ApiService, private dialog: MatDialog) {}
@@ -21,6 +22,7 @@ export class GastosHorizontalListComponent {
   ngOnInit(): void {
     this.api.getAllByCasa(Constants.END_POINTS.ULTIMOS_10_GASTOS).subscribe((gastos) => {
       this.gastos = gastos;
+      this.dataReady.set(true);
     });
   }
 

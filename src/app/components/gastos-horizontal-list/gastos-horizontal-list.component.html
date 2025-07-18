@@ -1,35 +1,52 @@
 <h2 class="ml-4 mb-0">Últimos Gastos</h2>
 
-<div class="horizontal-list-container">
-  @for (gasto of gastos; track gasto.id) {
-    <mat-card class="list-item">
-      <mat-card-header>
-        <mat-card-title class="d-flex flex-column align-items-start">
-          <span class="importe">{{ gasto.importe | currency:'EUR':'symbol':'1.2-2':'es' }}</span>
-          <span class="concepto">{{ gasto.concepto }}</span>
-        </mat-card-title>
-        <mat-card-subtitle>
-          Fecha: {{ gasto.fecha | date:'dd/MM/yyyy' }}
-        </mat-card-subtitle>
-      </mat-card-header>
-      <mat-card-content>
-        <p>
-          <strong>Categoría:</strong> {{ gasto.categoria.nombre }}
-        </p>
-        @if (gasto.urlTicket) {
+@defer (on viewport) {
+  <div class="horizontal-list-container">
+    @for (gasto of gastos; track gasto.id) {
+      <mat-card class="list-item">
+        <mat-card-header>
+          <mat-card-title class="d-flex flex-column align-items-start">
+            <span class="importe">{{ gasto.importe | currency:'EUR':'symbol':'1.2-2':'es' }}</span>
+            <span class="concepto">{{ gasto.concepto }}</span>
+          </mat-card-title>
+          <mat-card-subtitle>
+            Fecha: {{ gasto.fecha | date:'dd/MM/yyyy' }}
+          </mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
           <p>
-            <a (click)="openImageViewer(gasto.urlTicket, 'Ticket de ' + gasto.concepto)" style="cursor: pointer;">
-              Ver Ticket
-            </a>
+            <strong>Categoría:</strong> {{ gasto.categoria.nombre }}
           </p>
-        }
-      </mat-card-content>
-    </mat-card>
-  } @empty {
-    <mat-card class="list-item no-items-card">
-      <mat-card-content>
-        No hay últimos gastos registrados.
-      </mat-card-content>
-    </mat-card>
-  }
-</div>
+          @if (gasto.urlTicket) {
+            <p>
+              <a (click)="openImageViewer(gasto.urlTicket, 'Ticket de ' + gasto.concepto)" style="cursor: pointer;">
+                Ver Ticket
+              </a>
+            </p>
+          }
+        </mat-card-content>
+      </mat-card>
+    } @empty {
+      <mat-card class="list-item no-items-card">
+        <mat-card-content>
+          No hay últimos gastos registrados.
+        </mat-card-content>
+      </mat-card>
+    }
+  </div>
+} @placeholder {
+  <mat-card class="list-item no-items-card">
+    <mat-card-content>
+      <div class="skeleton-loading">
+        CARGANDO<br>
+        <!-- https://www.npmjs.com/package/ngx-skeleton-loader#demo -->
+        <!-- <ngx-skeleton-loader count="1" appearance="circle"></ngx-skeleton-loader>
+        <ngx-skeleton-loader count="5" appearance="line"></ngx-skeleton-loader>
+        <ngx-skeleton-loader appearance="custom-content" [theme]="{height: '30px'}"></ngx-skeleton-loader>
+        <ngx-skeleton-loader count="2" appearance="" [theme]="{height: '50px'}"></ngx-skeleton-loader>
+        <ngx-skeleton-loader appearance="custom-content" [theme]="{height: '30px'}"></ngx-skeleton-loader>
+        <ngx-skeleton-loader count="2" appearance="" [theme]="{height: '50px'}"></ngx-skeleton-loader> -->
+    </div>
+    </mat-card-content>
+  </mat-card>
+}
