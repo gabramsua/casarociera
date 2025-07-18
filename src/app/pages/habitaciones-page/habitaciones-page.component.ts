@@ -2,9 +2,10 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-habitaciones-page',
-  templateUrl: './habitaciones-page.component.html',
-  styleUrls: ['./habitaciones-page.component.scss']
+    selector: 'app-habitaciones-page',
+    templateUrl: './habitaciones-page.component.html',
+    styleUrls: ['./habitaciones-page.component.scss'],
+    standalone: false
 })
 export class HabitacionesPageComponent {
 

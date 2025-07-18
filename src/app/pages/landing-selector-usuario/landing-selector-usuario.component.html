@@ -2,28 +2,30 @@
   <h2 class="pt-4 pl-4">Selecciona tu nombre</h2>
 
 
-    <form [formGroup]="entityForm" class="d-flex justify-content-around flex-column custom-form">
-        <div class="form-content">
-            <div class="container">
-                <div class="row">
-                    <div class="col mt-4">                            
-                        <mat-form-field class="example-full-width fill-available">
-                            <mat-label>Tu nombre</mat-label>
-                            <input type="text" aria-label="usuarios-filtro" matInput [formControl]="myControl" formControlName="usuario" [matAutocomplete]="auto1">
-                                <mat-autocomplete autoActiveFirstOption #auto1="matAutocomplete" (optionSelected)='selectUsuario($event.option.value)'>
-                                    <mat-option *ngFor="let user of filteredOptions | async" [value]="user.viewValue">
-                                        {{ user.viewValue }}
-                                    </mat-option>
-                                </mat-autocomplete>
-                        </mat-form-field>
+  <form [formGroup]="entityForm" class="d-flex justify-content-around flex-column custom-form">
+    <div class="form-content">
+      <div class="container">
+        <div class="row">
+          <div class="col mt-4">
+            <mat-form-field class="example-full-width fill-available">
+              <mat-label>Tu nombre</mat-label>
+              <input type="text" aria-label="usuarios-filtro" matInput [formControl]="myControl" formControlName="usuario" [matAutocomplete]="auto1">
+              <mat-autocomplete autoActiveFirstOption #auto1="matAutocomplete" (optionSelected)='selectUsuario($event.option.value)'>
+                @for (user of filteredOptions | async; track user) {
+                  <mat-option [value]="user.viewValue">
+                    {{ user.viewValue }}
+                  </mat-option>
+                }
+              </mat-autocomplete>
+            </mat-form-field>
 
 
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
-    </form>
-  
+      </div>
+    </div>
+  </form>
+
   @if(usuarioSeleccionadoId){
     <div class="d-flex p-4 fill-available">
       <button mat-raised-button (click)="entrar()" class="fill-available">
@@ -31,7 +33,7 @@
       </button>
     </div>
   }
-  
+
   <div class="landing-body-spinner mi-elemento-animado mostrar">
     <app-spinner></app-spinner>
   </div>
