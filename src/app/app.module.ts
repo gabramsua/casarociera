@@ -26,6 +26,7 @@ import { MatPaginatorIntl, MatPaginatorModule } from '@angular/material/paginato
 import { MatListModule } from '@angular/material/list';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 
 import { LandingSelectorUsuarioComponent } from './pages/landing-selector-usuario/landing-selector-usuario.component';
@@ -97,7 +98,7 @@ registerLocaleData(localeEs, 'es'); // Registrar el locale 'es'
         MatChipsModule,
         MatAutocompleteModule,
         ReactiveFormsModule,
-
+        MatProgressSpinnerModule,
     ], 
     providers: [
         { provide: LOCALE_ID, useValue: 'es' },

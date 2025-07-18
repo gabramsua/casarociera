@@ -10,6 +10,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .container-fit-content{
   min-width: fit-content;
 }
+.non-clickable {
+  pointer-events: none !important;
+}
 
 /* Fijamos el ancho para la columna de acciones */
 th.acciones-col,
@@ -163,4 +166,21 @@ td.acciones-col {
 }
 .red-icon {
   color: red;
+}
+
+// SPINNER
+.loader{
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background: rgba(255, 255, 255, 0.6);
+  z-index: 999;
+  .mat-mdc-progress-spinner.mat-mdc-progress-spinner{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 999;
+  }
 }
