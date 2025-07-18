@@ -1,9 +1,9 @@
-@import 'src/variables.scss';
+@use 'src/variables';
 
 .importe {
   font-size: 1.2rem; // Un poco más grande para destacar el importe
   font-weight: 700; // Más negrita
-  color: $rojo-importe-balance; // Un rojo bonito para el importe
+  color: variables.$rojo-importe-balance; // Un rojo bonito para el importe
 }
 
 .concepto {    

@@ -1,4 +1,4 @@
-@import 'src/variables.scss';
+@use 'src/variables';
 
 h1 {
     margin: 0;
@@ -11,7 +11,7 @@ h1 {
 //   border-bottom-left-radius: 15px;
 //   border-bottom-right-radius: 15px;
   
-//   background-color: $azul-cadiz;
+//   background-color: variables.$azul-cadiz;
 }
 
 .home-header {    

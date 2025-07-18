@@ -1,15 +1,15 @@
-@import 'src/variables.scss';
+@use 'src/variables';
 
 .bottom-nav {
   height: 57px;
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
   
-  background-color: $azul-cadiz;
+  background-color: variables.$azul-cadiz;
 
   a {
     flex-direction: row;
-    color: $blanco;
+    color: variables.$blanco;
 
     .mat-icon {
       font-size: 24px;
@@ -21,7 +21,7 @@
   }
 
   .active-link {
-    color: $verde-menta; // o cualquier color para indicar activo
+    color: variables.$verde-menta; // o cualquier color para indicar activo
   }
 }
 

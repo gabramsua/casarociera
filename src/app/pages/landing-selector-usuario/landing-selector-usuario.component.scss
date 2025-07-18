@@ -1,20 +1,20 @@
-@import 'src/variables.scss';
+@use 'src/variables';
 
 .landing-body {
     height: 100vh;
-    background-color: $azul-cadiz !important;
+    background-color: variables.$azul-cadiz !important;
 
     &-spinner {
         position: fixed;
         bottom: 0;
         width: 100%;
-        background-color: $azul-cadiz !important;
+        background-color: variables.$azul-cadiz !important;
     }
 }
 
 :host{
-    background-color: $azul-cadiz !important;
-    color: $blanco;
+    background-color: variables.$azul-cadiz !important;
+    color: variables.$blanco;
     height: 100vh;
 }
 

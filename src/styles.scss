@@ -1,4 +1,4 @@
-@import './variables.scss';
+@use 'src/variables';
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
@@ -50,18 +50,18 @@ td.acciones-col {
   }
 
   &::-webkit-scrollbar-track {
-    background: $scrollbar-background; /* Color del fondo de la pista */
+    background: variables.$scrollbar-background; /* Color del fondo de la pista */
     border-radius: 10px;
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: $scrollbar-thumb; /* Color del "pulgar" (el elemento arrastrable) */
+    background-color: variables.$scrollbar-thumb; /* Color del "pulgar" (el elemento arrastrable) */
     border-radius: 10px;
     border: 2px solid #f0f0f0; /* Borde para un efecto más suave */
   }
 
   &::-webkit-scrollbar-thumb:hover {
-    background-color: $scrollbar-thumb-hover; /* Color al pasar el ratón */
+    background-color: variables.$scrollbar-thumb-hover; /* Color al pasar el ratón */
   }
 
   // Sutil gradiente para indicar que se puede hacer scroll
@@ -102,14 +102,14 @@ td.acciones-col {
   mat-card-title {
     font-size: 1.15rem; // Un poco más grande
     font-weight: 600; // Más negrita
-    color: $mat-card-title; // Color primario de Material Design
+    color: variables.$mat-card-title; // Color primario de Material Design
     margin-bottom: 4px; // Espacio entre título y subtítulo
     width: 100%;
   }
 
   mat-card-subtitle {
     font-size: 0.85rem;
-    color: $mat-card-subtitle; // Un gris suave
+    color: variables.$mat-card-subtitle; // Un gris suave
   }
 
   mat-card-content {
@@ -123,7 +123,7 @@ td.acciones-col {
     }
 
     a {
-      color: $mat-card-link; // Un azul bonito para los enlaces
+      color: variables.$mat-card-link; // Un azul bonito para los enlaces
       text-decoration: none; // Sin subrayado por defecto
       &:hover {
         text-decoration: underline; // Subrayado al pasar el ratón
@@ -146,9 +146,9 @@ td.acciones-col {
   justify-content: center;
   text-align: center;
   flex-grow: 1;
-  color: $mat-card-subtitle;
+  color: variables.$mat-card-subtitle;
   font-style: italic;
-  background-color: $no-items-card; /* Un fondo ligeramente diferente */
+  background-color: variables.$no-items-card; /* Un fondo ligeramente diferente */
   box-shadow: none; /* Sin sombra para este mensaje */
 
   &:hover {
@@ -159,7 +159,7 @@ td.acciones-col {
 
 // BUTTONS
 .button-verde{
-  background-color: $verde-menta !important;
+  background-color: variables.$verde-menta !important;
 }
 .fill-available {
     width: -webkit-fill-available;
@@ -187,6 +187,6 @@ td.acciones-col {
 
 
 .skeleton-loading{
-    background-color: $blanco !important;
+    background-color: variables.$blanco !important;
     padding: 10px 20px;
 }
