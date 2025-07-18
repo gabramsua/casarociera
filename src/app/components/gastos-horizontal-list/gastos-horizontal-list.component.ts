@@ -8,9 +8,10 @@ import { MatDialog } from '@angular/material/dialog';
 import { ImageDialogComponent, ImageViewerDialogData } from 'src/app/shared/components/image-dialog/image-dialog.component';
 
 @Component({
-  selector: 'app-gastos-horizontal-list',
-  templateUrl: './gastos-horizontal-list.component.html',
-  styleUrls: ['./gastos-horizontal-list.component.scss']
+    selector: 'app-gastos-horizontal-list',
+    templateUrl: './gastos-horizontal-list.component.html',
+    styleUrls: ['./gastos-horizontal-list.component.scss'],
+    standalone: false
 })
 export class GastosHorizontalListComponent {
   gastos: UltimosGastos[] = [];

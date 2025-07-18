@@ -8,9 +8,10 @@ import Utils from 'src/app/shared/Utils';
 import Constants from 'src/constants';
 
 @Component({
-  selector: 'app-comidas-horizontal-list',
-  templateUrl: './comidas-horizontal-list.component.html',
-  styleUrl: './comidas-horizontal-list.component.scss'
+    selector: 'app-comidas-horizontal-list',
+    templateUrl: './comidas-horizontal-list.component.html',
+    styleUrl: './comidas-horizontal-list.component.scss',
+    standalone: false
 })
 export class ComidasHorizontalListComponent {
   comidas: ComidasEventoActivo[] = [];

@@ -5,10 +5,11 @@ import { fadeAnimation } from './shared/animations/fadeAnimation';
 import { CommonService } from './services/common.service';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
-  animations: [fadeAnimation]
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.scss'],
+    animations: [fadeAnimation],
+    standalone: false
 })
 export class AppComponent {
   public auth_service: AuthService = new AuthService;

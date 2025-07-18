@@ -6,9 +6,10 @@ import Constants from 'src/constants';
 
 
 @Component({
-  selector: 'app-propuestas-horizontal-list',
-  templateUrl: './propuestas-horizontal-list.component.html',
-  styleUrl: './propuestas-horizontal-list.component.scss'
+    selector: 'app-propuestas-horizontal-list',
+    templateUrl: './propuestas-horizontal-list.component.html',
+    styleUrl: './propuestas-horizontal-list.component.scss',
+    standalone: false
 })
 export class PropuestasHorizontalListComponent {
   resumenes: VotoResumen[] = [];

@@ -8,9 +8,10 @@ import { AuthService } from 'src/app/services/auth.service';
 import Constants from 'src/constants';
 
 @Component({
-  selector: 'app-landing-selector-usuario',
-  templateUrl: './landing-selector-usuario.component.html',
-  styleUrls: ['./landing-selector-usuario.component.scss']
+    selector: 'app-landing-selector-usuario',
+    templateUrl: './landing-selector-usuario.component.html',
+    styleUrls: ['./landing-selector-usuario.component.scss'],
+    standalone: false
 })
 export class LandingSelectorUsuarioComponent {
   usuarios: UsuarioLanding[] = [];
