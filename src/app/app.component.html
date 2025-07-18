@@ -1,5 +1,5 @@
-<div class="content-wrapper">
-  <router-outlet></router-outlet>
+<div class="content-wrapper" [@routeAnimations]="outlet?.isActivated ? prepareRoute(outlet) : null">
+  <router-outlet #outlet="outlet"></router-outlet>
 </div>
 
 <app-bottom-nav *ngIf="auth_service.isLoggedIn()"></app-bottom-nav>

@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 import { AuthService } from './services/auth.service';
+import { fadeAnimation } from './shared/animations/fadeAnimation';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  animations: [fadeAnimation]
 })
 export class AppComponent {
   public auth_service: AuthService = new AuthService;
@@ -15,4 +17,9 @@ export class AppComponent {
       this.router.navigate(['/home']);
     }
   }
+  
+  prepareRoute(outlet: RouterOutlet): string | null | undefined{
+    return outlet?.activatedRoute?.routeConfig?.path ?? null;
+  }
+
 }
