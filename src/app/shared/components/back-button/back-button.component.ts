@@ -2,9 +2,10 @@ import { Component, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: 'back-button',
-  templateUrl: './back-button.component.html',
-  styleUrls: ['./back-button.component.scss']
+    selector: 'back-button',
+    templateUrl: './back-button.component.html',
+    styleUrls: ['./back-button.component.scss'],
+    standalone: false
 })
 export class BackButtonComponent {
   @Input() route!: string;

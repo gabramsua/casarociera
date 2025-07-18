@@ -11,9 +11,10 @@ import Constants from 'src/constants';
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-propuestas-list',
-  templateUrl: './propuestas-list.component.html',
-  styleUrl: './propuestas-list.component.scss'
+    selector: 'app-propuestas-list',
+    templateUrl: './propuestas-list.component.html',
+    styleUrl: './propuestas-list.component.scss',
+    standalone: false
 })
 export class PropuestasListComponent {
   displayedColumns: string[] = ['id', 'aFavor', 'enContra', 'autor', 'acciones' ];

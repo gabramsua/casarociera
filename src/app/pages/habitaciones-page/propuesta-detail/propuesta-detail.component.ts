@@ -11,9 +11,10 @@ interface Asignacion {
 }
 
 @Component({
-  selector: 'app-propuesta-detail',
-  templateUrl: './propuesta-detail.component.html',
-  styleUrl: './propuesta-detail.component.scss'
+    selector: 'app-propuesta-detail',
+    templateUrl: './propuesta-detail.component.html',
+    styleUrl: './propuesta-detail.component.scss',
+    standalone: false
 })
 export class PropuestaDetailComponent {
   autor: string = '';

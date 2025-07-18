@@ -7,16 +7,17 @@ import { ApiService } from 'src/app/services/api.service';
 import Constants from 'src/constants';
 
 @Component({
-  selector: 'app-habitaciones-list',
-  templateUrl: './habitaciones-list.component.html',
-  styleUrl: './habitaciones-list.component.scss',
-  animations: [
-    trigger('detailExpand', [
-      state('collapsed,void', style({height: '0px', minHeight: '0'})),
-      state('expanded', style({height: '*'})),
-      transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
-    ]),
-  ],
+    selector: 'app-habitaciones-list',
+    templateUrl: './habitaciones-list.component.html',
+    styleUrl: './habitaciones-list.component.scss',
+    animations: [
+        trigger('detailExpand', [
+            state('collapsed,void', style({ height: '0px', minHeight: '0' })),
+            state('expanded', style({ height: '*' })),
+            transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
+        ]),
+    ],
+    standalone: false
 })
 export class HabitacionesListComponent {
   // gastos: UltimosGastos[] = [];
