@@ -18,24 +18,17 @@ td.acciones-col {
   text-align: center;
 }
 
-/* Wrapper para alinear los iconos siempre igual */
-.acciones-wrapper {
-  display: flex;
+.acciones-grid {
+  display: grid;
+  // grid-template-columns: repeat(2, 40px); /* Máximo de iconos que puede haber => calculada en cada tabla por separado */
   justify-content: center;
   align-items: center;
-  gap: 8px;
+  gap: 4px;
 }
 
-/* Asegura que todos los botones tienen el mismo tamaño */
-.acciones-boton {
+.acciones-grid button {
   width: 40px;
   height: 40px;
-  padding: 0;
-}
-
-/* Oculta el botón pero reserva su espacio */
-.invisible {
-  visibility: hidden;
 }
 
 

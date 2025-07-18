@@ -13,7 +13,6 @@ import Constants from 'src/constants';
   styleUrl: './propuestas-list.component.scss'
 })
 export class PropuestasListComponent {
-
   displayedColumns: string[] = ['id', 'aFavor', 'enContra', 'autor', 'acciones' ];
   dataSource: MatTableDataSource<VotoResumen>= new MatTableDataSource<VotoResumen>([]);
   selectedTabIndex = 2;
@@ -48,10 +47,32 @@ export class PropuestasListComponent {
       this.dataSource.paginator.firstPage();
     }
   }
+  numBotones(row: any): number {
+    let count = 1; // Siempre tiene el botón de "visibility"
+    if (!this.userHaVotado(row)) count++;
+    if (this.userIsOwner(row)) count++;
+    return count;
+  }
+  getMaxNumBotones(): number {
+    return this.dataSource.data.reduce((max, row) => {
+      const botones = this.numBotones(row);
+      return botones > max ? botones : max;
+    }, 0);
+  }
+
+
   userHaVotado(row: VotoResumen): boolean {
     return  this.currentUser && this.currentUser.nombre
         ? row.votosAFavor.includes(this.currentUser.nombre) || row.votosEnContra.includes(this.currentUser.nombre)
         : false;
 
   }
+  userIsOwner(row: any): boolean {
+    return  this.currentUser && this.currentUser.nombre
+        ? row.autor === this.currentUser.nombre
+        : false;
+  }
+
+
+  
 }
