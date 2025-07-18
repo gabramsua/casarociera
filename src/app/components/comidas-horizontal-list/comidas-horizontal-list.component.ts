@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ComidasEventoActivo } from 'src/app/models/models';
@@ -15,11 +15,13 @@ import Constants from 'src/constants';
 })
 export class ComidasHorizontalListComponent {
   comidas: ComidasEventoActivo[] = [];
+  dataReady = signal(false);
   constructor( private router: Router, private api: ApiService, private dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.api.getAllByCasa(Constants.END_POINTS.COMIDAS_EVENTO_ACTIVO).subscribe((comidas) => {
       this.comidas = comidas;
+      this.dataReady.set(true);
     });
   }
 

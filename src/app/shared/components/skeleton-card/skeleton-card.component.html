@@ -1,0 +1,14 @@
+<div class="skeleton-loading horizontal-list-container">
+      @for (item of [].constructor(iterations); track $index) {
+      <mat-card class="list-item">
+        <mat-card-content>
+          <div class="skeleton-loading">
+            <ngx-skeleton-loader appearance="line" [theme]="{ width: '80px' }"></ngx-skeleton-loader>
+            <ngx-skeleton-loader appearance="line" [theme]="{ width: '100px' }"></ngx-skeleton-loader>
+            <ngx-skeleton-loader appearance="line" [theme]="{height: '10px'}"></ngx-skeleton-loader>
+            <ngx-skeleton-loader [theme]="{height: '30px'}"></ngx-skeleton-loader>
+        </div>
+        </mat-card-content>
+      </mat-card>
+    }
+    </div>

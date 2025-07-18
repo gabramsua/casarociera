@@ -2,23 +2,7 @@
 
 @defer (on immediate) {
   @if(!dataReady()) {
-    <div class="skeleton-loading">
-      <!-- CARGANDO -->
-      <!-- https://www.npmjs.com/package/ngx-skeleton-loader#demo -->
-  <mat-card class="list-item no-items-card">
-    <mat-card-content>
-      <div class="skeleton-loading">
-        CARGANDO<br>
-        <ngx-skeleton-loader count="1" appearance="circle"></ngx-skeleton-loader>
-        <ngx-skeleton-loader count="5" appearance="line"></ngx-skeleton-loader>
-        <ngx-skeleton-loader appearance="custom-content" [theme]="{height: '30px'}"></ngx-skeleton-loader>
-        <ngx-skeleton-loader count="2" appearance="" [theme]="{height: '50px'}"></ngx-skeleton-loader>
-        <ngx-skeleton-loader appearance="custom-content" [theme]="{height: '30px'}"></ngx-skeleton-loader>
-        <ngx-skeleton-loader count="2" appearance="" [theme]="{height: '50px'}"></ngx-skeleton-loader>
-    </div>
-    </mat-card-content>
-  </mat-card>
-    </div>
+    <app-skeleton-card [iterations]="5"></app-skeleton-card>
   } @else {
     <div class="horizontal-list-container">
       @for (gasto of gastos; track gasto.id) {
@@ -55,8 +39,6 @@
     </div>
   }
 } @placeholder {
-
-
   <div class="gastos-deferred-placeholder">
     Cargando sección de gastos...
   </div>

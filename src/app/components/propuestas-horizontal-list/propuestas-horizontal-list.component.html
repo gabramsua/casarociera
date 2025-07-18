@@ -1,31 +1,41 @@
 <h2 class="ml-4 mb-0">Propuestas de Habitaciones</h2>
 
-<div class="horizontal-list-container">
-  @for (resumen of resumenes; track resumen.id) {
-    <mat-card class="list-item">
-      <mat-card-header>
-        <mat-card-title class="d-flex flex-column align-items-start">
-          <span class="importe">{{ resumen.nombreUsuario }}</span>
-          <span>{{ resumen.fecha | date: 'dd/MM/yyyy' }}</span>
-          
-        </mat-card-title>
-        <mat-card-subtitle>
-         <p>Votos a favor: {{ resumen.votosAFavor.length }}</p>
-         <p>Votos en contra: {{ resumen.votosEnContra.length }}</p>
+@defer (on immediate) {
+  @if(!dataReady()) {
+    <app-skeleton-card [iterations]="5"></app-skeleton-card>
+  } @else {
+    <div class="horizontal-list-container">
+      @for (resumen of resumenes; track resumen.id) {
+        <mat-card class="list-item">
+          <mat-card-header>
+            <mat-card-title class="d-flex flex-column align-items-start">
+              <span class="importe">{{ resumen.nombreUsuario }}</span>
+              <span>{{ resumen.fecha | date: 'dd/MM/yyyy' }}</span>
+              
+            </mat-card-title>
+            <mat-card-subtitle>
+            <p>Votos a favor: {{ resumen.votosAFavor.length }}</p>
+            <p>Votos en contra: {{ resumen.votosEnContra.length }}</p>
 
-        </mat-card-subtitle>
-      </mat-card-header>
-      <mat-card-content>
-        <!-- <p>
-          <strong>Categoría:</strong> Categoria contenido
-        </p> -->
-      </mat-card-content>
-    </mat-card>
-  } @empty {
-    <mat-card class="list-item no-items-card">
-      <mat-card-content>
-        No hay propuestas aún.
-      </mat-card-content>
-    </mat-card>
+            </mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <!-- <p>
+              <strong>Categoría:</strong> Categoria contenido
+            </p> -->
+          </mat-card-content>
+        </mat-card>
+      } @empty {
+        <mat-card class="list-item no-items-card">
+          <mat-card-content>
+            No hay propuestas aún.
+          </mat-card-content>
+        </mat-card>
+      }
+    </div>
   }
-</div>
+} @placeholder {
+  <div class="propuestas-deferred-placeholder">
+    Cargando sección de propuestas...
+  </div>
+}

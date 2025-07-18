@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
-import { registerLocaleData } from '@angular/common';
+import { CommonModule, registerLocaleData } from '@angular/common';
 import localeEs from '@angular/common/locales/es';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 
@@ -50,6 +50,9 @@ import { PropuestaDetailComponent } from './pages/habitaciones-page/propuesta-de
 import { environment } from './environments/environment';
 
 registerLocaleData(localeEs, 'es'); // Registrar el locale 'es'
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import { SkeletonCardComponent } from "src/app/shared/components/skeleton-card/skeleton-card.component";
+
 
 @NgModule({ 
     declarations: [
@@ -75,31 +78,34 @@ registerLocaleData(localeEs, 'es'); // Registrar el locale 'es'
     ],
     bootstrap: [AppComponent], 
     imports: [
-        BrowserModule,
-        AppRoutingModule,
-        BrowserAnimationsModule,
-        FormsModule,
-        MatFormFieldModule,
-        MatSelectModule,
-        MatButtonModule,
-        MatToolbarModule,
-        MatIconModule,
-        MatButtonModule,
-        RouterModule,
-        MatCardModule,
-        MatDialogModule,
-        MatTabsModule,
-        MatTableModule,
-        MatSortModule, 
-        MatPaginatorModule,
-        MatInputModule,
-        MatExpansionModule,
-        MatListModule,
-        MatChipsModule,
-        MatAutocompleteModule,
-        ReactiveFormsModule,
-        MatProgressSpinnerModule,
-    ], 
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatButtonModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatButtonModule,
+    RouterModule,
+    MatCardModule,
+    MatDialogModule,
+    MatTabsModule,
+    MatTableModule,
+    MatSortModule,
+    MatPaginatorModule,
+    MatInputModule,
+    MatExpansionModule,
+    MatListModule,
+    MatChipsModule,
+    MatAutocompleteModule,
+    ReactiveFormsModule,
+    MatProgressSpinnerModule,
+    NgxSkeletonLoaderModule,
+    CommonModule,
+    SkeletonCardComponent
+], 
     providers: [
         { provide: LOCALE_ID, useValue: 'es' },
         { provide: MatPaginatorIntl, useValue: getSpanishPaginatorIntl() },

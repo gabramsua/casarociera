@@ -1,39 +1,49 @@
 <h2 class="ml-4 mb-0">Próximas Comidas</h2>
 
-<div class="horizontal-list-container">
-  @for (comida of comidas; track comida.id) {
-    <mat-card class="list-item">
-      <mat-card-header>
-        <mat-card-title class="d-flex flex-column align-items-start">
-          <span class="importe">{{ comida.nombre }}</span>
-          <span class="concepto">{{ comida.platoPrincipal }}</span>
-        </mat-card-title>
-        <mat-card-subtitle>
-          @if(comida.horario) {
-            Horario: {{ comida.horario | date:'hh:mm' }}
-          <!-- } @else {
-            Horario: No disponible. -->
-          }
-        </mat-card-subtitle>
-      </mat-card-header>
-      <mat-card-content>
-        <p>
-          <!-- <strong>Categoría:</strong> {{ gasto.categoria.nombre }} -->
-        </p>
-        <!-- @if (gasto.urlTicket) {
-          <p>
-            <a (click)="openImageViewer(gasto.urlTicket, 'Ticket de ' + gasto.concepto)" style="cursor: pointer;">
-              Ver Ticket
-            </a>
-          </p>
-        } -->
-      </mat-card-content>
-    </mat-card>
-  } @empty {
-    <mat-card class="list-item no-items-card">
-      <mat-card-content>
-        Aún no hay menú.
-      </mat-card-content>
-    </mat-card>
+@defer (on immediate) {
+  @if(!dataReady()) {
+    <app-skeleton-card [iterations]="5"></app-skeleton-card>
+  } @else {
+    <div class="horizontal-list-container">
+      @for (comida of comidas; track comida.id) {
+        <mat-card class="list-item">
+          <mat-card-header>
+            <mat-card-title class="d-flex flex-column align-items-start">
+              <span class="importe">{{ comida.nombre }}</span>
+              <span class="concepto">{{ comida.platoPrincipal }}</span>
+            </mat-card-title>
+            <mat-card-subtitle>
+              @if(comida.horario) {
+                Horario: {{ comida.horario | date:'hh:mm' }}
+              <!-- } @else {
+                Horario: No disponible. -->
+              }
+            </mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <p>
+              <!-- <strong>Categoría:</strong> {{ gasto.categoria.nombre }} -->
+            </p>
+            <!-- @if (gasto.urlTicket) {
+              <p>
+                <a (click)="openImageViewer(gasto.urlTicket, 'Ticket de ' + gasto.concepto)" style="cursor: pointer;">
+                  Ver Ticket
+                </a>
+              </p>
+            } -->
+          </mat-card-content>
+        </mat-card>
+      } @empty {
+        <mat-card class="list-item no-items-card">
+          <mat-card-content>
+            Aún no hay menú.
+          </mat-card-content>
+        </mat-card>
+      }
+    </div>
   }
-</div>
+} @placeholder {
+  <div class="comidas-deferred-placeholder">
+    Cargando sección de comidas...
+  </div>
+}
