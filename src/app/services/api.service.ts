@@ -25,11 +25,33 @@ export class ApiService {
   getAllByCasa(collection: string) {
     return this.http.get<any>(`${this.baseUrl}${collection}/${environment.casa}`, { headers: this.headers });
   }
+  post(collection: string, body: any) {
+    return this.http.post<any>(`${this.baseUrl}${collection}`, body, {
+      headers: this.headers
+    });
+  }
+  put(collection: string, body: any) {
+    return this.http.put<any>(`${this.baseUrl}${collection}`, body, {
+      headers: this.headers
+    });
+  }
+  delete(collection: string, id: number) {
+    return this.http.delete<any>(`${this.baseUrl}${collection}/${id}`, {
+      headers: this.headers
+    });
+  }
+
+  
+  ///////////////////////////////////////////
+  // Custom methods for specific endpoints //
+  ///////////////////////////////////////////
+  
   getDetallePropuesta(id: number) {
     return this.http.get<any>(`${this.baseUrl}propuesta/detalle-completo/${id}`, {
       headers: this.headers
     });
   }
+
   
 
 }

@@ -1,10 +1,10 @@
 <div class="table-header d-flex flex-row align-items-center mb-3 mt-1">
-  <mat-form-field class="flex-fill w-50 ml-3">
+  <mat-form-field class="flex-fill pr-4 ml-3">
     <mat-label>Filtrar</mat-label>
     <input matInput (keyup)="applyFilter($event)" placeholder="" #input>
   </mat-form-field>
 
-  <div class="flex-fill w-50 d-flex justify-content-end">
+  <div class="flex-fill d-flex justify-content-end mr-4 container-fit-content">
     <button mat-raised-button class="button-verde"><mat-icon>add_2</mat-icon> Añadir Propuesta</button>
   </div>
 </div>
@@ -37,21 +37,25 @@
 
       <!-- Action Column -->
       <ng-container matColumnDef="acciones">
-        <th mat-header-cell *matHeaderCellDef> Acciones </th>
-        <td mat-cell *matCellDef="let row">
-          <!-- <mat-icon [routerLink]="['propuesta/detail/'+ row.id]" [queryParams]="{ autor: row.autor, tab: selectedTabIndex }">visibility</mat-icon> -->
-          <button mat-icon-button [routerLink]="['propuesta/detail/'+ row.id]" [queryParams]="{ autor: row.autor, tab: selectedTabIndex }">
-            <mat-icon>visibility</mat-icon>
-          </button>
-          @if(userHaVotado(row)) {
-            <button mat-icon-button >
-              <mat-icon>how_to_vote</mat-icon>
-            </button>
-          }
+        <th mat-header-cell *matHeaderCellDef class="acciones-col"> Acciones </th>
+        <td mat-cell *matCellDef="let row" class="acciones-td">
           
-          <!-- <i class="fa-solid fa-lock ml-2" matTooltip="Bloqueado"></i> -->
-          <!-- <i class="acciones-tabla fa-solid fa-pencil" [routerLink]="['detail/'+ row.idcliente]"></i> -->
-          <!-- <i class="acciones-tabla fa-solid fa-trash-can"></i>  -->
+          <div class="acciones-wrapper">
+            <button mat-icon-button [routerLink]="['propuesta/detail/'+ row.id]" [queryParams]="{ autor: row.autor, tab: selectedTabIndex }">
+              <mat-icon>visibility</mat-icon>
+            </button>
+            
+            @if(!userHaVotado(row)) {
+              <button mat-icon-button >
+                <mat-icon class="red-icon">how_to_vote</mat-icon>
+              </button>
+            } @else {
+               <button mat-icon-button class="acciones-boton" [class.invisible]="userHaVotado(row)">
+                  <mat-icon class="red-icon">how_to_vote</mat-icon>
+                </button>
+            }
+          </div>
+          
         </td>
       </ng-container>
 

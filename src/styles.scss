@@ -7,6 +7,36 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .fill-available {
     width: -webkit-fill-available;
 }
+.container-fit-content{
+  min-width: fit-content;
+}
+
+/* Fijamos el ancho para la columna de acciones */
+th.acciones-col,
+td.acciones-col {
+  width: 120px;
+  text-align: center;
+}
+
+/* Wrapper para alinear los iconos siempre igual */
+.acciones-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Asegura que todos los botones tienen el mismo tamaño */
+.acciones-boton {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+}
+
+/* Oculta el botón pero reserva su espacio */
+.invisible {
+  visibility: hidden;
+}
 
 
 
@@ -137,4 +167,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 .fill-available {
     width: -webkit-fill-available;
+}
+.red-icon {
+  color: red;
 }

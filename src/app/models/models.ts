@@ -108,3 +108,9 @@ export interface Asignacion {
     habitacion: Habitacion;
     personas: string[];
 }
+
+export interface VotarRequest {
+	idPropuesta: number;
+    idParticipanteromeria: number;
+    isAFavor: boolean;
+}

@@ -19,6 +19,7 @@ const Constants = {
         COMIDAS_EVENTO_ACTIVO: 'comidasEventoActivo',
         PROPUESTAS_EVENTO_ACTIVO: 'propuestasEventoActivo',
         VOTOS_PROPUESTAS_EVENTO_ACTIVO: 'votopropuestasEventoActivo',
+        VOTAR: 'votar',
     },
 };
 
