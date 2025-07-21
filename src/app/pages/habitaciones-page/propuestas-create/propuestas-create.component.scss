@@ -4,6 +4,13 @@
   display: flex;
   gap: 20px;
   padding: 20px;
+  max-height: calc(100vh - 60px); 
+  overflow: hidden;
+}
+.personas-disponibles-list-container{
+  flex: 1; /* Ocupa el espacio disponible */
+  overflow-y: auto; /* Permite scroll vertical si el contenido excede la altura */
+  max-height: 100%;
 }
 
 .usuarios-disponibles-list {
@@ -22,10 +29,21 @@
 }
 
 .habitaciones-grid {
-  flex: 1;
+  // flex: 1;
+  // display: grid;
+  // grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); // Columnas responsivas
+  // gap: 20px;
+
+
+  flex: 2; /* Ocupa más espacio que la lista de disponibles, ajusta según necesites */
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); // Columnas responsivas
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Columnas responsivas */
   gap: 20px;
+  padding: 10px;
+  overflow-y: auto; /* ¡Esto es lo crucial para el scroll vertical! */
+  max-height: 100%; /* Ocupa toda la altura disponible en el .habitaciones-container */
+  box-sizing: border-box; /* Incluye padding y borde en el tamaño total */
+
 }
 
 .lista-usuarios, .lista-usuarios-habitacion {
