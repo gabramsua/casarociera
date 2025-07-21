@@ -78,7 +78,6 @@ export class PropuestaDetailComponent {
         this.votosEnContra.push(this.currentUser?.nombre || '');
         this.votosAFavor = this.votosAFavor.filter(v => v !== this.currentUser?.nombre);
       }
-      // this.tabIndex = 0; // Reset to first tab after voting
     });
   }
 }

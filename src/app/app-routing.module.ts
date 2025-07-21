@@ -7,6 +7,7 @@ import { HabitacionesPageComponent } from './pages/habitaciones-page/habitacione
 import { BalancePageComponent } from './pages/balance-page/balance-page.component';
 import { AdminPageComponent } from './pages/admin-page/admin-page.component';
 import { PropuestaDetailComponent } from './pages/habitaciones-page/propuesta-detail/propuesta-detail.component';
+import { PropuestasCreateComponent } from './pages/habitaciones-page/propuestas-create/propuestas-create.component';
 
 const routes: Routes = [
   {
@@ -24,6 +25,10 @@ const routes: Routes = [
   {
     path: 'habitaciones',
     component: HabitacionesPageComponent
+  },
+  {
+    path: 'habitaciones/propuesta/create',
+    component: PropuestasCreateComponent
   },
   {
     path: 'habitaciones/propuesta/detail/:id',

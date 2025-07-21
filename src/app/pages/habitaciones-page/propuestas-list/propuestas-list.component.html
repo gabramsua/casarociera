@@ -5,7 +5,7 @@
   </mat-form-field>
 
   <div class="flex-fill d-flex justify-content-end mr-4 container-fit-content">
-    <button mat-raised-button class="button-verde"><mat-icon>add_2</mat-icon> Añadir Propuesta</button>
+    <button mat-raised-button class="button-verde" [routerLink]="['propuesta/create']" [queryParams]="{ tab: selectedTabIndex }" ><mat-icon>add_2</mat-icon> Añadir Propuesta</button>
   </div>
 </div>
 

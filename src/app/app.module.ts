@@ -27,6 +27,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import {DragDropModule} from '@angular/cdk/drag-drop';
 
 
 import { LandingSelectorUsuarioComponent } from './pages/landing-selector-usuario/landing-selector-usuario.component';
@@ -104,7 +105,8 @@ import { SkeletonCardComponent } from "src/app/shared/components/skeleton-card/s
     MatProgressSpinnerModule,
     NgxSkeletonLoaderModule,
     CommonModule,
-    SkeletonCardComponent
+    SkeletonCardComponent,
+    DragDropModule
 ], 
     providers: [
         { provide: LOCALE_ID, useValue: 'es' },

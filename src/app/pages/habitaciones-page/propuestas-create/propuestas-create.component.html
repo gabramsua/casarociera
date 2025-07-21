@@ -1,1 +1,72 @@
-<p>propuestas-create works!</p>
+<div class="detail-header d-flex flex-around align-items-center justify-content-center mt-4 ml-2 mr-2 mb-2">
+  <back-button [route]="'/habitaciones'"></back-button>
+  <legend class="d-flex justify-content-end">Crear Propuesta</legend>
+</div>
+
+
+
+
+
+
+<div class="habitaciones-container cdk-drop-list-group-container" cdkDropListGroup>
+
+  <div class="personas-disponibles-list-container">
+    <h3>Personas Disponibles</h3>
+    <div
+      cdkDropList
+      [cdkDropListData]="personasDisponibles"
+      [cdkDropListConnectedTo]="getAllConnectedListIds()"
+      (cdkDropListDropped)="drop($event)"
+      class="lista-items"
+      id="personas-disponibles-list"
+    >
+      @for (personaNombre of personasDisponibles; track personaNombre) {
+        <div cdkDrag [cdkDragData]="personaNombre" class="item-arrastrable">
+          {{ personaNombre }}
+          <div *cdkDragPlaceholder class="drag-placeholder"></div>
+        </div>
+      } @empty {
+        <p class="no-items">No hay personas sin asignar.</p>
+      }
+    </div>
+  </div>
+
+  <div class="habitaciones-grid">
+    @for (habitacion of todasLasHabitaciones; track habitacion.id) {
+      @if (getAsignacionForHabitacion(habitacion.id); as asignacion) {
+        <mat-card class="habitacion-card" [ngClass]="{'full': asignacion.personas.length >= asignacion.habitacion.capacidad}">
+          <mat-card-header>
+            <mat-card-title>{{ habitacion.nombre }}</mat-card-title>
+            <mat-card-subtitle>
+              {{ habitacion.casa.nombre }}
+              <br>
+              Ocupación: {{ asignacion.personas.length }} / {{ habitacion.capacidad }}
+            </mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <div
+              cdkDropList
+              [cdkDropListData]="asignacion.personas"
+              [cdkDropListConnectedTo]="getAllConnectedListIds()"
+              [cdkDropListEnterPredicate]="predicate"
+              (cdkDropListDropped)="drop($event)" 
+              class="lista-items lista-habitacion"
+              [ngClass]="{'full': asignacion.personas.length >= habitacion.capacidad}"
+              id="habitacion-{{ habitacion.id }}-list"
+            >
+              @for (personaNombre of asignacion.personas; track personaNombre) {
+                <div cdkDrag [cdkDragData]="personaNombre" class="item-arrastrable">
+                  {{ personaNombre }}
+                  <div *cdkDragPlaceholder class="drag-placeholder"></div>
+                </div>
+              } @empty {
+                <p class="no-items">Vacía</p>
+              }
+            </div>
+          </mat-card-content>
+        </mat-card>
+      }
+    }
+  </div>
+
+</div>

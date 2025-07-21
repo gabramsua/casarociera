@@ -1,0 +1,145 @@
+@use 'src/variables';
+
+.habitaciones-container {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+}
+
+.usuarios-disponibles-list {
+  flex: 0 0 250px; // Ancho fijo para la lista de usuarios
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 15px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+
+  h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: #333;
+  }
+}
+
+.habitaciones-grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); // Columnas responsivas
+  gap: 20px;
+}
+
+.lista-usuarios, .lista-usuarios-habitacion {
+  min-height: 80px; // Para que el drop target sea visible cuando está vacío
+  background-color: #e0e0e0;
+  border-radius: 4px;
+  padding: 10px;
+  border: 1px dashed #aaa; // Estilo para el área de drop
+  transition: background-color 0.2s ease-in-out;
+
+  &.cdk-drop-list-dragging { // Cuando se arrastra algo sobre ella
+    background-color: #d0d0d0;
+  }
+  &.cdk-drop-list-receiving { // Cuando un elemento está a punto de ser dropeado
+    background-color: #c0f0c0; // Verde claro, indicando que se puede dropear
+  }
+}
+
+.lista-usuarios-habitacion.full {
+  background-color: #f0c0c0; // Rojo claro, indicando que está llena
+  cursor: not-allowed; // Cambia el cursor
+}
+
+.usuario-item {
+  padding: 8px 12px;
+  margin-bottom: 8px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  cursor: grab;
+  transition: transform 0.2s ease-in-out;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+/* Clases de Material CDK para arrastrar */
+.cdk-drag-preview {
+  box-sizing: border-box;
+  border-radius: 4px;
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+              0 8px 10px 1px rgba(0, 0, 0, 0.14),
+              0 3px 14px 2px rgba(0, 0, 0, 0.12);
+  background-color: variables.$verde-agua-50-transparente;// #4CAF50; // Color del elemento arrastrándose
+  color: white;
+  // padding: 8px 15px 8px 15px;//8px 12px;
+  // margin: 8px 10px 12px 14px;
+  width: min-content; // Ocupa todo el ancho disponible
+}
+
+.cdk-drag-placeholder {
+  opacity: 0;
+}
+
+.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.lista-usuarios.cdk-drop-list-dragging .usuario-item:not(.cdk-drag-placeholder) {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.no-items {
+  text-align: center;
+  color: #888;
+  padding: 10px;
+  font-style: italic;
+}
+
+.lista-items {
+  min-height: 80px; /* O un valor suficiente para que sea un área de drop visible */
+  background-color: #e0e0e0;
+  border-radius: 4px;
+  padding: 10px;
+  border: 1px dashed #aaa;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.lista-items.lista-habitacion {
+  /* Puedes darle un min-height diferente si lo necesitas */
+  min-height: 120px; /* Un poco más grande para las habitaciones */
+}
+.cdk-drag-preview {
+  z-index: 9999; /* Asegura que el elemento arrastrado esté siempre arriba */
+}
+.lista-items {
+  position: relative; /* Necesario para que z-index funcione */
+  z-index: 10; /* Un z-index para las listas */
+}
+
+/* --- ESTILOS PARA LA HABITACIÓN COMPLETA --- */
+
+.lista-items.lista-habitacion.full {
+  background-color: #ffdddd; /* Un rojo muy suave, o un naranja claro */
+  border-color: #ff8888; /* Un borde más visible */
+  box-shadow: 0 0 5px rgba(255, 0, 0, 0.3); /* Una sombra sutil */
+}
+
+/* Opcional: Estilo para la tarjeta completa, si quieres que toda la tarjeta cambie */
+.habitacion-card.full { /* Tendrías que aplicar la clase 'full' también a mat-card */
+    background-color: #fff0f0; /* Un color aún más suave para la tarjeta */
+}
+
+/* Estilos para indicar que NO se puede soltar */
+/* Cuando intentas arrastrar un item y el destino no es válido (por el predicado) */
+.cdk-drop-list-dragging .lista-items:not(.cdk-drop-list-receiving) {
+  opacity: 0.7; /* Opcional: reducir opacidad de listas no válidas */
+  /* Puedes añadir un borde rojo o un sombreado diferente aquí si lo deseas */
+}
+
+/* Estilo cuando el item arrastrado está directamente sobre una lista válida */
+.cdk-drop-list-receiving {
+  background-color: #e6ffe6; /* Un verde claro para indicar que es un destino válido */
+  border-color: #66cc66;
+}
