@@ -114,3 +114,9 @@ export interface VotarRequest {
     idParticipanteromeria: number;
     isAFavor: boolean;
 }
+
+export interface PropuestaCreateRellenaRequest {
+    participante: ParticipanteRomeria;
+    fecha: Date;
+    asignaciones: {idHabitacion: number, nombrePersona: string}[];
+}

@@ -37,7 +37,10 @@ export class PropuestasListComponent {
     this.api.getAllByCasa(Constants.END_POINTS.VOTOS_PROPUESTAS_EVENTO_ACTIVO).subscribe((propuestas: VotoResumen[]) => {
       this.dataSource = new MatTableDataSource(propuestas);
 
-      this.dataSource.data = propuestas.sort((a, b) => b.votosAFavor.length - a.votosAFavor.length);
+      this.dataSource.data = propuestas.sort((a, b) => (
+        (b.votosAFavor.length - a.votosAFavor.length) || // Primero, compara votos a favor (descendente)
+        (a.votosEnContra.length - b.votosEnContra.length) // Si son iguales (0), compara votos en contra (ascendente)
+      ));
 
        if (this.paginator) {
         this.dataSource.paginator = this.paginator;

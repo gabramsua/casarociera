@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core'; // Añadido OnInit
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { CdkDrag, CdkDragDrop, CdkDropList, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import Constants from 'src/constants';
-import { Asignacion, Habitacion, UsuarioLanding } from 'src/app/models/models';
+import { Asignacion, Habitacion, ParticipanteRomeria, PropuestaCreateRellenaRequest, Usuario, UsuarioLanding } from 'src/app/models/models';
 import { forkJoin } from 'rxjs';
+import { AuthService } from 'src/app/services/auth.service';
+import Utils from 'src/app/shared/Utils';
 
 
 @Component({
@@ -21,11 +23,17 @@ export class PropuestasCreateComponent implements OnInit { // Implementa OnInit
   personasDisponibles: string[] = [];
   todasLasHabitaciones: Habitacion[] = [];
   todasLasAsignaciones: Asignacion[] = [];
+  currentUser: Usuario | null = this.authService.getUsuario();
 
-  constructor(private route: ActivatedRoute, private api: ApiService) {}
+  constructor(
+    private activatedRoute: ActivatedRoute, 
+    private api: ApiService, 
+    private authService: AuthService, 
+    private router: Router, 
+  ) {}
 
   ngOnInit(): void {
-    const tab = this.route.snapshot.queryParamMap.get('tab');
+    const tab = this.activatedRoute.snapshot.queryParamMap.get('tab');
     this.tabIndex = tab ? parseInt(tab, 10) : 0;
     this.cargarDatosIniciales();
   }
@@ -122,5 +130,25 @@ export class PropuestasCreateComponent implements OnInit { // Implementa OnInit
     this.personasDisponibles = this.todosLosUsuariosLanding
       .map(u => u.usuario.nombre)
       .filter(nombre => !assignedPeopleNames.has(nombre));
+  }
+
+  saveAsignacion(): void {
+    // PROPUESTA_CREATE_RELLENA
+    const propuesta: PropuestaCreateRellenaRequest = {
+      participante: this.currentUser as unknown as ParticipanteRomeria,
+      fecha: new Date(),
+      asignaciones: this.todasLasAsignaciones.map(asignacion => ({  
+        idHabitacion: asignacion.habitacion.id,
+        nombrePersona: asignacion.personas.join(', ')
+      }))
+    };
+
+    this.api.post(Constants.END_POINTS.PROPUESTA_CREATE_RELLENA, propuesta).subscribe(() => {
+      Utils.sweetAlert();      
+      const tabIndex = this.activatedRoute.snapshot.queryParamMap.get('tab');
+      this.router.navigate(['/habitaciones'], { queryParams: { tab: tabIndex } });
+    }, error => {
+      console.error('Error al guardar la propuesta:', error);
+    });
   }
 }

@@ -24,6 +24,10 @@
   // si el header/nav es más alto, ajusta este valor.
   max-height: calc(100vh - 60px); 
   overflow: hidden; // Previene un scroll global si los hijos scrollean
+
+  mat-card-title{
+    text-transform: capitalize;
+  }
 }
 
 .personas-disponibles-list-container {

@@ -1,6 +1,6 @@
 <div class="detail-header d-flex flex-around align-items-center justify-content-center mt-4 ml-2 mr-2 mb-2">
   <back-button [route]="'/habitaciones'"></back-button>
-  <legend class="d-flex justify-content-end">Crear Propuesta</legend>
+  <legend class="d-flex justify-content-center">Crear Propuesta</legend>
 </div>
 
 
@@ -29,6 +29,12 @@
         <p class="no-items">No hay personas sin asignar.</p>
       }
     </div>
+
+      @if (personasDisponibles.length === 0) {
+      <button mat-raised-button color="primary" (click)="saveAsignacion()" class="mt-4 guardar-btn fill-available">
+        Guardar Propuesta
+      </button>
+    }
   </div>
 
   <div class="habitaciones-grid">
