@@ -37,11 +37,7 @@
         <mat-card class="habitacion-card" [ngClass]="{'full': asignacion.personas.length >= asignacion.habitacion.capacidad}">
           <mat-card-header>
             <mat-card-title>{{ habitacion.nombre }}</mat-card-title>
-            <mat-card-subtitle>
-              {{ habitacion.casa.nombre }}
-              <br>
-              Ocupación: {{ asignacion.personas.length }} / {{ habitacion.capacidad }}
-            </mat-card-subtitle>
+            <mat-card-subtitle>Ocupación: {{ asignacion.personas.length }} / {{ habitacion.capacidad }}</mat-card-subtitle>
           </mat-card-header>
           <mat-card-content>
             <div

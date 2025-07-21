@@ -1,25 +1,35 @@
-@use 'src/variables';
+@use 'src/variables'; // Asegúrate de que esta ruta sea correcta
+
+.detail-header {
+  // Ajusta estos estilos si usas Bootstrap o clases personalizadas para alinear
+  display: flex;
+  justify-content: center; // Centra horizontalmente
+  align-items: center; // Centra verticalmente
+  margin-top: 1rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+
+  legend {
+    flex-grow: 1; // Permite que la leyenda ocupe el espacio restante
+    text-align: right; // Alinea el texto a la derecha
+  }
+}
 
 .habitaciones-container {
   display: flex;
   gap: 20px;
   padding: 20px;
+  // Ajusta esta altura: 60px es para el header/nav que ya tienes,
+  // si el header/nav es más alto, ajusta este valor.
   max-height: calc(100vh - 60px); 
-  overflow: hidden;
-}
-.personas-disponibles-list-container{
-  flex: 1; /* Ocupa el espacio disponible */
-  overflow-y: auto; /* Permite scroll vertical si el contenido excede la altura */
-  max-height: 100%;
+  overflow: hidden; // Previene un scroll global si los hijos scrollean
 }
 
-.usuarios-disponibles-list {
-  flex: 0 0 250px; // Ancho fijo para la lista de usuarios
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  padding: 15px;
-  background-color: #f9f9f9;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+.personas-disponibles-list-container {
+  flex: 1;
+  overflow-y: auto;
+  max-height: 100%; // Ocupa la altura del .habitaciones-container
 
   h3 {
     margin-top: 0;
@@ -29,45 +39,51 @@
 }
 
 .habitaciones-grid {
-  // flex: 1;
-  // display: grid;
-  // grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); // Columnas responsivas
-  // gap: 20px;
-
-
-  flex: 2; /* Ocupa más espacio que la lista de disponibles, ajusta según necesites */
+  flex: 2;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Columnas responsivas */
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 20px;
   padding: 10px;
-  overflow-y: auto; /* ¡Esto es lo crucial para el scroll vertical! */
-  max-height: 100%; /* Ocupa toda la altura disponible en el .habitaciones-container */
-  box-sizing: border-box; /* Incluye padding y borde en el tamaño total */
-
+  overflow-y: auto; // Hace que esta cuadrícula sea scrolleable verticalmente
+  max-height: 100%; // Ocupa la altura del .habitaciones-container
+  box-sizing: border-box; // Incluye padding y borde en el tamaño total
 }
 
-.lista-usuarios, .lista-usuarios-habitacion {
-  min-height: 80px; // Para que el drop target sea visible cuando está vacío
+// --- Estilos generales para las listas de Drag & Drop ---
+.lista-items {
+  min-height: 80px; /* Asegura un área de drop visible */
   background-color: #e0e0e0;
   border-radius: 4px;
   padding: 10px;
-  border: 1px dashed #aaa; // Estilo para el área de drop
-  transition: background-color 0.2s ease-in-out;
+  border: 1px dashed #aaa; /* Estilo para el área de drop */
+  transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  position: relative; /* Necesario para que z-index funcione en elementos hijos si los tuviera */
+  z-index: 1; /* Un z-index base para las listas */
+}
 
-  &.cdk-drop-list-dragging { // Cuando se arrastra algo sobre ella
-    background-color: #d0d0d0;
-  }
-  &.cdk-drop-list-receiving { // Cuando un elemento está a punto de ser dropeado
-    background-color: #c0f0c0; // Verde claro, indicando que se puede dropear
+.lista-items.lista-habitacion {
+  min-height: 120px; /* Un poco más grande para las habitaciones */
+}
+
+.habitacion-card {
+  // Mat-card por defecto tiene algunos padding, puedes ajustarlos si es necesario.
+  &.full {
+    background-color: #fff0f0; /* Un color aún más suave para la tarjeta completa */
+    border: 1px solid #ff8888;
+    box-shadow: 0 0 8px rgba(255, 0, 0, 0.4);
   }
 }
 
-.lista-usuarios-habitacion.full {
-  background-color: #f0c0c0; // Rojo claro, indicando que está llena
-  cursor: not-allowed; // Cambia el cursor
+// --- Estilos para la habitación COMPLETA (aplicado al cdkDropList Y a mat-card) ---
+.lista-items.lista-habitacion.full {
+  background-color: #ffdddd; /* Un rojo muy suave, o un naranja claro para el área de drop */
+  border-color: #ff8888; /* Un borde más visible */
+  box-shadow: 0 0 5px rgba(255, 0, 0, 0.3); /* Una sombra sutil */
+  cursor: not-allowed; // Indica que no se puede soltar
 }
 
-.usuario-item {
+// --- Estilos para los items arrastrables (personas) ---
+.item-arrastrable {
   padding: 8px 12px;
   margin-bottom: 8px;
   background-color: #fff;
@@ -82,32 +98,6 @@
   }
 }
 
-/* Clases de Material CDK para arrastrar */
-.cdk-drag-preview {
-  box-sizing: border-box;
-  border-radius: 4px;
-  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
-              0 8px 10px 1px rgba(0, 0, 0, 0.14),
-              0 3px 14px 2px rgba(0, 0, 0, 0.12);
-  background-color: variables.$verde-agua-50-transparente;// #4CAF50; // Color del elemento arrastrándose
-  color: white;
-  // padding: 8px 15px 8px 15px;//8px 12px;
-  // margin: 8px 10px 12px 14px;
-  width: min-content; // Ocupa todo el ancho disponible
-}
-
-.cdk-drag-placeholder {
-  opacity: 0;
-}
-
-.cdk-drag-animating {
-  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
-}
-
-.lista-usuarios.cdk-drop-list-dragging .usuario-item:not(.cdk-drag-placeholder) {
-  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
-}
-
 .no-items {
   text-align: center;
   color: #888;
@@ -115,48 +105,55 @@
   font-style: italic;
 }
 
-.lista-items {
-  min-height: 80px; /* O un valor suficiente para que sea un área de drop visible */
-  background-color: #e0e0e0;
-  border-radius: 4px;
-  padding: 10px;
-  border: 1px dashed #aaa;
-  transition: background-color 0.2s ease-in-out;
-}
+// --- Clases de Material CDK para el Drag & Drop ---
 
-.lista-items.lista-habitacion {
-  /* Puedes darle un min-height diferente si lo necesitas */
-  min-height: 120px; /* Un poco más grande para las habitaciones */
-}
+// Elemento que se arrastra con el cursor
 .cdk-drag-preview {
-  z-index: 9999; /* Asegura que el elemento arrastrado esté siempre arriba */
-}
-.lista-items {
-  position: relative; /* Necesario para que z-index funcione */
-  z-index: 10; /* Un z-index para las listas */
-}
-
-/* --- ESTILOS PARA LA HABITACIÓN COMPLETA --- */
-
-.lista-items.lista-habitacion.full {
-  background-color: #ffdddd; /* Un rojo muy suave, o un naranja claro */
-  border-color: #ff8888; /* Un borde más visible */
-  box-shadow: 0 0 5px rgba(255, 0, 0, 0.3); /* Una sombra sutil */
-}
-
-/* Opcional: Estilo para la tarjeta completa, si quieres que toda la tarjeta cambie */
-.habitacion-card.full { /* Tendrías que aplicar la clase 'full' también a mat-card */
-    background-color: #fff0f0; /* Un color aún más suave para la tarjeta */
+  box-sizing: border-box;
+  border-radius: 4px;
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+              0 8px 10px 1px rgba(0, 0, 0, 0.14),
+              0 3px 14px 2px rgba(0, 0, 0, 0.12);
+  background-color: variables.$verde-agua-50-transparente; // Usando tu variable
+  color: white;
+  padding: 8px 12px; // Ajustado a un padding más estándar
+  font-size: 1.1em; /* Haz el texto más grande */
+  font-weight: bold;
+  z-index: 9999; /* Asegura que esté por encima de casi todo */
+  width: min-content; // Ocupa solo el ancho necesario para el contenido
+  white-space: nowrap; // Evita que el texto se rompa en varias líneas
 }
 
-/* Estilos para indicar que NO se puede soltar */
-/* Cuando intentas arrastrar un item y el destino no es válido (por el predicado) */
+// Espacio que deja el elemento original
+.cdk-drag-placeholder {
+  opacity: 0.4;
+  background-color: #f0f0f0;
+  border: 1px dashed #ccc;
+  border-radius: 4px;
+}
+
+// Animación cuando un elemento se mueve (transferencia o reordenación)
+.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+// Cuando una lista está arrastrando un elemento, los otros elementos no arrastrados
+// también se animan si se mueven para hacer espacio.
+.lista-items.cdk-drop-list-dragging .item-arrastrable:not(.cdk-drag-placeholder) {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+// --- Estilos de interacción con el Drag & Drop ---
+
+// Cuando se intenta arrastrar un item y el destino NO es válido (por el predicado)
 .cdk-drop-list-dragging .lista-items:not(.cdk-drop-list-receiving) {
-  opacity: 0.7; /* Opcional: reducir opacidad de listas no válidas */
-  /* Puedes añadir un borde rojo o un sombreado diferente aquí si lo deseas */
+  opacity: 0.7; // Reducir opacidad para indicar que no es un destino válido
+  // Puedes añadir un borde o sombra para mayor claridad
+  // border-color: red;
+  // box-shadow: inset 0 0 5px rgba(255, 0, 0, 0.5);
 }
 
-/* Estilo cuando el item arrastrado está directamente sobre una lista válida */
+// Cuando el item arrastrado está directamente sobre una lista válida
 .cdk-drop-list-receiving {
   background-color: #e6ffe6; /* Un verde claro para indicar que es un destino válido */
   border-color: #66cc66;
