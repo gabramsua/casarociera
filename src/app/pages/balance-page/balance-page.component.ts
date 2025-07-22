@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { BalanceDeEventoResponse } from 'src/app/models/models';
+import { BalanceDeEventoCabecera, BalanceDeEventoResponse } from 'src/app/models/models';
 import { ApiService } from 'src/app/services/api.service';
 import Constants from 'src/constants';
 
@@ -12,13 +12,22 @@ import Constants from 'src/constants';
     standalone: false
 })
 export class BalancePageComponent {
-    dataSource: BalanceDeEventoResponse[] = [];
+    dataSource!: BalanceDeEventoResponse;
+    balanceDeEventoCabecera!: BalanceDeEventoCabecera;
 
-  constructor( private router: Router, private api: ApiService, private dialog: MatDialog) {}
+    constructor( private router: Router, private api: ApiService, private dialog: MatDialog) {}
   
-  ngOnInit(): void {
-    this.api.getAllByCasa(Constants.END_POINTS.BALANCE_EVENTO).subscribe((response: BalanceDeEventoResponse[]) => {
-      this.dataSource = response;
-    });
-  }
+    ngOnInit(): void {
+        this.api.getAllByCasa(Constants.END_POINTS.BALANCE_EVENTO).subscribe((response: BalanceDeEventoResponse) => {
+            this.dataSource = response;
+            this.balanceDeEventoCabecera = {
+                casa: response.casa,
+                year: response.year,
+                totalGastos: response.totalGastos,
+                totalIngresos: response.totalIngresos,
+                balanceNeto: response.balanceNeto,
+            }
+        });
+    }
+    
 }

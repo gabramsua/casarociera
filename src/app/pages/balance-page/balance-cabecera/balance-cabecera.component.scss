@@ -1,0 +1,109 @@
+@use 'src/variables';
+
+h1 {
+    margin: 0;
+}
+
+.header {    
+    box-shadow: 0px 4px 6px -2px rgba(0, 0, 0, 0.1); 
+    padding-bottom: 0px !important;
+    margin-bottom: 10px;
+
+    h3 {
+        margin: 8px;
+    }
+
+    &-title {
+        align-items: baseline;
+    }
+}
+
+
+
+/* Contenedor principal del balance */
+.balance-container {
+    position: absolute;
+    right: 20px;
+    background-color: #f8f8f8; /* Un fondo suave para el contenedor general */
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* Sombra suave para el contenedor principal */
+}
+
+/* Tarjeta para el Balance Neto */
+.balance-summary-card {
+  background-color: #ffffff; /* Fondo blanco */
+  border-radius: 10px;
+  padding: 10px;
+  text-align: center;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15); /* Sombra más pronunciada para el Balance Neto */
+}
+
+.balance-summary-card h3 {
+  color: #333;
+  margin-bottom: 10px;
+  font-size: 1.2em;
+}
+
+.balance-neto-value {
+  font-size: 1.2em; /* Tamaño grande para el valor */
+  font-weight: bold;
+  margin-right: 5px;
+//   color: #28a745; /* Verde para un balance positivo (ajusta según el valor real) */
+  /* Si el balance fuera negativo, podrías usar JavaScript para cambiar la clase o el estilo a rojo */
+}
+.balance-positivo .balance-neto-value {
+  color: #28a745; /* Verde fuerte para positivo */
+}
+
+.balance-negativo .balance-neto-value {
+  color: #dc3545; /* Rojo fuerte para negativo */
+}
+
+
+
+
+
+
+
+/* Contenedor para Ingresos y Gastos (Flex Row) */
+.balance-details-row {
+  display: flex; /* Activa Flexbox */
+  justify-content: space-around; /* Distribuye los ítems uniformemente con espacio entre ellos */
+  gap: 15px; /* Espacio entre los ítems (ingresos/gastos) */
+  flex-wrap: wrap; /* Permite que los ítems se envuelvan a la siguiente línea en pantallas pequeñas */
+}
+
+/* Ítem individual de detalle (Ingresos o Gastos) */
+.balance-detail-item {
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 10px;
+  text-align: center;
+  flex: 1; /* Permite que los ítems crezcan para ocupar el espacio */
+  min-width: 150px; /* Ancho mínimo para que no se hagan demasiado pequeños */
+//   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Sombra más ligera */
+
+  display: flex;
+  flex-direction: row;
+}
+
+.balance-detail-item h4 {
+  color: #555;
+  margin-bottom: 8px;
+  font-size: 1em;
+}
+
+.detail-value {
+  font-size: 1.2em;
+  margin-left: 5px;
+//   font-weight: bold;
+}
+
+/* Colores específicos para Ingresos y Gastos */
+.balance-detail-item.income .detail-value {
+  color: #28a745; /* Verde para ingresos */
+}
+
+.balance-detail-item.expense .detail-value {
+  color: #dc3545; /* Rojo para gastos */
+}

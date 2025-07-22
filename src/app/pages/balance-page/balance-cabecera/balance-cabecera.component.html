@@ -1,1 +1,28 @@
-<p>balance-cabecera works!</p>
+<div class="d-flex flex-column w-100 justify-content-between p-4 header ">
+    <div class="d-flex flex-row">
+        <div class="d-flex flex-column header-title">
+            <!-- <h1 class="mt-2"><!-- Balance de la --Casa Rociera {{ balanceDeEventoCabecera.casa.nombre }}</h1> -->
+            <!-- <h3>{{ balanceDeEventoCabecera.year.nombre }} de {{ balanceDeEventoCabecera.year.year }}</h3> -->
+            <h1 class="mt-2">Balance de {{ balanceDeEventoCabecera.casa.nombre }}</h1> 
+            <h3>{{ balanceDeEventoCabecera.year.nombre }} de {{ balanceDeEventoCabecera.year.year }}</h3>
+        </div>
+        <div class="balance-container">
+            <div class="balance-summary-card d-flex flex-row align-items-center" [ngClass]="{'balance-positivo': balanceDeEventoCabecera.balanceNeto >= 0,'balance-negativo': balanceDeEventoCabecera.balanceNeto < 0}">
+                <h3>Balance Neto</h3>
+                <span class="balance-neto-value">
+                    {{ balanceDeEventoCabecera.balanceNeto }} €
+                </span>
+            </div>
+
+        </div>
+    </div>
+    <div class="balance-details-row">
+        <div class="balance-detail-item income">
+            <h4>Total Ingresos: </h4><span class="detail-value">{{ balanceDeEventoCabecera.totalIngresos }} €</span>
+        </div>
+    
+        <div class="balance-detail-item expense">
+            <h4>Total Gastos: </h4><span class="detail-value">{{ balanceDeEventoCabecera.totalGastos }} €</span>
+        </div>
+    </div>
+</div>

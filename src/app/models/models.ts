@@ -131,3 +131,11 @@ export interface BalanceDeEventoResponse {
     balanceNeto: number;
     detalles: Balance[];
 }
+
+export interface BalanceDeEventoCabecera {
+    casa: Casa;
+    year: Year;
+    totalGastos: number;
+    totalIngresos: number;
+    balanceNeto: number;
+}
