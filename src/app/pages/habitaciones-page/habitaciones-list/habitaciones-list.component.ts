@@ -5,17 +5,14 @@ import { Router } from '@angular/router';
 import { Habitacion } from 'src/app/models/models';
 import { ApiService } from 'src/app/services/api.service';
 import Constants from 'src/constants';
+import { expandAnimation } from 'src/app/shared/animations/expandAnimation';
 
 @Component({
     selector: 'app-habitaciones-list',
     templateUrl: './habitaciones-list.component.html',
     styleUrl: './habitaciones-list.component.scss',
     animations: [
-        trigger('detailExpand', [
-            state('collapsed,void', style({ height: '0px', minHeight: '0' })),
-            state('expanded', style({ height: '*' })),
-            transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
-        ]),
+        expandAnimation
     ],
     standalone: false
 })

@@ -33,7 +33,9 @@ export interface ParticipanteRomeria {
     id: number;
     usuario: Usuario;
     year: Year;
-    logged: boolean
+    logged: boolean;
+    costo: number;
+    totalAportado: number;
 }
 export interface Categoria {
     id: number;
@@ -119,4 +121,13 @@ export interface PropuestaCreateRellenaRequest {
     participante: ParticipanteRomeria;
     fecha: Date;
     asignaciones: {idHabitacion: number, nombrePersona: string}[];
+}
+
+export interface BalanceDeEventoResponse {
+    casa: Casa;
+    year: Year;
+    totalGastos: number;
+    totalIngresos: number;
+    balanceNeto: number;
+    detalles: Balance[];
 }

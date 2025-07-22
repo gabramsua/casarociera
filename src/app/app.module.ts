@@ -53,6 +53,8 @@ import { environment } from './environments/environment';
 registerLocaleData(localeEs, 'es'); // Registrar el locale 'es'
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { SkeletonCardComponent } from "src/app/shared/components/skeleton-card/skeleton-card.component";
+import { BalanceCabeceraComponent } from "./pages/balance-page/balance-cabecera/balance-cabecera.component";
+import { BalanceActividadRecienteComponent } from "./pages/balance-page/balance-actividad-reciente/balance-actividad-reciente.component";
 
 
 @NgModule({ 
@@ -106,7 +108,9 @@ import { SkeletonCardComponent } from "src/app/shared/components/skeleton-card/s
     NgxSkeletonLoaderModule,
     CommonModule,
     SkeletonCardComponent,
-    DragDropModule
+    DragDropModule,
+    BalanceCabeceraComponent,
+    BalanceActividadRecienteComponent
 ], 
     providers: [
         { provide: LOCALE_ID, useValue: 'es' },
