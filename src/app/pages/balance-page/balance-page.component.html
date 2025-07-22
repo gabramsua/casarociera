@@ -20,10 +20,15 @@
 
 @if(flagFiltros){
     <div class="filtros-container" [@fadeIn]="{value: flagFiltros}">
-        <p>Este será un filtro, por ejemplo</p>
-        <p>Este será un filtro, por ejemplo</p>
-        <p>Este será un filtro, por ejemplo</p>
-        <p>Este será un filtro, por ejemplo</p>
+        <div class="d-flex flex-row">
+          <mat-form-field appearance="outline" floatLabel="always">
+            <mat-label>Tipo</mat-label>
+            <mat-select (selectionChange)="filtroTipo($event.value)">
+              <mat-option *ngFor="let tipodemovimiento of tiposmovimiento" [value]="tipodemovimiento.value">{{tipodemovimiento.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
     </div>
 }
 

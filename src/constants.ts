@@ -23,6 +23,11 @@ const Constants = {
         VOTOS_PROPUESTAS_EVENTO_ACTIVO: 'votopropuestasEventoActivo',
         VOTAR: 'votar',
     },
+    TIPOS_MOVIMIENTO: [
+        {value: 2, viewValue: 'Ver Todos' },
+        {value: 1, viewValue: 'Ingreso' },
+        {value: 0, viewValue: 'Gasto' },
+    ]
 };
 
 export default Constants
