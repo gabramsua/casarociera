@@ -14,12 +14,12 @@
                     </div>
                 }
                 <div class="datos d-flex flex-column">
-                    <span>{{ detalle.fecha | date:'shortDate' }}</span>
                     <span>
                         <span [ngClass]="{'income-text': detalle.isIngreso, 'expense-text': !detalle.isIngreso}">
                             {{ detalle.importe | currency:'EUR':'symbol':'1.2-2' }}
                         </span>
                     </span>
+                    <span>{{ detalle.fecha | date:'shortDate' }}</span>
                 </div>
             </div>
             <span>{{ detalle.participanteromeria.usuario.nombre }}</span>  

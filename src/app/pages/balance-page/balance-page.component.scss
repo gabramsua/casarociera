@@ -1,0 +1,14 @@
+@use 'src/variables'; 
+
+.btn-create {
+    &-ingreso{
+        background-color: variables.$verde-agua-50-transparente;
+        color: variables.$blanco;
+        border: 1px solid variables.$verde-agua-50-transparente;
+    }
+    &-gasto{
+        background-color: variables.$rojo_tsf;
+        color: variables.$blanco;
+        border: 1px solid variables.$rojo_tsf;
+    }
+}

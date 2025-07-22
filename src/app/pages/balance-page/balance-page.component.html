@@ -1,3 +1,30 @@
 <app-balance-cabecera [balanceDeEventoCabecera]="balanceDeEventoCabecera"></app-balance-cabecera>
-Aquí botones de acción rápida
+
+<!-- <button class="btn btn-info btn-bootstrap-to-material ml-2 mb-2" type="button" (click)="exportPDF()" *ngIf="justificantesFiltrados.length > 0">Exportar PDF</button> -->
+<div class="balance-actions d-flex justify-content-between align-items-center">
+  <div class="left-group">
+    <button class="btn btn-outline-primary btn-create-ingreso m-2" (click)="handleCreate(true)">
+      <span class="d-flex flex-row align-items-center boton-content-gasto"><mat-icon>add_2</mat-icon>Nuevo Ingreso </span>
+    </button>
+    <button class="btn btn-outline-primary btn-create-gasto" (click)="handleCreate()">
+      <span class="d-flex flex-row align-items-center boton-content-ingreso"><mat-icon>add_2</mat-icon>Nuevo Gasto</span>
+    </button>
+  </div>
+
+  <div class="right-group">
+    <button class="btn btn-primary mr-2" (click)="handleFiltros()">
+      <span>Filtros</span>
+    </button>
+  </div>
+</div>
+
+@if(flagFiltros){
+    <div class="filtros-container" [@fadeIn]="{value: flagFiltros}">
+        <p>Este será un filtro, por ejemplo</p>
+        <p>Este será un filtro, por ejemplo</p>
+        <p>Este será un filtro, por ejemplo</p>
+        <p>Este será un filtro, por ejemplo</p>
+    </div>
+}
+
 <app-balance-actividad-reciente [balanceDeEvento]="dataSource"></app-balance-actividad-reciente>

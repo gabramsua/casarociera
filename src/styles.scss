@@ -168,6 +168,17 @@ td.acciones-col {
   color: red;
 }
 
+
+.filtros-container {
+    background-color: variables.$blanco;
+    border: 1px solid variables.$gris-borde;
+    border-radius: variables.$default-border-radius;
+    // margin-bottom: 32px;
+    overflow: hidden;
+    transition: box-shadow .3s ease-out;
+    padding: 5px 10px 5px;
+}
+
 // SPINNER
 .loader{
   position: absolute;
