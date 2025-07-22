@@ -1,0 +1,68 @@
+.balance-detalles-container {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.detalles-scroll-list {
+  max-height: 80vh;
+  overflow-y: auto;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+}
+
+// /* Opcional: Estilo para los colores de texto del importe */
+.income-text {
+  color: #28a745; /* Verde para ingresos */
+  font-weight: bold;
+}
+
+.expense-text {
+  color: #dc3545; /* Rojo para gastos */
+  font-weight: bold;
+}
+
+mat-list-item {
+  border-bottom: 1px solid #f0f0f0; /* Separador entre items */
+  display: flex; /* Para un mejor control del layout interno */
+  justify-content: space-between; /* Espacia los elementos */
+//   align-items: center; /* Alinea verticalmente */
+    height: auto !important;
+    min-height: 65px;
+
+}
+
+mat-list-item:last-child {
+  border-bottom: none; 
+}
+
+mat-list-item span[matListItemTitle] {
+ flex: 3; /* Le damos más espacio al título, por ejemplo, 3 partes */
+  min-width: 120px; /* Ancho mínimo para que no se comprima demasiado */
+  white-space: normal; /* Permite saltos de línea */
+  word-break: break-word; /* Rompe palabras largas */
+  margin-right: 120px; /* Espacio a la derecha antes del siguiente bloque */
+  font-size: 1em; /* Asegura un tamaño de fuente legible */
+  color: #333;
+}
+.button-container {
+    position: absolute;
+    right: 50px;
+    // border: 1px solid red;
+}
+
+.datos {
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin: 10px;
+    // border: 1px solid red;
+}
+
+mat-list-item span[matListItemLine] {
+  color: #666;
+  flex: 1; /* Distribuye el espacio para fecha y importe */
+  text-align: right; /* Alinea a la derecha fecha e importe */
+}

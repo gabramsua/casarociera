@@ -1,1 +1,34 @@
-<p>balance-actividad-reciente works!</p>
+<div class="balance-detalles-container">
+  <h3>Actividad Reciente</h3>
+  
+  <mat-list role="list" class="detalles-scroll-list">
+    @for (detalle of balanceDeEvento.detalles; track detalle.id) {
+        <mat-list-item role="listitem">
+            <span matListItemTitle>{{ detalle.concepto }}</span>
+            <div class="datos d-flex flex-row">
+                @if (detalle.urlTicket) {
+                    <div class="button-container">
+                        <button mat-icon-button matListItemMeta>
+                            <mat-icon>receipt_long</mat-icon> 
+                        </button>
+                    </div>
+                }
+                <div class="datos d-flex flex-column">
+                    <span>{{ detalle.fecha | date:'shortDate' }}</span>
+                    <span>
+                        <span [ngClass]="{'income-text': detalle.isIngreso, 'expense-text': !detalle.isIngreso}">
+                            {{ detalle.importe | currency:'EUR':'symbol':'1.2-2' }}
+                        </span>
+                    </span>
+                </div>
+            </div>
+            <span>{{ detalle.participanteromeria.usuario.nombre }}</span>  
+        </mat-list-item>
+
+    } @empty {
+        <mat-list-item>
+            <p matListItemLine>No hay actividad registrada para este periodo.</p>
+        </mat-list-item>
+    }
+  </mat-list>
+</div>

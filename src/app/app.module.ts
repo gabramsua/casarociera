@@ -78,6 +78,8 @@ import { BalanceActividadRecienteComponent } from "./pages/balance-page/balance-
         HabitacionesListComponent,
         BackButtonComponent,
         PropuestaDetailComponent,
+        BalanceCabeceraComponent,
+        BalanceActividadRecienteComponent
     ],
     bootstrap: [AppComponent], 
     imports: [
@@ -109,8 +111,6 @@ import { BalanceActividadRecienteComponent } from "./pages/balance-page/balance-
     CommonModule,
     SkeletonCardComponent,
     DragDropModule,
-    BalanceCabeceraComponent,
-    BalanceActividadRecienteComponent
 ], 
     providers: [
         { provide: LOCALE_ID, useValue: 'es' },
