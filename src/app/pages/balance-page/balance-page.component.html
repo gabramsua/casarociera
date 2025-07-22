@@ -20,11 +20,18 @@
 
 @if(flagFiltros){
     <div class="filtros-container" [@fadeIn]="{value: flagFiltros}">
-        <div class="d-flex flex-row">
+        <div class="d-flex flex-row justify-content-around">
           <mat-form-field appearance="outline" floatLabel="always">
             <mat-label>Tipo</mat-label>
-            <mat-select (selectionChange)="filtroTipo($event.value)">
+            <mat-select (selectionChange)="aplicarFiltros()" [(ngModel)]="selectedTipoMovimiento">
               <mat-option *ngFor="let tipodemovimiento of tiposmovimiento" [value]="tipodemovimiento.value">{{tipodemovimiento.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field appearance="outline" floatLabel="always">
+            <mat-label>Categoría</mat-label>
+            <mat-select (selectionChange)="aplicarFiltros()" [(ngModel)]="selectedCategoria">
+              <mat-option *ngFor="let categoria of categorias" [value]="categoria.value">{{categoria.viewValue}}
               </mat-option>
             </mat-select>
           </mat-form-field>

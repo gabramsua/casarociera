@@ -19,6 +19,9 @@ export class BalancePageComponent {
     balanceDeEventoCabecera!: BalanceDeEventoCabecera;
     flagFiltros = false;
     tiposmovimiento:TipoSelect[] = Constants.TIPOS_MOVIMIENTO;
+    categorias: TipoSelect[] = [];
+    selectedTipoMovimiento: number = 2; // Inicializa a 'Ver Todos'
+    selectedCategoria: string = 'all';
 
     constructor( private router: Router, private api: ApiService, private dialog: MatDialog) {}
   
@@ -33,19 +36,58 @@ export class BalancePageComponent {
                 totalIngresos: response.totalIngresos,
                 balanceNeto: response.balanceNeto,
             }
+
+
+            const nombresCategoriasUnicos = new Set<string>();
+            response.detalles.forEach(x => {
+                if (x.categoria && x.categoria.nombre) {
+                nombresCategoriasUnicos.add(x.categoria.nombre);
+                }
+            });
+            this.categorias = Array.from(nombresCategoriasUnicos).map(nombre => ({
+                value: nombre, // El valor puede ser el mismo nombre o un ID si lo tienes
+                viewValue: nombre
+            }));
+            this.categorias.unshift({ value: 'all', viewValue: 'Ver Todas' });
+
+            this.aplicarFiltros(); 
+  
         });
     }
   handleFiltros(){
     this.flagFiltros = !this.flagFiltros;
   }
   
-  filtroTipo(tipoMovimiento: number){
-    if (tipoMovimiento === 2) {
-        this.dataSource.detalles = [...this.dataSourceImmutable.detalles]; // Usa spread para crear una nueva referencia y evitar mutaciones directas
-    } else {
-        this.dataSource.detalles = this.dataSourceImmutable.detalles.filter(x => Number(x.isIngreso) === tipoMovimiento);  
+//   filtroTipo(tipoMovimiento: number){
+//     if (tipoMovimiento === 2) {
+//         this.dataSource.detalles = [...this.dataSourceImmutable.detalles]; // Usa spread para crear una nueva referencia y evitar mutaciones directas
+//     } else {
+//         this.dataSource.detalles = this.dataSourceImmutable.detalles.filter(x => Number(x.isIngreso) === tipoMovimiento);  
+//     }
+//   }
+//   filtroCategoria(categoria: string){
+//     if(categoria === 'all'){
+//         this.dataSource.detalles = this.dataSourceImmutable.detalles;
+//     } else {
+//         this.dataSource.detalles = this.dataSourceImmutable.detalles.filter(x => x.categoria.nombre === categoria);
+//     }
+//   }
+    aplicarFiltros(): void {
+    let filteredDetalles = [...this.dataSourceImmutable.detalles]; // Siempre empieza desde la fuente inmutable
+
+    // Filtro por Tipo de Movimiento
+    if (this.selectedTipoMovimiento !== 2) { // Si no es 'Ver Todos'
+        filteredDetalles = filteredDetalles.filter(x => Number(x.isIngreso) === this.selectedTipoMovimiento);
     }
-}
+
+    // Filtro por Categoría
+    if (this.selectedCategoria !== 'all') { // Si no es 'Ver Todas las Categorías'
+        filteredDetalles = filteredDetalles.filter(x => x.categoria && x.categoria.nombre === this.selectedCategoria);
+    }
+
+    this.dataSource.detalles = filteredDetalles; // Asigna el resultado final a la fuente de datos visible
+    console.log('Filtros aplicados. Detalles visibles:', this.dataSource.detalles.length);
+    }
     
   async handleCreate(isIngreso = false) {}
     
