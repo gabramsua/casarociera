@@ -8,7 +8,7 @@
             <div class="datos d-flex flex-row">
                 @if (detalle.urlTicket) {
                     <div class="button-container">
-                        <button mat-icon-button matListItemMeta>
+                        <button mat-icon-button matListItemMeta (click)="openImageViewer(detalle.urlTicket, 'Ticket de ' + detalle.concepto)">
                             <mat-icon>receipt_long</mat-icon> 
                         </button>
                     </div>
