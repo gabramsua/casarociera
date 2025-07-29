@@ -1,7 +1,7 @@
 export const environment = {
   production: false,
   apiUrl: 'https://casarocieraback-production.up.railway.app/',
-  casa: 2,
+  casa: 1,
   firebaseConfig: {
     apiKey: "AIzaSyC2k-l1d2QL76wTCMayqX5iGmtp8_iMopg",
     authDomain: "casarociera.firebaseapp.com",
