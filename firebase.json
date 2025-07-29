@@ -2,7 +2,7 @@
   "hosting": [
      {
       "target": "ajoli",
-      "public": "dist/ajoli",
+      "public": "dist/ajoli/browser",
       "rewrites": [{ "source": "**", "destination": "/index.html" }],
       "ignore": [
         "firebase.json",
@@ -12,7 +12,7 @@
     },
     {
       "target": "otra",
-      "public": "dist/otra",
+      "public": "dist/otra/browser",
       "rewrites": [{ "source": "**", "destination": "/index.html" }],
       "ignore": [
         "firebase.json",

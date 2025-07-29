@@ -58,22 +58,8 @@ export class BalancePageComponent {
     this.flagFiltros = !this.flagFiltros;
   }
   
-//   filtroTipo(tipoMovimiento: number){
-//     if (tipoMovimiento === 2) {
-//         this.dataSource.detalles = [...this.dataSourceImmutable.detalles]; // Usa spread para crear una nueva referencia y evitar mutaciones directas
-//     } else {
-//         this.dataSource.detalles = this.dataSourceImmutable.detalles.filter(x => Number(x.isIngreso) === tipoMovimiento);  
-//     }
-//   }
-//   filtroCategoria(categoria: string){
-//     if(categoria === 'all'){
-//         this.dataSource.detalles = this.dataSourceImmutable.detalles;
-//     } else {
-//         this.dataSource.detalles = this.dataSourceImmutable.detalles.filter(x => x.categoria.nombre === categoria);
-//     }
-//   }
     aplicarFiltros(): void {
-    let filteredDetalles = [...this.dataSourceImmutable.detalles]; // Siempre empieza desde la fuente inmutable
+    let filteredDetalles = [...this.dataSourceImmutable.detalles];
 
     // Filtro por Tipo de Movimiento
     if (this.selectedTipoMovimiento !== 2) { // Si no es 'Ver Todos'
@@ -85,8 +71,7 @@ export class BalancePageComponent {
         filteredDetalles = filteredDetalles.filter(x => x.categoria && x.categoria.nombre === this.selectedCategoria);
     }
 
-    this.dataSource.detalles = filteredDetalles; // Asigna el resultado final a la fuente de datos visible
-    console.log('Filtros aplicados. Detalles visibles:', this.dataSource.detalles.length);
+    this.dataSource.detalles = filteredDetalles;
     }
     
   async handleCreate(isIngreso = false) {}

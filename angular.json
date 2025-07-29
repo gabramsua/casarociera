@@ -35,7 +35,6 @@
               "src/styles.scss"
             ],
             "scripts": [],
-            "browser": "src/main.ts",
             "stylePreprocessorOptions": {
               "includePaths": [
                 "."
