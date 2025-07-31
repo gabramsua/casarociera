@@ -3,6 +3,8 @@
 .landing-body {
     height: 100vh;
     background-color: variables.$azul-cadiz !important;
+    position: relative;
+    overflow: hidden;
 
     &-spinner {
         position: fixed;
@@ -10,6 +12,21 @@
         width: 100%;
         background-color: variables.$azul-cadiz !important;
     }
+}
+
+.landing-body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  
+  background-image: linear-gradient(rgba(variables.$azul-cadiz, 0.97), rgba(variables.$azul-cadiz, 0.97)),url('/assets/imgs/silueta_virgen.png'); /* <-- AJUSTA ESTA RUTA */
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 500px 500px;
+  // transform: rotate(25deg);
 }
 
 :host{
