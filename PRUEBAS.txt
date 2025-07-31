@@ -1,0 +1,5 @@
+⌛✅❌🏀👻
+
+1. Comprobar que /participantesActivos no se trae participantes ANTIGUOS. Eso no se ha probado.
+2. Todos los spinners/skeletons con la BD vacía.
+                                ✅3. Input no editable cuando selecciona un usuario.
