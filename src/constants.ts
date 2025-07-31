@@ -27,7 +27,9 @@ const Constants = {
         {value: 2, viewValue: 'Ver Todos' },
         {value: 1, viewValue: 'Ingreso' },
         {value: 0, viewValue: 'Gasto' },
-    ]
+    ],
+    DIALOG_WIDTH: '80%',
+    DIALOG_HEIGHT: '80%',
 };
 
 export default Constants

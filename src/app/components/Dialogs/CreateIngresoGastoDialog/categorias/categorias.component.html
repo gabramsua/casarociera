@@ -1,0 +1,54 @@
+<p><span>1. Primero elige la categoría. Bien sea una existente o crea una nueva.</span></p>
+
+<mat-form-field appearance="outline" floatLabel="always">
+    <mat-label>Elige</mat-label>
+    <!-- <mat-select  [(ngModel)]="selectedCategoria">
+        <mat-option *ngFor="let categoria of categorias" (selectionChange)="handleCategoriaSelected()" [value]="categoria.value">{{categoria.viewValue}}
+        </mat-option>
+    </mat-select> -->
+    <mat-select [(ngModel)]="selectedCategoria" (ngModelChange)="handleCategoriaSelected()">
+        @for (categoria of categorias; track categoria.value) {
+            <mat-option [value]="categoria.value">
+            {{ categoria.viewValue }}
+            </mat-option>
+        }
+    </mat-select>
+</mat-form-field>
+
+@if(flagShowCrearCategoria) {
+    <!-- <form [formGroup]="categoriaForm">
+        <div class="form-group">
+            <label for="nombre">Nombre:</label>
+            <input matInput type="text" id="nombre" formControlName="nombre" placeholder="Introduce tu nombre">
+
+            @if (nombreControl.invalid && (nombreControl.dirty || nombreControl.touched)) {
+                <div class="error-message">
+                @if (nombreControl.errors?.['required']) {
+                    <span>El nombre es obligatorio.</span>
+                }
+                @if (nombreControl.errors?.['minlength']) {
+                    <span>El nombre debe tener al menos {{ nombreControl.errors?.['minlength'].requiredLength }} caracteres.</span>
+                }
+                </div>
+            }
+        </div>
+    </form> -->
+
+    <form [formGroup]="categoriaForm">
+        <mat-form-field class="example-full-width">
+            <mat-label>Nombre</mat-label>
+            <input type="text" matInput  formControlName="nombre" placeholder="Introduce el nombre...">
+            
+             @if (nombreControl.invalid && (nombreControl.dirty || nombreControl.touched)) {
+                <div class="error-message">
+                @if (nombreControl.errors?.['required']) {
+                    <mat-error>El nombre es obligatorio.</mat-error>
+                }
+                @if (nombreControl.errors?.['minlength']) {
+                    <mat-error>El nombre debe tener al menos {{ nombreControl.errors?.['minlength'].requiredLength }} caracteres.</mat-error>
+                }
+                </div>
+            }
+        </mat-form-field>
+    </form>
+}

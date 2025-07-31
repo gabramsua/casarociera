@@ -96,6 +96,7 @@ export class LandingSelectorUsuarioComponent {
     const usuario = this.usuarios.find(u => u.id === this.usuarioSeleccionadoId);
     if (usuario) {
       this.auth.setUsuario(usuario.usuario);
+      this.auth.setParticipanteRomeria(usuario);
       this.router.navigate(['/home']);
     }
   }

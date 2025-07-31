@@ -8,6 +8,8 @@ import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http'
 import { CommonModule, registerLocaleData } from '@angular/common';
 import localeEs from '@angular/common/locales/es';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { provideNativeDateAdapter } from '@angular/material/core';
+
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -27,7 +29,9 @@ import { MatListModule } from '@angular/material/list';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import {DragDropModule} from '@angular/cdk/drag-drop';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 
 import { LandingSelectorUsuarioComponent } from './pages/landing-selector-usuario/landing-selector-usuario.component';
@@ -55,6 +59,8 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { SkeletonCardComponent } from "src/app/shared/components/skeleton-card/skeleton-card.component";
 import { BalanceCabeceraComponent } from "./pages/balance-page/balance-cabecera/balance-cabecera.component";
 import { BalanceActividadRecienteComponent } from "./pages/balance-page/balance-actividad-reciente/balance-actividad-reciente.component";
+import { CreateIngresoGastoDialogComponent } from './components/Dialogs/CreateIngresoGastoDialog/create-ingreso-gasto-dialog/create-ingreso-gasto-dialog.component';
+import { CategoriasComponent } from './components/Dialogs/CreateIngresoGastoDialog/categorias/categorias.component';
 
 
 @NgModule({ 
@@ -79,7 +85,9 @@ import { BalanceActividadRecienteComponent } from "./pages/balance-page/balance-
         BackButtonComponent,
         PropuestaDetailComponent,
         BalanceCabeceraComponent,
-        BalanceActividadRecienteComponent
+        BalanceActividadRecienteComponent,
+        CreateIngresoGastoDialogComponent,
+        CategoriasComponent
     ],
     bootstrap: [AppComponent], 
     imports: [
@@ -111,12 +119,15 @@ import { BalanceActividadRecienteComponent } from "./pages/balance-page/balance-
     CommonModule,
     SkeletonCardComponent,
     DragDropModule,
+    MatStepperModule,
+    MatDatepickerModule,
 ], 
     providers: [
         { provide: LOCALE_ID, useValue: 'es' },
         { provide: MatPaginatorIntl, useValue: getSpanishPaginatorIntl() },
         provideHttpClient(withInterceptorsFromDi()),
         provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
+        provideNativeDateAdapter(),
     ]
 })
 export class AppModule { }

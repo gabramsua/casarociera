@@ -1,8 +1,11 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { CreateIngresoGastoDialogComponent } from 'src/app/components/Dialogs/CreateIngresoGastoDialog/create-ingreso-gasto-dialog/create-ingreso-gasto-dialog.component';
+import { environment } from 'src/app/environments/environment';
 import { BalanceDeEventoCabecera, BalanceDeEventoResponse, TipoSelect } from 'src/app/models/models';
 import { ApiService } from 'src/app/services/api.service';
+import { AuthService } from 'src/app/services/auth.service';
 import { fadeIn } from 'src/app/shared/animations/fade';
 import Constants from 'src/constants';
 
@@ -23,9 +26,12 @@ export class BalancePageComponent {
     selectedTipoMovimiento: number = 2; // Inicializa a 'Ver Todos'
     selectedCategoria: string = 'all';
 
-    constructor( private router: Router, private api: ApiService, private dialog: MatDialog) {}
+    constructor( private router: Router, private api: ApiService, private dialog: MatDialog, private auth_service: AuthService) {}
   
     ngOnInit(): void {
+      this.loadData();
+    }
+    loadData() {
         this.api.getAllByCasa(Constants.END_POINTS.BALANCE_EVENTO).subscribe((response: BalanceDeEventoResponse) => {
             this.dataSource = { ...response, detalles: [...response.detalles] };;
             this.dataSourceImmutable = { ...response, detalles: [...response.detalles] };;
@@ -54,9 +60,9 @@ export class BalancePageComponent {
   
         });
     }
-  handleFiltros(){
-    this.flagFiltros = !this.flagFiltros;
-  }
+    handleFiltros(){
+      this.flagFiltros = !this.flagFiltros;
+    }
   
     aplicarFiltros(): void {
     let filteredDetalles = [...this.dataSourceImmutable.detalles];
@@ -74,6 +80,47 @@ export class BalancePageComponent {
     this.dataSource.detalles = filteredDetalles;
     }
     
-  async handleCreate(isIngreso = false) {}
+  async handleCreate(isIngreso = false) {
+    
+    const dialogRef = this.dialog.open(CreateIngresoGastoDialogComponent, {
+      data: {
+        datos: {
+          isIngreso: isIngreso,
+          concepto: '',
+          fecha: '',
+          importe: '',
+        },
+      },
+      width: Constants.DIALOG_WIDTH,
+      maxHeight: '90vh',
+    });
+    
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('Dialog closed with result:', result);
+      if(!!result){
+        let balanceNuevo: any = {
+          isIngreso: isIngreso ? 1 : 0,
+          concepto: result.datos.concepto,
+          fecha: result.datos.fecha,
+          importe: result.datos.importe,
+          categoria: { id: result.datos.categoriaSelectedId },
+          casa: { id: environment.casa },
+          participanteromeria: { id: this.auth_service.getParticipanteRomeria()?.id || 0 },
+          year: { id: this.auth_service.getParticipanteRomeria()?.year.id || 0 }, 
+        }
+
+        this.api.post(Constants.COLLECTION.BALANCE, balanceNuevo).subscribe(() => {
+          this.loadData();
+          // this._snackBar.openFromComponent(SnackBarComponent, {
+          //   duration: Constants.SNACKBAR_DURATION,
+          // });
+        }, error => {
+          console.error('Error al guardar la propuesta:', error);
+        });
+      } else {
+        console.log('Dialog closed without action');
+      }
+    });
+  }
     
 }

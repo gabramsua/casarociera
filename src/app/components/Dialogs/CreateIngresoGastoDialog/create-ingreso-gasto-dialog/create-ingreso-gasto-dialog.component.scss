@@ -1,0 +1,27 @@
+::ng-deep .mat-mdc-form-field-subscript-wrapper{
+    min-width: 120% !important;
+    margin-left: -10px;
+}
+.dialog-title {
+  display: flex;
+  align-items: center;
+  padding: 0;
+}
+
+mat-icon {
+    cursor: pointer;
+}
+.widthIconHidden {
+    visibility: hidden;
+}
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}

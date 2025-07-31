@@ -3,3 +3,4 @@
 1. Comprobar que /participantesActivos no se trae participantes ANTIGUOS. Eso no se ha probado.
 2. Todos los spinners/skeletons con la BD vacía.
                                 ✅3. Input no editable cuando selecciona un usuario.
+4. El input de crear nombre de categoría a la hora de crear un elemento del balance, si rellenas 3 caracteres, se lanza el evento. Pero si borras hasta <3, el evento ya se lanzó y el botón se puede clickar. 
