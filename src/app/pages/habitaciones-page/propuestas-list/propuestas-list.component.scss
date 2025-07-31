@@ -7,8 +7,15 @@
 }
 
 .mat-column-id {
-  width: 32px;
+  width: 24px;
   border-right: 1px solid currentColor;
-  padding-right: 24px;
 }
 
+.votos-favor {
+  color: green;
+  font-weight: bold;
+}
+.votos-contra {
+  color: red;
+  font-weight: bold;
+}

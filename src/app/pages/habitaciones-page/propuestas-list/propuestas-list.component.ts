@@ -17,7 +17,7 @@ import Swal from 'sweetalert2';
     standalone: false
 })
 export class PropuestasListComponent {
-  displayedColumns: string[] = ['id', 'aFavor', 'enContra', 'autor', 'acciones' ];
+  displayedColumns: string[] = ['id', 'votos', 'autor', 'acciones' ];
   dataSource: MatTableDataSource<VotoResumen>= new MatTableDataSource<VotoResumen>([]);
   selectedTabIndex = 2;
   currentUser: Usuario | null = this.authService.getUsuario();

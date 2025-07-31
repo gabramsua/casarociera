@@ -18,6 +18,7 @@
 
 .habitaciones-container {
   display: flex;
+  flex-direction: column;
   gap: 20px;
   padding: 20px;
   // Ajusta esta altura: 60px es para el header/nav que ya tienes,
@@ -63,6 +64,8 @@
   transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
   position: relative; /* Necesario para que z-index funcione en elementos hijos si los tuviera */
   z-index: 1; /* Un z-index base para las listas */
+  display: flex;
+  gap: 10px;
 }
 
 .lista-items.lista-habitacion {
@@ -96,6 +99,8 @@
   box-shadow: 0 1px 3px rgba(0,0,0,0.1);
   cursor: grab;
   transition: transform 0.2s ease-in-out;
+  width: fit-content;
+  height: fit-content;
 
   &:last-child {
     margin-bottom: 0;

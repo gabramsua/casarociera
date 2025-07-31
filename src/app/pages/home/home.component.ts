@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { ActiveEvento } from 'src/app/models/models';
 import { ApiService } from 'src/app/services/api.service';
@@ -13,12 +13,14 @@ import Constants from 'src/constants';
 })
 export class HomeComponent {
   activeEvento: ActiveEvento | undefined;
+    dataReady = signal(false);
   
   constructor(private auth: AuthService, private router: Router, private api: ApiService) {}
 
   ngOnInit(): void {
     this.api.getAllByCasa(Constants.END_POINTS.ACTIVE_EVENTO).subscribe((data) => {
       this.activeEvento = data;
+      this.dataReady.set(true);
     });
   }
   
