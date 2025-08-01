@@ -32,6 +32,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatBadgeModule } from '@angular/material/badge';
 
 
 import { LandingSelectorUsuarioComponent } from './pages/landing-selector-usuario/landing-selector-usuario.component';
@@ -61,6 +62,8 @@ import { BalanceCabeceraComponent } from "./pages/balance-page/balance-cabecera/
 import { BalanceActividadRecienteComponent } from "./pages/balance-page/balance-actividad-reciente/balance-actividad-reciente.component";
 import { CreateIngresoGastoDialogComponent } from './components/Dialogs/CreateIngresoGastoDialog/create-ingreso-gasto-dialog/create-ingreso-gasto-dialog.component';
 import { CategoriasComponent } from './components/Dialogs/CreateIngresoGastoDialog/categorias/categorias.component';
+import { ListacompraComponent } from './pages/listacompra/listacompra.component';
+import { InfoComponent } from './pages/info/info.component';
 
 
 @NgModule({ 
@@ -73,6 +76,8 @@ import { CategoriasComponent } from './components/Dialogs/CreateIngresoGastoDial
         HabitacionesPageComponent,
         BalancePageComponent,
         AdminPageComponent,
+        ListacompraComponent,
+        InfoComponent,
         SpinnerComponent,
         GastosHorizontalListComponent,
         ComidasHorizontalListComponent,
@@ -121,6 +126,8 @@ import { CategoriasComponent } from './components/Dialogs/CreateIngresoGastoDial
     DragDropModule,
     MatStepperModule,
     MatDatepickerModule,
+    MatBadgeModule,
+    
 ], 
     providers: [
         { provide: LOCALE_ID, useValue: 'es' },

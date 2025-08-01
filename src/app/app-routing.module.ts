@@ -8,6 +8,8 @@ import { BalancePageComponent } from './pages/balance-page/balance-page.componen
 import { AdminPageComponent } from './pages/admin-page/admin-page.component';
 import { PropuestaDetailComponent } from './pages/habitaciones-page/propuesta-detail/propuesta-detail.component';
 import { PropuestasCreateComponent } from './pages/habitaciones-page/propuestas-create/propuestas-create.component';
+import { ListacompraComponent } from './pages/listacompra/listacompra.component';
+import { InfoComponent } from './pages/info/info.component';
 
 const routes: Routes = [
   {
@@ -37,6 +39,14 @@ const routes: Routes = [
   {
     path: 'balance',
     component: BalancePageComponent
+  },
+  {
+    path: 'lista-compra',
+    component: ListacompraComponent
+  },
+  {
+    path: 'informacion',
+    component: InfoComponent
   },
   {
     path: 'admin',

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { environment } from 'src/app/environments/environment';
 
 @Component({
     selector: 'app-bottom-nav',
@@ -7,5 +8,7 @@ import { Component } from '@angular/core';
     standalone: false
 })
 export class BottomNavComponent {
+    environment = environment;
+    listacompra: any[] = ['arroz', 'frijoles', 'carne']; 
 
 }

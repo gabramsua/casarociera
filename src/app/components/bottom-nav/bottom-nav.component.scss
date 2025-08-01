@@ -4,28 +4,52 @@
   height: 57px;
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
-  
   background-color: variables.$azul-cadiz;
 
   a {
-    flex-direction: row;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     color: variables.$blanco;
+    font-size: 1rem;
 
     .mat-icon {
       font-size: 24px;
+      width: 24px;
+      height: 24px;
+      // Para centrar el icono cuando el span está oculto
+      margin: auto;
+      transition: color 0.3s ease-in-out;
     }
 
     span {
       font-size: 12px;
+      
+      // Estado inicial (oculto y sin ocupar espacio)
+      display: none;
+      max-height: 0;
+      opacity: 0;
+      transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
     }
   }
 
   .active-link {
-    color: variables.$verde-menta; // o cualquier color para indicar activo
-  }
-}
+    color: variables.$verde-menta;
 
-.mat-mdc-button>.mat-icon {
-  width: 1.5rem !important;
-  height: 1.5rem !important;
+    // Estado activo
+    span {
+      // Revertimos el display para que ocupe espacio
+      display: block; 
+      // Usamos max-height para la transición
+      max-height: 20px; // Un valor lo suficientemente grande para el texto
+      opacity: 1;
+      margin-top: 2px; // Espacio entre icono y texto
+    }
+    
+    // Cambia el color del icono
+    .mat-icon {
+        color: variables.$verde-menta;
+        margin-bottom: 0;
+    }
+  }
 }
