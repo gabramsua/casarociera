@@ -48,6 +48,7 @@ export class AuthService {
 
   logout() {
     localStorage.removeItem(this.key);
+    localStorage.removeItem(this.participanteromeria);
   }
 
   isLoggedIn(): boolean {

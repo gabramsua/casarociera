@@ -4,6 +4,7 @@ export const environment = {
   casa: 2,
   info: {
     menu_link: 'Menú y Turnos', 
+    admin: '321', // Contraseña de administrador
   },
   firebaseConfig: {
     apiKey: "AIzaSyC2k-l1d2QL76wTCMayqX5iGmtp8_iMopg",

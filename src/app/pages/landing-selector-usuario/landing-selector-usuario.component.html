@@ -32,11 +32,25 @@
     </div>
   }
 
-  <div class="d-flex flex-column justify-content-center align-items-center fill-available nombres">
-    <h3>{{ usuarios[0].year.casa.nombre }}</h3>
-    <h6>{{ usuarios[0].year.nombre }} {{ usuarios[0].year.year }}</h6>
-    <h4>Casa Rociera</h4>
-  </div>
+  @if(isAdmin()){
+    <div class="d-flex flex-column fill-available justify-content-center align-items-center" @fadeInUp>
+      <mat-form-field class="flex-fill ml-3 fill-available">
+        <mat-label>Contraseña de Admin:</mat-label>
+        <input matInput [(ngModel)]="passAdmin" placeholder="Espero que te la sepas..." type="password" #input>
+      </mat-form-field>
+      <button mat-raised-button (click)="entrarAdmin()" class="flex-fill mt-2 w-75 d-flex justify-content-center align-items-center">
+        Entrar como Admin
+      </button>
+    </div>
+  }
+
+  @if(usuarios && usuarios.length > 0 && usuarios[0].year && usuarios[0].year.casa && usuarios[0].year.nombre && usuarios[0].year.year){
+    <div class="d-flex flex-column justify-content-center align-items-center fill-available nombres">
+      <h3>{{ usuarios[0].year.casa.nombre }}</h3>
+      <h6>{{ usuarios[0].year.nombre }} {{ usuarios[0].year.year }}</h6>
+      <h4>Casa Rociera</h4>
+    </div>
+  }
 
   <div class="landing-body-spinner mi-elemento-animado mostrar" @fadeInUp>
     <app-spinner></app-spinner>

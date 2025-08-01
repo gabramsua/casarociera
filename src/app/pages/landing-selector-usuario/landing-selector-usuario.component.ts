@@ -1,12 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { map, Observable, pairwise, startWith, Subscription } from 'rxjs';
+import { environment } from 'src/app/environments/environment';
 import { TipoSelect, Usuario, UsuarioLanding } from 'src/app/models/models';
 import { ApiService } from 'src/app/services/api.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { fadeInUp } from 'src/app/shared/animations/fadeInUp';
 import Constants from 'src/constants';
+import Swal from 'sweetalert2';
 
 @Component({
     selector: 'app-landing-selector-usuario',
@@ -24,6 +26,8 @@ export class LandingSelectorUsuarioComponent {
   usuariosList:TipoSelect[] = [];
   selectedUsuario!: Usuario;
   flagFadeIn = false;
+  isAdmin = signal(false);
+  passAdmin = '';
 
   private isUserSelected: boolean = false; // NUEVO: Bandera para saber si se ha seleccionado un usuario
   private controlSubscription!: Subscription; // NUEVO: Para desuscribirse de valueChanges
@@ -81,6 +85,7 @@ export class LandingSelectorUsuarioComponent {
   }
 
   selectUsuario(userViewValue: string) {
+    this.isAdmin.set(false);
     // this.usuarioSeleccionadoId = parseInt(this.usuariosList.filter(x => x.viewValue === user)[0].value as string);
      const selected = this.usuariosList.find(x => x.viewValue === userViewValue);
     if (selected) {
@@ -94,10 +99,25 @@ export class LandingSelectorUsuarioComponent {
 
   entrar() {
     const usuario = this.usuarios.find(u => u.id === this.usuarioSeleccionadoId);
-    if (usuario) {
-      this.auth.setUsuario(usuario.usuario);
-      this.auth.setParticipanteRomeria(usuario);
+    console.log('Usuario seleccionado:', usuario);
+    if(usuario?.usuario.admin) {
+      this.isAdmin.set(true);
+    } else {
+      this.auth.setUsuario(usuario!.usuario);
+      this.auth.setParticipanteRomeria(usuario!);
       this.router.navigate(['/home']);
+    }
+  }
+  entrarAdmin() {
+    const usuario = this.usuarios.find(u => u.id === this.usuarioSeleccionadoId);
+    if (this.passAdmin === environment.info.admin) {
+      this.auth.setUsuario(usuario!.usuario);
+      this.auth.setParticipanteRomeria(usuario!);
+      this.router.navigate(['/home']);
+    } else {
+      Swal.fire('Error', 'Contraseña de administrador incorrecta', 'error');
+      // this.isAdmin.set(false);
+      this.passAdmin = '';
     }
   }
 }
