@@ -17,3 +17,11 @@ a {
     text-decoration: underline !important;
     color: blue !important;
 }
+
+.button-container {
+    position: absolute;
+    right: 5px;
+    top: 8px;
+    color: variables.$mat-card-subtitle;
+    // border: 1px solid red;
+}

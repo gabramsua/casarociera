@@ -57,7 +57,7 @@ export default class Utils {
       width: '80vw', // Opcional: Ancho del diálogo (80% del viewport width)
       maxWidth: '900px', // Opcional: Ancho máximo absoluto
       // Otras opciones:
-      // height: 'auto',
+      height: 'auto',
       // panelClass: 'custom-dialog-container', // Clase CSS personalizada para el panel del diálogo
       // disableClose: true, // Para evitar que se cierre al hacer clic fuera o con Esc
     });

@@ -9,7 +9,17 @@
         <mat-card class="list-item">
           <mat-card-header>
             <mat-card-title class="d-flex flex-column align-items-start">
-              <span class="importe">{{ gasto.importe | currency:'EUR':'symbol':'1.2-2':'es' }}</span>
+              <div class="d-flex flex-row">
+                <span class="importe">{{ gasto.importe | currency:'EUR':'symbol':'1.2-2':'es' }}</span>
+
+                    @if (gasto.urlTicket) {
+                        <div class="button-container">
+                            <button mat-icon-button matListItemMeta (click)="openImageViewer(gasto.urlTicket, 'Ticket de ' + gasto.concepto)">
+                                <mat-icon>receipt_long</mat-icon> 
+                            </button>
+                        </div>
+                    }
+              </div>
               <span class="concepto">{{ gasto.concepto }}</span>
             </mat-card-title>
             <mat-card-subtitle>
@@ -20,13 +30,13 @@
             <p>
               <strong>Categoría:</strong> {{ gasto.categoria.nombre }}
             </p>
-            @if (gasto.urlTicket) {
+            <!-- @if (gasto.urlTicket) {
               <p>
                 <a matButton (click)="openImageViewer(gasto.urlTicket, 'Ticket de ' + gasto.concepto)">
                   Ver Ticket
                 </a>
               </p>
-            }
+            } -->
           </mat-card-content>
         </mat-card>
       } @empty {
