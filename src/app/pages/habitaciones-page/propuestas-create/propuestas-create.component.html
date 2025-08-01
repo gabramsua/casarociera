@@ -11,13 +11,13 @@
 <div class="habitaciones-container cdk-drop-list-group-container" cdkDropListGroup>
 
   <div class="personas-disponibles-list-container">
-    <h3>Personas Disponibles</h3>
+    <h3>Personas Disponibles: {{ personasDisponibles.length }}</h3>
     <div
       cdkDropList
       [cdkDropListData]="personasDisponibles"
       [cdkDropListConnectedTo]="getAllConnectedListIds()"
       (cdkDropListDropped)="drop($event)"
-      class="lista-items"
+      class="lista-items lista-personas-disponibles"
       id="personas-disponibles-list"
     >
       @for (personaNombre of personasDisponibles; track personaNombre) {

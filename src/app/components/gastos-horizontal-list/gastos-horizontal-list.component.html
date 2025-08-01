@@ -22,7 +22,7 @@
             </p>
             @if (gasto.urlTicket) {
               <p>
-                <a (click)="openImageViewer(gasto.urlTicket, 'Ticket de ' + gasto.concepto)">
+                <a matButton (click)="openImageViewer(gasto.urlTicket, 'Ticket de ' + gasto.concepto)">
                   Ver Ticket
                 </a>
               </p>

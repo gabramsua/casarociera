@@ -47,8 +47,8 @@ export class PropuestasCreateComponent implements OnInit { // Implementa OnInit
       habitaciones: getHabitaciones$
     }).subscribe({
       next: (data: { participantes: UsuarioLanding[], habitaciones: Habitacion[] }) => {
-        this.todosLosUsuariosLanding = data.participantes;
-        this.todasLasHabitaciones = data.habitaciones;
+        this.todosLosUsuariosLanding = data.participantes
+        this.todasLasHabitaciones = data.habitaciones
 
         this.todasLasHabitaciones.forEach(habitacion => {
           this.todasLasAsignaciones.push({
