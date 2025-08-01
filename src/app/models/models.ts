@@ -16,7 +16,8 @@ export interface Year {
     id: number;
     year: number;
     nombre: string;
-    active: boolean
+    active: boolean;
+    casa: Casa;
 }
 
 export interface Balance {
