@@ -3,7 +3,7 @@ export const environment = {
   apiUrl: 'http://localhost:8080/',
   casa: 2,
   info: {
-    menu_link: 'Menú y turnos',
+    menu_link: 'Menú',
     admin: 'admin123', // Contraseña de administrador
   },
   firebaseConfig: {

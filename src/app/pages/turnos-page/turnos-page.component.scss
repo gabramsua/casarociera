@@ -1,0 +1,72 @@
+@use 'src/variables';
+
+h2 {
+  font: julius;
+}
+
+.menu-list-container {
+  padding: 1rem;
+}
+
+.menu-item-wrapper {
+  // Configuración de Flexbox para el contenedor principal
+  display: flex;
+  align-items: center; /* Esto centrará verticalmente todos los elementos */
+  gap: 1rem;
+  width: 100%;
+}
+
+.menu-item {
+  height: auto !important;
+  padding: 1rem 0;
+  cursor: pointer;
+
+  &:hover {
+    background-color: variables.$gris-medio-claro;
+  }
+}
+
+.menu-icon {
+  // Ahora el icono es un elemento flex normal
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  font-size: 2rem;
+  color: variables.$azul-cadiz;
+}
+
+.menu-details {
+  // Los detalles del texto ocupan el espacio disponible
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-title {
+  font-weight: bold;
+}
+
+.menu-subtitle {
+  font-size: 0.9rem;
+  color: variables.$gris-medio-oscuro;
+}
+
+.horario-chip {
+  background-color: variables.$azul-cadiz;
+  color: variables.$blanco;
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 4px 8px;
+  border-radius: 16px;
+  white-space: nowrap;
+}
+
+.no-items {
+  padding: 2rem 0;
+  color: variables.$gris-medio-claro;
+  p {
+    margin: 0;
+  }
+}

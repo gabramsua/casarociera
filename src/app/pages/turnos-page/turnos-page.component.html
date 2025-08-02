@@ -1,1 +1,36 @@
-<p>turnos-page works!</p>
+
+<div class="menu-list-container">
+  @if (comidas.length > 0) {
+    <h2 class="ml-4 mb-3">Calendario Culinario de {{ comidas[0].year.nombre | titlecase }} {{ comidas[0].year.year }}</h2>
+    
+    <mat-list>
+      @for (comida of comidas; track comida.id) {
+        <mat-list-item class="menu-item">
+          <div class="menu-item-wrapper">
+            <mat-icon class="menu-icon">
+              @if (comida.nombre.includes('Almuerzo')) {
+                flatware
+              } @else if (comida.nombre.includes('Cena')) {
+                dinner_dining
+              } @else {
+                restaurant_menu
+              }
+            </mat-icon>
+            <div class="menu-details">
+              <span class="menu-title">{{ comida.platoPrincipal }}</span>
+              <span class="menu-subtitle">{{ comida.nombre }}</span>
+            </div>
+            @if (comida.horario) {
+              <span class="horario-chip">{{ comida.horario }}</span>
+            }
+          </div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+      }
+    </mat-list>
+  } @else {
+    <div class="no-items text-center">
+      <p>Aún no hay menú para este evento.</p>
+    </div>
+  }
+</div>
