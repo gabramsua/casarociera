@@ -20,7 +20,6 @@ export class ComidasHorizontalListComponent {
 
   ngOnInit(): void {
     this.api.getAllByCasa(Constants.END_POINTS.COMIDAS_EVENTO_ACTIVO).subscribe((comidas) => {
-      console.log('Comidas Evento Activo:', comidas);
       this.comidas = comidas;
       this.dataReady.set(true);
     });

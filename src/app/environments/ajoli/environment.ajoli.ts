@@ -5,6 +5,7 @@ export const environment = {
   info: {
     menu_link: 'Menú y Turnos', 
     admin: '321', // Contraseña de administrador
+    modulo_turnos_comida: true,
   },
   firebaseConfig: {
     apiKey: "AIzaSyC2k-l1d2QL76wTCMayqX5iGmtp8_iMopg",
