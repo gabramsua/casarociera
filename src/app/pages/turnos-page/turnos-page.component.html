@@ -1,8 +1,36 @@
-
 <div class="menu-list-container">
   @if (comidas.length > 0) {
     <h2 class="ml-4 mb-3">Calendario Culinario de {{ comidas[0].year.nombre | titlecase }} {{ comidas[0].year.year }}</h2>
     
+    @if (environment.info.modulo_turnos_comida) {
+      <mat-accordion class="menu-accordion">
+        @for (comida of comidas; track comida.id) {
+          <mat-expansion-panel class="menu-expansion-panel">
+            <mat-expansion-panel-header>
+              <mat-panel-title class="menu-item-wrapper menu-item-wrapper-accordion">
+                <mat-icon class="menu-icon">
+                  @if (comida.nombre.includes('Almuerzo')) { flatware }
+                  @else if (comida.nombre.includes('Cena')) { dinner_dining }
+                  @else { restaurant_menu }
+                </mat-icon>
+                <div class="menu-details">
+                  <span class="menu-title">{{ comida.platoPrincipal }}</span>
+                  <span class="menu-subtitle">{{ comida.nombre }}</span>
+                </div>
+              </mat-panel-title>
+              <mat-panel-description>
+                @if (comida.horario) {
+                  <span class="horario-chip">{{ comida.horario }}</span>
+                }
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <!-- <mat-expansion-panel-content> -->
+              <p>Aquí puedes poner más detalles sobre la comida.</p>
+            <!-- </mat-expansion-panel-content> -->
+          </mat-expansion-panel>
+        }
+      </mat-accordion>
+    } @else {
     <mat-list>
       @for (comida of comidas; track comida.id) {
         <mat-list-item class="menu-item">
@@ -28,6 +56,7 @@
         <mat-divider></mat-divider>
       }
     </mat-list>
+    }
   } @else {
     <div class="no-items text-center">
       <p>Aún no hay menú para este evento.</p>

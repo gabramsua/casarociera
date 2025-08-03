@@ -14,16 +14,34 @@ h2 {
   align-items: center; /* Esto centrará verticalmente todos los elementos */
   gap: 1rem;
   width: 100%;
+
+  &-accordion {
+    padding: 1rem 1rem 1rem 0px;
+    flex-grow: 4;
+  }
+}
+.menu-expansion-panel {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  margin-bottom: 8px;
+  border-radius: 8px;
+}
+  .mat-expansion-panel-header {
+    height: 80px;
+    // padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Asegura que el título y la descripción estén alineados correctamente */
+  }
+
+.mat-expansion-panel-header-description {
+    margin-right: 20px;
+    justify-content: end;
 }
 
 .menu-item {
   height: auto !important;
   padding: 1rem 0;
-  cursor: pointer;
 
-  &:hover {
-    background-color: variables.$gris-medio-claro;
-  }
 }
 
 .menu-icon {
