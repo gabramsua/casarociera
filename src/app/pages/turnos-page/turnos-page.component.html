@@ -1,36 +1,40 @@
 <div class="menu-list-container">
-  @if (comidas.length > 0) {
-    <h2 class="ml-4 mb-3">Calendario Culinario de {{ comidas[0].year.nombre | titlecase }} {{ comidas[0].year.year }}</h2>
+  @if (comidas.length > 0 || turnosComida.length > 0) {
     
     @if (environment.info.modulo_turnos_comida) {
+      <h2 class="ml-4 mb-3">Calendario Culinario de {{ turnosComida[0].year.nombre | titlecase }} {{ turnosComida[0].year.year }}</h2>
       <mat-accordion class="menu-accordion">
-        @for (comida of comidas; track comida.id) {
+        @for (turno of turnosComida; track turno.id) {
           <mat-expansion-panel class="menu-expansion-panel">
             <mat-expansion-panel-header>
               <mat-panel-title class="menu-item-wrapper menu-item-wrapper-accordion">
                 <mat-icon class="menu-icon">
-                  @if (comida.nombre.includes('Almuerzo')) { flatware }
-                  @else if (comida.nombre.includes('Cena')) { dinner_dining }
+                  @if (turno.turnoComida.nombre.includes('Almuerzo')) { flatware }
+                  @else if (turno.turnoComida.nombre.includes('Cena')) { dinner_dining }
                   @else { restaurant_menu }
                 </mat-icon>
                 <div class="menu-details">
-                  <span class="menu-title">{{ comida.platoPrincipal }}</span>
-                  <span class="menu-subtitle">{{ comida.nombre }}</span>
+                  <span class="menu-title">{{ turno.turnoComida.platoPrincipal }}</span>
+                  <span class="menu-subtitle">{{ turno.turnoComida.nombre }}</span>
                 </div>
               </mat-panel-title>
               <mat-panel-description>
-                @if (comida.horario) {
-                  <span class="horario-chip">{{ comida.horario }}</span>
+                @if (turno.turnoComida.horario) {
+                  <span class="horario-chip">{{ turno.turnoComida.horario }}</span>
                 }
               </mat-panel-description>
             </mat-expansion-panel-header>
-            <!-- <mat-expansion-panel-content> -->
-              <p>Aquí puedes poner más detalles sobre la comida.</p>
-            <!-- </mat-expansion-panel-content> -->
+            <p>
+              @for(persona of turno.participantes; track persona.id; let last = $last){
+                <span class="persona-chip">{{ persona.nombre }}</span>@if(!last){<ng-container >, </ng-container>}
+              }
+            </p>
           </mat-expansion-panel>
         }
       </mat-accordion>
     } @else {
+      
+    <h2 class="ml-4 mb-3">Calendario Culinario de {{ comidas[0].year.nombre | titlecase }} {{ comidas[0].year.year }}</h2>
     <mat-list>
       @for (comida of comidas; track comida.id) {
         <mat-list-item class="menu-item">

@@ -17,6 +17,7 @@ const Constants = {
         BALANCE_EVENTO: 'balanceDeEvento',
         COMIDAS_EVENTO_ACTIVO: 'comidasEventoActivo',
         GET_ALL_PARTICIPANTES_ACTIVOS: 'participantesActivos',
+        PARTICIPANTES_COMIDAS_EVENTO_ACTIVO: 'participantesComidasDeEventoActivo',
         PROPUESTAS_EVENTO_ACTIVO: 'propuestasEventoActivo',
         PROPUESTA_CREATE_RELLENA: 'rellenaPropuesta',
         ULTIMOS_10_GASTOS: 'ultimosGastos',

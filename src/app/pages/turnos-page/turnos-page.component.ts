@@ -12,13 +12,20 @@ import Constants from 'src/constants';
 })
 export class TurnosPageComponent {
   comidas: ComidasEventoActivo[] = [];
+  turnosComida: any[] = [];
   environment = environment;
   
   constructor(private api: ApiService) {}
 
   ngOnInit(): void {
-    this.api.getAllByCasa(Constants.END_POINTS.COMIDAS_EVENTO_ACTIVO).subscribe((comidas) => {
-      this.comidas = comidas;
-    });
+    if(!environment.info.modulo_turnos_comida) {
+        this.api.getAllByCasa(Constants.END_POINTS.COMIDAS_EVENTO_ACTIVO).subscribe((comidas) => {
+        this.comidas = comidas;
+        });
+    } else {
+        this.api.getAllByCasa(Constants.END_POINTS.PARTICIPANTES_COMIDAS_EVENTO_ACTIVO).subscribe((turnosComida) => {
+            this.turnosComida = turnosComida;
+        });
+    }
   }
 }
