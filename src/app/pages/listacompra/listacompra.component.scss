@@ -1,0 +1,75 @@
+@use 'src/variables';
+
+mat-card-title {
+    font-family: 'julius';
+}
+
+
+.lista-compra-card {
+  max-width: 800px;
+  margin: 2rem auto;
+}
+
+.nueva-lista-form {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.nueva-lista-form mat-form-field {
+  flex-grow: 1;
+}
+
+.lista-item {
+  cursor: pointer;
+}
+
+.lista-item.seleccionada {
+  background-color: #007bff;
+  color: white;
+}
+
+.items-container {
+  margin-top: 20px;
+}
+
+.items-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.nuevo-item-form {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.nuevo-item-form .item-nombre-input {
+  flex-grow: 1;
+}
+
+.nuevo-item-form .item-cantidad-input {
+  width: 80px;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.comprado {
+  text-decoration: line-through;
+  color: #6c757d;
+}
+
+.instruccion-vacia {
+  text-align: center;
+  color: #6c757d;
+  font-style: italic;
+  padding: 20px 0;
+}

@@ -1,1 +1,86 @@
-<p>listacompra works!</p>
+<mat-card class="lista-compra-card">
+  <mat-card-header>
+    <mat-card-title>Mis Listas de la Compra</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <div class="nueva-lista-form">
+      <mat-form-field appearance="fill">
+        <mat-label>Nombre de la nueva lista</mat-label>
+        <input matInput [(ngModel)]="nuevaListaNombre" required>
+      </mat-form-field>
+      <button mat-raised-button color="primary" (click)="crearNuevaLista()" [disabled]="!nuevaListaNombre">Crear Lista</button>
+    </div>
+
+    <mat-divider></mat-divider>
+
+    @if (listasCompra.length > 0) {
+      <mat-list>
+        @for (lista of listasCompra; track lista.id) {
+          <mat-list-item 
+            class="lista-item" 
+            [class.seleccionada]="lista.id === listaSeleccionada?.id"
+            (click)="seleccionarLista(lista)">
+            
+            <span matListItemTitle>{{ lista.nombre }}</span>
+            <span matListItemLine class="estado-chip">{{ lista.estado }}</span>
+            
+            <button mat-icon-button (click)="$event.stopPropagation(); eliminarLista(lista.id)">
+              <mat-icon>delete</mat-icon>
+            </button>
+            
+          </mat-list-item>
+          @if (!$last) {
+            <mat-divider></mat-divider>
+          }
+        }
+      </mat-list>
+    } @else {
+      <p class="instruccion-vacia">No tienes listas de la compra aún. ¡Crea una!</p>
+    }
+
+    @if (listaSeleccionada) {
+      <div class="items-container">
+        <div class="items-header">
+          <h3>{{ listaSeleccionada.nombre }}</h3>
+          <button mat-stroked-button (click)="deseleccionarLista()">Volver</button>
+        </div>
+
+        <div class="nuevo-item-form">
+          <mat-form-field appearance="fill" class="item-nombre-input">
+            <mat-label>Nuevo ítem</mat-label>
+            <input matInput [(ngModel)]="nuevoItemNombre" required>
+          </mat-form-field>
+          <mat-form-field appearance="fill" class="item-cantidad-input">
+            <mat-label>Cantidad</mat-label>
+            <input matInput type="number" [(ngModel)]="nuevoItemCantidad" min="1">
+          </mat-form-field>
+          <button mat-raised-button color="primary" (click)="crearItem()" [disabled]="!nuevoItemNombre">Añadir</button>
+        </div>
+        
+        <mat-divider></mat-divider>
+
+        @if (items.length > 0) {
+          <mat-list>
+            @for (item of items; track item.id) {
+              <mat-list-item class="item">
+                <mat-checkbox [(ngModel)]="item.comprado" (change)="actualizarItem(item)" color="primary"></mat-checkbox>
+                <span [class.comprado]="item.comprado">{{ item.nombre }} ({{ item.cantidad }})</span>
+                <button mat-icon-button (click)="eliminarItem(item.id)">
+                  <mat-icon>close</mat-icon>
+                </button>
+              </mat-list-item>
+              @if (!$last) {
+                <mat-divider></mat-divider>
+              }
+            }
+          </mat-list>
+        } @else {
+          <p class="instruccion-vacia">Esta lista está vacía.</p>
+        }
+      </div>
+    } @else {
+      <p class="instruccion-vacia">Selecciona una lista para ver sus ítems.</p>
+    }
+  </mat-card-content>
+</mat-card>
