@@ -31,6 +31,12 @@ const Constants = {
         {value: 1, viewValue: 'Ingreso' },
         {value: 0, viewValue: 'Gasto' },
     ],
+    ESTADOS_LISTA_COMPRA: [
+        {value: 0, viewValue: 'Ver Todos' },
+        {value: 1, viewValue: 'ACTIVA' },
+        {value: 2, viewValue: 'COMPLETADA' },
+        {value: 3, viewValue: 'ARCHIVADA' },
+    ],
     DIALOG_WIDTH: '80%',
     DIALOG_HEIGHT: '80%',
 };

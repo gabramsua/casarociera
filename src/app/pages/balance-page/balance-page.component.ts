@@ -33,8 +33,8 @@ export class BalancePageComponent {
     }
     loadData() {
         this.api.getAllByCasa(Constants.END_POINTS.BALANCE_EVENTO).subscribe((response: BalanceDeEventoResponse) => {
-            this.dataSource = { ...response, detalles: [...response.detalles] };;
-            this.dataSourceImmutable = { ...response, detalles: [...response.detalles] };;
+            this.dataSource = { ...response, detalles: [...response.detalles] };
+            this.dataSourceImmutable = { ...response, detalles: [...response.detalles] };
             this.balanceDeEventoCabecera = {
                 casa: response.casa,
                 year: response.year,
@@ -65,19 +65,19 @@ export class BalancePageComponent {
     }
   
     aplicarFiltros(): void {
-    let filteredDetalles = [...this.dataSourceImmutable.detalles];
+      let filteredDetalles = [...this.dataSourceImmutable.detalles];
 
-    // Filtro por Tipo de Movimiento
-    if (this.selectedTipoMovimiento !== 2) { // Si no es 'Ver Todos'
-        filteredDetalles = filteredDetalles.filter(x => Number(x.isIngreso) === this.selectedTipoMovimiento);
-    }
+      // Filtro por Tipo de Movimiento
+      if (this.selectedTipoMovimiento !== 2) { // Si no es 'Ver Todos'
+          filteredDetalles = filteredDetalles.filter(x => Number(x.isIngreso) === this.selectedTipoMovimiento);
+      }
 
-    // Filtro por Categoría
-    if (this.selectedCategoria !== 'all') { // Si no es 'Ver Todas las Categorías'
-        filteredDetalles = filteredDetalles.filter(x => x.categoria && x.categoria.nombre === this.selectedCategoria);
-    }
+      // Filtro por Categoría
+      if (this.selectedCategoria !== 'all') { // Si no es 'Ver Todas las Categorías'
+          filteredDetalles = filteredDetalles.filter(x => x.categoria && x.categoria.nombre === this.selectedCategoria);
+      }
 
-    this.dataSource.detalles = filteredDetalles;
+      this.dataSource.detalles = filteredDetalles;
     }
     
   async handleCreate(isIngreso = false) {

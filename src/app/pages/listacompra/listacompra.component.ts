@@ -5,6 +5,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { CreateListaCompraComponent } from 'src/app/components/Dialogs/create-lista-compra/create-lista-compra.component';
 import { environment } from 'src/app/environments/environment';
+import { TipoSelect } from 'src/app/models/models';
 import { ApiService } from 'src/app/services/api.service';
 import { CommonService } from 'src/app/services/common.service';
 import Constants from 'src/constants';
@@ -33,8 +34,11 @@ export class ListacompraComponent  implements OnInit {
 
   displayedColumns: string[] = [/*'id',*/ 'nombre', 'fechaCreacion', 'estado', 'acciones'];
   dataSource!: MatTableDataSource<any>;
+  dataSourceImmutable!: MatTableDataSource<any>;
   constants = Constants;
   flagFiltros = signal(false);
+  estados:TipoSelect[] = Constants.ESTADOS_LISTA_COMPRA;
+  selectedEstado: number = 0; // Inicializa a 'Ver Todos'
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -116,6 +120,7 @@ export class ListacompraComponent  implements OnInit {
         // this.listasCompra = listas;
         
       this.dataSource = new MatTableDataSource(listas);
+      this.dataSourceImmutable = new MatTableDataSource(listas);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
       },
@@ -123,6 +128,24 @@ export class ListacompraComponent  implements OnInit {
         console.error('Error al cargar las listas de la compra:', error);
       }
     );
+  }
+  
+  aplicarFiltros(): void {
+     switch(this.selectedEstado) {
+      case 0:
+        this.dataSource = new MatTableDataSource(this.dataSourceImmutable.filteredData);
+        break;
+      case 1:
+        this.dataSource = new MatTableDataSource(this.dataSourceImmutable.filteredData.filter(x => x.estado == 'ACTIVA'));
+
+        break;
+      case 2:
+        this.dataSource = new MatTableDataSource(this.dataSourceImmutable.filteredData.filter(x => x.estado == 'COMPLETADA'));
+        break;
+      case 3:
+        this.dataSource = new MatTableDataSource(this.dataSourceImmutable.filteredData.filter(x => x.estado == 'ARCHIVADA'));
+        break;
+      }
   }
 
   // crearNuevaLista(): void {
