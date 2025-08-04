@@ -64,6 +64,7 @@ import { CreateIngresoGastoDialogComponent } from './components/Dialogs/CreateIn
 import { CategoriasComponent } from './components/Dialogs/CreateIngresoGastoDialog/categorias/categorias.component';
 import { ListacompraComponent } from './pages/listacompra/listacompra.component';
 import { InfoComponent } from './pages/info/info.component';
+import { CreateListaCompraComponent } from './components/Dialogs/create-lista-compra/create-lista-compra.component';
 
 
 @NgModule({ 
@@ -92,7 +93,8 @@ import { InfoComponent } from './pages/info/info.component';
         BalanceCabeceraComponent,
         BalanceActividadRecienteComponent,
         CreateIngresoGastoDialogComponent,
-        CategoriasComponent
+        CategoriasComponent,
+        CreateListaCompraComponent,
     ],
     bootstrap: [AppComponent], 
     imports: [

@@ -10,7 +10,8 @@
         position: fixed;
         bottom: 0;
         width: 100%;
-        background-color: rgba(variables.$azul-cadiz, 0.97) !important;
+        background-color: variables.$azul-cadiz !important;
+        // background-color: rgba(variables.$azul-cadiz, 0.97) !important;
     }
 }
 .landing-body h2 {

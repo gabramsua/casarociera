@@ -34,7 +34,6 @@ export class CategoriasComponent {
         // Comprobar la validez del formulario en cada cambio
         if (this.categoriaForm.valid) {
           const nombreIngresado = values.nombre;
-          console.log('Formulario válido automáticamente. Valor a emitir:', nombreIngresado);
           this.formSubmittedEvent.emit(nombreIngresado); // Emitir el nombre si es válido
         }
       });

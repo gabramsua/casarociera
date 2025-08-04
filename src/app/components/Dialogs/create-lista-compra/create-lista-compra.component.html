@@ -1,0 +1,35 @@
+<div class="dialog-container">
+    <div mat-dialog-title class="dialog-title p-0 d-flex">
+        <h1 mat-dialog-title>Crear Nueva</h1>
+        <button class="btn btn-light" aria-label="close dialog" mat-dialog-close style="position: absolute;right: 2rem;background: white;border: none; top: 1rem;">
+            <mat-icon>close</mat-icon>
+        </button>
+    </div>
+    <div mat-dialog-content>
+        <form [formGroup]="entityForm" >
+            <mat-form-field appearance="outline" class="full-width mt-2">
+            <mat-label>Nombre</mat-label>
+            <input matInput type="text" formControlName="nombre" placeholder="Nombre...">
+            @if (nombreControl.invalid && (nombreControl.dirty || nombreControl.touched)) {
+                <mat-error>
+                @if (nombreControl.errors?.['required']) {
+                    El concepto es obligatorio.
+                }
+                @if (nombreControl.errors?.['minlength']) {
+                    El concepto debe tener al menos {{ nombreControl.errors?.['minlength'].requiredLength }} caracteres.
+                }
+                @if (nombreControl.errors?.['maxlength']) {
+                    El concepto no puede exceder {{ nombreControl.errors?.['maxlength'].requiredLength }} caracteres.
+                }
+                </mat-error>
+            }
+            </mat-form-field>
+        </form>
+
+        
+    </div>
+    <div mat-dialog-actions class="d-flex justify-content-end">
+        <button class="btn btn-outline-dark" (click)="onNoClick()"><span>Cancelar</span></button>
+        <button class="btn btn-success btn-dialog ml-4" [mat-dialog-close]="data" [disabled]="!disableGuardar()"><span>Crear</span></button>
+    </div>
+</div>

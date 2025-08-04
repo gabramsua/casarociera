@@ -1,4 +1,5 @@
-<mat-card class="lista-compra-card">
+<!-- <mat-card class="lista-compra-card">
+
   <mat-card-header>
     <mat-card-title>Mis Listas de la Compra</mat-card-title>
   </mat-card-header>
@@ -83,4 +84,89 @@
       <p class="instruccion-vacia">Selecciona una lista para ver sus ítems.</p>
     }
   </mat-card-content>
-</mat-card>
+</mat-card> -->
+
+<h1 class="display-4">ENTITY</h1>
+
+
+<div class="d-flex flex-row justify-content-between align-content-center">
+  <mat-form-field>
+      <mat-label>Búsqueda</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Cualquier campo" #input>
+  </mat-form-field>
+
+  <div class="botones">
+    <button class="btn btn-outline-primary btn-create mt-2" (click)="handleCreate()"><span><i class="fa-solid fa-plus"></i>Nuevo</span></button>
+    <button class="btn btn-primary btn-create mt-2 ml-2" (click)="handleFiltros()"><span>Filtros</span></button>
+  </div>
+</div>
+  
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort>
+  
+      <!-- ID Column -->
+      <!-- <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Nom </th>
+        <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+      </ng-container> -->
+  
+      <!-- Progress Column -->
+      <ng-container matColumnDef="nombre">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
+        <td mat-cell *matCellDef="let row"> {{row.nombre}} </td>
+      </ng-container>
+  
+      <!-- Name Column -->
+      <ng-container matColumnDef="fechaCreacion">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Fecha </th>
+        <td mat-cell *matCellDef="let row"> {{row.fechaCreacion | date: 'dd/MM/yyyy' }} </td>
+      </ng-container>
+  
+      <!-- Fruit Column -->
+      <ng-container matColumnDef="estado">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Estado </th>
+        <td mat-cell *matCellDef="let row"> 
+            <!-- {{row.estado}} -->
+             <mat-chip 
+                [class.estado-activa]="row.estado === 'ACTIVA'"
+                [class.estado-completada]="row.estado === 'COMPLETADA'"
+                [class.estado-archivada]="row.estado === 'ARCHIVADA'">
+                {{ row.estado }}
+            </mat-chip>
+        </td>
+      </ng-container>
+  
+      
+      <!-- Action Column -->
+      <ng-container matColumnDef="acciones">
+        <th mat-header-cell *matHeaderCellDef class="acciones-col"> Acciones </th>
+        <td mat-cell *matCellDef="let row" class="acciones-td">
+          <mat-icon>trash</mat-icon>
+          <!-- <div class="acciones-grid" [style.grid-template-columns]="'repeat(' + getMaxNumBotones() + ', 40px)'">
+            <button mat-icon-button [routerLink]="['propuesta/detail/'+ row.id]" [queryParams]="{ autor: row.autor, tab: selectedTabIndex }">
+              <mat-icon>visibility</mat-icon>
+            </button>
+             
+            <!-- @if(userIsOwnerOrAdmin(row)) {
+              <button mat-icon-button (click)="delete(row)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            } --
+          </div> -->
+          
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  
+      <!-- Row shown when there is no matching data. -->
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">No hay registros para la búsqueda "{{input.value}}"</td>
+      </tr>
+    </table>
+  
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Selecciona"></mat-paginator>
+  </div>
+  
+  
